@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+    <ui:define name="content">
+	    <h:form>
+	     <!-- widgetVar="carsTable">   -->  
+	    	<p:dataTable id="users" value="#{utilisateurCtrl.utilisateurs}" var="u" editable="true" editMode="cell">
+	    		<p:column headerText="#{i18n['i18n.id']}">
+	    				<h:outputText value="#{u.id}" />  
+	    		</p:column>
+	    		<p:column headerText="#{i18n['i18n.nom']}">
+	    			<p:cellEditor>
+	    				<f:facet name="output"><h:outputText value="#{u.nom}" /></f:facet>  
+                    	<f:facet name="input"><p:inputText id="nameInput" value="#{u.nom}" style="width:96%"/></f:facet>
+	    			</p:cellEditor>
+	    		</p:column>
+	    		<p:column headerText="#{i18n['i18n.prenom']}">
+	    			<p:cellEditor>
+	    				<f:facet name="output"><h:outputText value="#{u.prenom}" /></f:facet>  
+                    	<f:facet name="input"><p:inputText id="surnameInput" value="#{u.prenom}" style="width:96%"/></f:facet>
+	    			</p:cellEditor>
+	    		</p:column>
+	    		<p:column headerText="#{i18n['i18n.pseudo']}">
+	    			<p:cellEditor>
+	    				<f:facet name="output"><h:outputText value="#{u.pseudo}" /></f:facet>  
+                    	<f:facet name="input"><p:inputText id="pseudoInput" value="#{u.pseudo}" style="width:96%"/></f:facet>
+	    			</p:cellEditor>
+	    		</p:column>
+	    		<p:column headerText="#{i18n['i18n.email']}">
+	    			<p:cellEditor>
+	    				<f:facet name="output"><h:outputText value="#{u.email}" /></f:facet>  
+                    	<f:facet name="input"><p:inputText id="mailInput" value="#{u.email}" style="width:96%"/></f:facet>
+	    			</p:cellEditor>
+	    		</p:column>
+	    		<p:column headerText="#{i18n['i18n.action']}">
+		    		<p:splitButton value="#{i18n['i18n.save']}" actionListener="#{utilisateurCtrl.update}" icon="ui-icon-gear">    
+		    			<p:menuitem value="#{i18n['i18n.edit']}" action="#{utilisateurCtrl.editUtilisateur}" ajax="false" icon="ui-icon-gear"/>
+	        			<p:menuitem value="#{i18n['i18n.del']}" actionListener="#{utilisateurCtrl.delete}" ajax="false" icon="ui-icon-close"/>
+	    			</p:splitButton> 
+		    		  
+	    			
+	    		</p:column>
+	    	</p:dataTable>
+	    </h:form>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+	<application>
+     	   <locale-config>
+     	        <default-locale>fr</default-locale>
+     	   </locale-config>
+	   <resource-bundle>
+		<base-name>be.lreenaers.lafay.i18n.i18n</base-name>
+		<var>i18n</var>
+	   </resource-bundle>
+	   <message-bundle>
+	   	be.lreenaers.lafay.i18n.Messages
+	   </message-bundle>
+     </application>
+<managed-bean>
+	<managed-bean-name>enchainableCtrl</managed-bean-name>
+	<managed-bean-class>be.lreenaers.lafay.web.control.EnchainableCtrl</managed-bean-class>
+	<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+	<managed-bean-name>utilisateurCtrl</managed-bean-name>
+	<managed-bean-class>be.lreenaers.lafay.web.control.UtilisateurCtrl</managed-bean-class>
+	<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+	<managed-bean-name>testCtrl</managed-bean-name>
+	<managed-bean-class>be.lreenaers.lafay.web.control.TestCtrl</managed-bean-class>
+	<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<lifecycle>
+	<phase-listener>be.lreenaers.lafay.web.security.AuthorizationListener</phase-listener>
+</lifecycle>
+<navigation-rule>
+	<navigation-case>
+		<from-outcome>goUserList</from-outcome>
+		<to-view-id>/utilisateur/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>editUser</from-outcome>
+		<to-view-id>/utilisateur/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>userCreated</from-outcome>
+		<to-view-id>/utilisateur/moniteur.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>authorized</from-outcome>
+		<to-view-id>/utilisateur/moniteur.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>unauthorized</from-outcome>
+		<to-view-id>/utilisateur/interdit.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>rejected</from-outcome>
+		<to-view-id>/utilisateur/connexion.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>list</from-outcome>
+		<to-view-id>/test/list.xhtml</to-view-id>
+		<redirect/>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>create</from-outcome>
+		<to-view-id>/test/create.xhtml</to-view-id>
+		<redirect/>
+	</navigation-case>
+</navigation-rule>
+
+</faces-config>

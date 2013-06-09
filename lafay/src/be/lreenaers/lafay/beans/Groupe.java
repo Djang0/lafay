@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package be.lreenaers.lafay.beans;
+
+import java.util.List;
+
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Reference;
+
+/**
+ * @author media
+ *
+ */
+@Entity
+public class Groupe extends Bean{
+	private String nom;
+	@Reference
+	private List<Permission> permissions;
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public List<Permission> getPermissions() {
+		return permissions;
+	}
+	public void setPermissions(List<Permission> permissions) {
+		this.permissions = permissions;
+	}
+}
