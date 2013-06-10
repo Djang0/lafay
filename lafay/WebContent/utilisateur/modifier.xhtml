@@ -28,20 +28,6 @@
                 </p:inputText>
                 <p:message for="surname" display="icon"/> 
                 
-                <h:outputLabel for="mail" value="#{i18n['i18n.email']}" />
-                <p:inputText id="mail" label="#{i18n['i18n.email']}" value="#{utilisateurCtrl.utilisateurEdit.email}" required="true" requiredMessage="#{i18n['i18n.mailreq']}">
-                	<f:validator validatorId="be.lreenaers.lafay.web.validators.UniqueEmailValidator" />
-                	<f:validator validatorId="be.lreenaers.lafay.web.validators.EmailValidator" />
-                </p:inputText>
-                <p:message for="mail" display="icon"/> 
-                
-                <h:outputLabel for="pseudo" value="#{i18n['i18n.pseudo']}" />
-                <p:inputText id="pseudo" label="#{i18n['i18n.pseudo']}" value="#{utilisateurCtrl.utilisateurEdit.pseudo}" required="true" requiredMessage="#{i18n['i18n.pseudoreq']}">
-                	<f:validator validatorId="be.lreenaers.lafay.web.validators.UniquePseudoValidator" />
-                </p:inputText>
-                <p:message for="pseudo" display="icon"/> 
-                 
-                
                 <h:outputLabel for="pwd1" value="#{i18n['i18n.pws']}" />
                 <p:password feedback="true" inline="true" label="#{i18n['i18n.pws']}" value="#{utilisateurCtrl.utilisateurEdit.passe}" required="true" id="pwd1" match="pwd2" requiredMessage="#{i18n['i18n.pwsreq']}" promptLabel="#{i18n['i18n.prompt_strength']}" weakLabel="#{i18n['i18n.strength_WEAK']}" goodLabel="#{i18n['i18n.strength_GOOD']}" strongLabel="#{i18n['i18n.strength_STRONG']}">
                 	<f:validateLength minimum="6" />

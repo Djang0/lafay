@@ -29,16 +29,10 @@
 	    			</p:cellEditor>
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.pseudo']}">
-	    			<p:cellEditor>
-	    				<f:facet name="output"><h:outputText value="#{u.pseudo}" /></f:facet>  
-                    	<f:facet name="input"><p:inputText id="pseudoInput" value="#{u.pseudo}" style="width:96%"/></f:facet>
-	    			</p:cellEditor>
+	    			<h:outputText value="#{u.pseudo}" />
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.email']}">
-	    			<p:cellEditor>
-	    				<f:facet name="output"><h:outputText value="#{u.email}" /></f:facet>  
-                    	<f:facet name="input"><p:inputText id="mailInput" value="#{u.email}" style="width:96%"/></f:facet>
-	    			</p:cellEditor>
+	    			<h:outputText value="#{u.email}" />
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.action']}">
 		    		<p:splitButton value="#{i18n['i18n.save']}" actionListener="#{utilisateurCtrl.update}" icon="ui-icon-gear">    
