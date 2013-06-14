@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+    <ui:define name="content">
+	    <h:form>
+	     <!-- widgetVar="carsTable">   -->  
+	    	<p:dataTable id="users" value="#{permissionCtrl.permissions}" var="p" editable="true" editMode="cell">
+	    		
+	    		<p:column headerText="#{i18n['i18n.valeur']}">
+	    			<p:cellEditor>
+	    				<f:facet name="output"><h:outputText value="#{p.valeur}" /></f:facet>  
+                    	<f:facet name="input"><p:inputText id="nameInput" value="#{p.valeur}" style="width:96%"/></f:facet>
+	    			</p:cellEditor>
+	    		</p:column>
+	    		
+	    		<p:column headerText="#{i18n['i18n.action']}">
+		    		<p:splitButton value="#{i18n['i18n.save']}" actionListener="#{permissionCtrl.update}" icon="ui-icon-gear">    
+		    			<p:menuitem value="#{i18n['i18n.edit']}" action="#{permissionCtrl.editPermission}" ajax="false" icon="ui-icon-gear"/>
+	        			<p:menuitem value="#{i18n['i18n.del']}" actionListener="#{permissionCtrl.delete}" ajax="false" icon="ui-icon-close"/>
+	    			</p:splitButton> 
+		    		  
+	    			
+	    		</p:column>
+	    	</p:dataTable>
+	    </h:form>
+    </ui:define>
+</ui:composition>
+</html>

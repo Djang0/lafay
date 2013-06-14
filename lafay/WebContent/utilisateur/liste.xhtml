@@ -10,16 +10,28 @@
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 
     <ui:define name="content">
-	    <h:form>
-	     <!-- widgetVar="carsTable">   -->  
-	    	<p:dataTable id="users" value="#{utilisateurCtrl.utilisateurs}" var="u" editable="true" editMode="cell">
+	    <h:form id="form">
+	    <p:growl id="messages" showDetail="true"/> 
+			<p:dataTable var="u" value="#{utilisateurCtrl.utilisateurs}" id="users" editable="true">  
+					
+        			
+        			<f:facet name="header">  
+          				  Liste Utilisateurs  
+        			</f:facet>  
+        			<p:ajax event="rowEdit" listener="#{utilisateurCtrl.onEdit}" update=":form:messages" />  
+        			<p:ajax event="rowEditCancel" listener="#{utilisateurCtrl.onCancel}" update=":form:messages" /> 
+        			
 	    		<p:column headerText="#{i18n['i18n.id']}">
+	    		
 	    				<h:outputText value="#{u.id}" />  
+	    	
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.nom']}">
 	    			<p:cellEditor>
 	    				<f:facet name="output"><h:outputText value="#{u.nom}" /></f:facet>  
-                    	<f:facet name="input"><p:inputText id="nameInput" value="#{u.nom}" style="width:96%"/></f:facet>
+                    	<f:facet name="input"><p:inputText id="nameInput" value="#{u.nom}" style="width:96%" required="true" requiredMessage="#{i18n['i18n.prenreq']}">
+                    	<f:validateLength minimum="2" />
+                    	</p:inputText></f:facet>
 	    			</p:cellEditor>
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.prenom']}">
@@ -34,12 +46,9 @@
 	    		<p:column headerText="#{i18n['i18n.email']}">
 	    			<h:outputText value="#{u.email}" />
 	    		</p:column>
-	    		<p:column headerText="#{i18n['i18n.action']}">
-		    		<p:splitButton value="#{i18n['i18n.save']}" actionListener="#{utilisateurCtrl.update}" icon="ui-icon-gear">    
-		    			<p:menuitem value="#{i18n['i18n.edit']}" action="#{utilisateurCtrl.editUtilisateur}" ajax="false" icon="ui-icon-gear"/>
-	        			<p:menuitem value="#{i18n['i18n.del']}" actionListener="#{utilisateurCtrl.delete}" ajax="false" icon="ui-icon-close"/>
-	    			</p:splitButton> 
-		    		  
+	    		<p:column>
+
+		    		  <p:rowEditor />
 	    			
 	    		</p:column>
 	    	</p:dataTable>

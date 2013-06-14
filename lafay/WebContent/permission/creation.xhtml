@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" />  
+         
+            <h:panelGrid columns="3">
+            
+                <h:outputLabel for="label" value="#{i18n['i18n.valeur']}" />
+                <p:inputText id="label" value="#{permissionCtrl.permission.valeur}" label="#{i18n['i18n.valeur']}" required="true" requiredMessage="#{i18n['i18n.valeurreq']}">
+                	
+                </p:inputText>
+                <p:message for="label" display="icon"/> 
+                
+                
+            </h:panelGrid>
+            <p:commandButton id="saveButton" update="growl" value="#{i18n['i18n.create']}" action="#{permissionCtrl.create}" />
+        </h:form>
+        
+    </ui:define>
+</ui:composition>
+</html>

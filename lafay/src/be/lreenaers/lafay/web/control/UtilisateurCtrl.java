@@ -3,10 +3,16 @@
  */
 package be.lreenaers.lafay.web.control;
 
+import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
+
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
 import be.lreenaers.lafay.DAOs.UtilisateurDAO;
 import be.lreenaers.lafay.beans.Utilisateur;
@@ -16,12 +22,23 @@ import be.lreenaers.lafay.factories.DAOFactory;
  * @author media
  *
  */
-public class UtilisateurCtrl {
-	private UtilisateurDAO dao = DAOFactory.getUtilisateurDAO();
+public class UtilisateurCtrl implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private UtilisateurDAO dao;
 	private ListDataModel<Utilisateur> utilisateurs;
-	private Utilisateur utilisateur = new Utilisateur();
-	private Utilisateur utilisateurEdit = new Utilisateur();
-	
+	private Utilisateur utilisateur;
+	private Utilisateur utilisateurEdit;
+	public UtilisateurCtrl(){
+		System.out.println("constructor");
+		dao = DAOFactory.getUtilisateurDAO();
+		utilisateurs = new ListDataModel<Utilisateur>();
+		utilisateur = new Utilisateur();
+		utilisateurEdit = new Utilisateur();
+		this.utilisateurs.setWrappedData(this.dao.all());
+	}
 	public Utilisateur getUtilisateurEdit() {
 		return utilisateurEdit;
 	}
@@ -35,11 +52,8 @@ public class UtilisateurCtrl {
 		return "goUserList";
 	}
 	public String update(){
-		/*Iterator<Utilisateur> i = this.utilisateurs.iterator();
-		while(i.hasNext()){
-			this.dao.save(i.next());
-		}*/
 		Utilisateur u = (Utilisateur) utilisateurs.getRowData();
+		System.out.println(u.getNom());
 		this.dao.save(u);
 		this.utilisateurs.setWrappedData(this.dao.all());
 		return "goUserList";
@@ -61,10 +75,6 @@ public class UtilisateurCtrl {
 		return "editUser";
 	}
 	public ListDataModel<Utilisateur> getUtilisateurs() {
-		if(this.utilisateurs == null){
-			this.utilisateurs = new ListDataModel<Utilisateur>();
-			this.utilisateurs.setWrappedData(this.dao.all());
-		}
 		return this.utilisateurs;
 	}
 
@@ -98,4 +108,15 @@ public class UtilisateurCtrl {
 		}
 		return returned;
 	}
+	
+	public void onEdit(RowEditEvent event) {  
+        this.dao.save((Utilisateur) event.getObject());
+    }  
+      
+    public void onCancel(RowEditEvent event) {  
+        //FacesMessage msg = new FacesMessage("Car Cancelled", ((Utilisateur) event.getObject()).getPrenom());  
+  
+        //FacesContext.getCurrentInstance().addMessage(null, msg);  
+    }  
+	
 }

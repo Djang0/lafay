@@ -27,11 +27,7 @@
 	<managed-bean-class>be.lreenaers.lafay.web.control.UtilisateurCtrl</managed-bean-class>
 	<managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
-<managed-bean>
-	<managed-bean-name>testCtrl</managed-bean-name>
-	<managed-bean-class>be.lreenaers.lafay.web.control.TestCtrl</managed-bean-class>
-	<managed-bean-scope>session</managed-bean-scope>
-</managed-bean>
+
 <lifecycle>
 	<phase-listener>be.lreenaers.lafay.web.security.AuthorizationListener</phase-listener>
 </lifecycle>
@@ -39,6 +35,11 @@
 	<navigation-case>
 		<from-outcome>goUserList</from-outcome>
 		<to-view-id>/utilisateur/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>goPermList</from-outcome>
+		<to-view-id>/permission/liste.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
