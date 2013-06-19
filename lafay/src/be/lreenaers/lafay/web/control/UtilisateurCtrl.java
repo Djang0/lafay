@@ -7,11 +7,9 @@ import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 
-import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import be.lreenaers.lafay.DAOs.UtilisateurDAO;
@@ -53,7 +51,6 @@ public class UtilisateurCtrl implements Serializable{
 	}
 	public String update(){
 		Utilisateur u = (Utilisateur) utilisateurs.getRowData();
-		System.out.println(u.getNom());
 		this.dao.save(u);
 		this.utilisateurs.setWrappedData(this.dao.all());
 		return "goUserList";

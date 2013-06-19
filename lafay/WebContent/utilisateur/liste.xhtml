@@ -16,7 +16,7 @@
 					
         			
         			<f:facet name="header">  
-          				  Liste Utilisateurs  
+          				 <h:outputText value="#{i18n['i18n.usrlst']}" /> 
         			</f:facet>  
         			<p:ajax event="rowEdit" listener="#{utilisateurCtrl.onEdit}" update=":form:messages" />  
         			<p:ajax event="rowEditCancel" listener="#{utilisateurCtrl.onCancel}" update=":form:messages" /> 
@@ -45,13 +45,21 @@
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.email']}">
 	    			<h:outputText value="#{u.email}" />
+	    			
 	    		</p:column>
 	    		<p:column>
 
-		    		  <p:rowEditor />
-	    			
+		    		  <p:rowEditor  />
+		    </p:column>
+		    	<p:column>
+	    		
+	    		<p:commandLink actionListener="#{utilisateurCtrl.delete}" ajax="false" styleClass="ui-icon ui-icon-trash" />		
+	    		</p:column>
+	    		<p:column>
+	    		<p:commandLink actionListener="#{utilisateurCtrl.editUtilisateur}" ajax="false" styleClass="ui-icon ui-icon-wrench" />	
 	    		</p:column>
 	    	</p:dataTable>
+	    		
 	    </h:form>
     </ui:define>
 </ui:composition>
