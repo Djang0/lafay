@@ -7,9 +7,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.ListDataModel;
 
+import org.primefaces.event.RowEditEvent;
+
 import be.lreenaers.lafay.DAOs.PermissionDAO;
 import be.lreenaers.lafay.beans.Permission;
 import be.lreenaers.lafay.factories.DAOFactory;
+import be.lreenaers.lafay.web.interfaces.Controlable;
+import be.lreenaers.lafay.web.interfaces.RowEditable;
 
 /**
  * @author ludo
@@ -17,12 +21,20 @@ import be.lreenaers.lafay.factories.DAOFactory;
  */
 @ManagedBean(name="permissionCtrl")
 @SessionScoped
-public class PermissionCtrl {
-	private PermissionDAO dao = DAOFactory.getPermissionDAO();
-	private ListDataModel<Permission> permissions = new ListDataModel<Permission>();
-	private Permission permission = new Permission();
-	private Permission permissionEdit = new Permission();
+public class PermissionCtrl implements Controlable, RowEditable{
+	// TODO:  implements Controlable, RowEditable for other COntrolers
+	private PermissionDAO dao;
+	private ListDataModel<Permission> permissions;
+	private Permission permission;
+	private Permission permissionEdit;
 	
+	public PermissionCtrl(){
+		this.dao = DAOFactory.getPermissionDAO();
+		this.permissions = new ListDataModel<Permission>();
+		this.permissions.setWrappedData(this.dao.all());
+		this.permission = new Permission();
+		this.permissionEdit = new Permission();
+	}
 	public String delete(){
 		Permission p = (Permission) permissions.getRowData();
 		this.dao.delete(p);
@@ -30,12 +42,6 @@ public class PermissionCtrl {
 		return "goPermList";
 	}
 	public String update(){
-		Permission u = (Permission) permissions.getRowData();
-		this.dao.save(u);
-		this.permissions.setWrappedData(this.dao.all());
-		return "goPermList";
-	}
-	public String modify(){
 		this.dao.save(this.permissionEdit);
 		this.permissions.setWrappedData(this.dao.all());
 		return "goPermList";
@@ -46,12 +52,13 @@ public class PermissionCtrl {
 		this.permissions.setWrappedData(this.dao.all());
 		return "goPermList";
 	}
-	public String editPermission(){
-	
-		this.permissionEdit = (Permission) permissions.getRowData();
-		return "editPerm";
+	public void onEdit(RowEditEvent event){
+		 this.permissionEdit = (Permission) event.getObject();
+		 this.update();
 	}
-	
+	public void onCancel(RowEditEvent event){
+		
+	}
 	
 	
 	public PermissionDAO getDao() {
@@ -61,10 +68,6 @@ public class PermissionCtrl {
 		this.dao = dao;
 	}
 	public ListDataModel<Permission> getPermissions() {
-		if(this.permissions == null){
-			this.permissions = new ListDataModel<Permission>();
-		}
-		this.permissions.setWrappedData(this.dao.all());
 		return this.permissions;
 	}
 	public void setPermissions(ListDataModel<Permission> permissions) {
