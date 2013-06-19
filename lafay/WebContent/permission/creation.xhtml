@@ -22,11 +22,11 @@
                 	
                 </p:inputText>
                 <p:message for="label" display="icon"/> 
-                <p:tooltip for="label" value="#{i18n['i18n.permvalue']}" showEffect="clip" hideEffect="explode" /> 
+                <p:tooltip for="label" value="#{i18n['i18n.permvalue']}" showEffect="clip" hideEffect="fade" /> 
                 
             </h:panelGrid>
             <p:commandButton id="saveButton" update="growl" value="#{i18n['i18n.create']}" action="#{permissionCtrl.create}" />
-            <p:tooltip for="saveButton" value="#{i18n['i18n.create']}" showEffect="clip" hideEffect="explode" />
+            <p:tooltip for="saveButton" value="#{i18n['i18n.create']}" showEffect="clip" hideEffect="fade" />
             </p:panel> 
         </h:form>
         

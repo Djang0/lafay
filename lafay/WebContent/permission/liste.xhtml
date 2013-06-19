@@ -24,7 +24,7 @@
 	    				<f:facet name="output"><h:outputText value="#{p.valeur}" /></f:facet>  
                     	<f:facet name="input"><p:inputText id="nameInput" value="#{p.valeur}" style="width:96%"/></f:facet>
 	    			</p:cellEditor>
-	    			<p:tooltip for="nameInput" value="#{i18n['i18n.permvalue']}" showEffect="clip" hideEffect="explode" /> 
+	    			<p:tooltip for="nameInput" value="#{i18n['i18n.permvalue']}" showEffect="clip" hideEffect="fade" /> 
 	    		</p:column>
 	    		
 	    		<p:column style="width:6%">
@@ -34,11 +34,12 @@
 	    		<p:commandLink action="#{permissionCtrl.delete}">
 	    			<p:graphicImage id="delimg"  alt="#{i18n['i18n.del']}" styleClass="ui-icon ui-icon-circle-close"/>
 	    		</p:commandLink>
-	    		<p:tooltip for="delimg" value="#{i18n['i18n.del']}" showEffect="clip" hideEffect="explode" /> 
+	    		<p:tooltip for="delimg" value="#{i18n['i18n.del']}" showEffect="clip" hideEffect="fade" /> 
 		    		
 	    		</p:column>
 	    	</p:dataTable>
-	    	<p:commandButton action="#{permissionCtrl.goCreate}" icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}"/>
+	    	<p:commandButton id="addbut" action="#{permissionCtrl.goCreate}" icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}"/>
+	    	<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip" hideEffect="fade" />
 	    </h:form>
 	    
     </ui:define>
