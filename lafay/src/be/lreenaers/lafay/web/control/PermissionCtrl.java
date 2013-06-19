@@ -30,12 +30,6 @@ public class PermissionCtrl {
 		return "goPermList";
 	}
 	public String update(){
-		Permission u = (Permission) permissions.getRowData();
-		this.dao.save(u);
-		this.permissions.setWrappedData(this.dao.all());
-		return "goPermList";
-	}
-	public String modify(){
 		this.dao.save(this.permissionEdit);
 		this.permissions.setWrappedData(this.dao.all());
 		return "goPermList";

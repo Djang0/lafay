@@ -7,11 +7,9 @@ import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 
-import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import be.lreenaers.lafay.DAOs.UtilisateurDAO;
@@ -32,7 +30,6 @@ public class UtilisateurCtrl implements Serializable{
 	private Utilisateur utilisateur;
 	private Utilisateur utilisateurEdit;
 	public UtilisateurCtrl(){
-		
 		dao = DAOFactory.getUtilisateurDAO();
 		utilisateurs = new ListDataModel<Utilisateur>();
 		utilisateur = new Utilisateur();
@@ -52,17 +49,11 @@ public class UtilisateurCtrl implements Serializable{
 		return "goUserList";
 	}
 	public String update(){
-		Utilisateur u = (Utilisateur) utilisateurs.getRowData();
-	
-		this.dao.save(u);
-		this.utilisateurs.setWrappedData(this.dao.all());
-		return "goUserList";
-	}
-	public String modify(){
 		this.dao.save(this.utilisateurEdit);
 		this.utilisateurs.setWrappedData(this.dao.all());
 		return "goUserList";
 	}
+
 	public String create(){
 		this.dao.save(this.utilisateur);
 		this.utilisateur = new Utilisateur();
@@ -70,7 +61,6 @@ public class UtilisateurCtrl implements Serializable{
 		return "userCreatedd";
 	}
 	public String editUtilisateur(){
-	
 		this.utilisateurEdit = (Utilisateur) utilisateurs.getRowData();
 		return "editUser";
 	}
