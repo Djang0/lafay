@@ -12,18 +12,22 @@
     <ui:define name="content">
         <h:form>
             <p:growl id="growl" showDetail="true" sticky="true" />  
-         
+         		
+            		<h1 class="title ui-widget-header ui-corner-all"><h:outputText value="#{i18n['i18n.addperm']}" /></h1>
+        	<p:panel header="#{i18n['i18n.add']}">
             <h:panelGrid columns="3">
             
-                <h:outputLabel for="label" value="#{i18n['i18n.valeur']}" />
+                <h:outputLabel for="label" value="#{i18n['i18n.valeur']}" style="font-weight:bold" />
                 <p:inputText id="label" value="#{permissionCtrl.permission.valeur}" label="#{i18n['i18n.valeur']}" required="true" requiredMessage="#{i18n['i18n.valeurreq']}">
                 	
                 </p:inputText>
                 <p:message for="label" display="icon"/> 
-                
+                <p:tooltip for="label" value="#{i18n['i18n.permvalue']}" showEffect="clip" hideEffect="explode" /> 
                 
             </h:panelGrid>
             <p:commandButton id="saveButton" update="growl" value="#{i18n['i18n.create']}" action="#{permissionCtrl.create}" />
+            <p:tooltip for="saveButton" value="#{i18n['i18n.create']}" showEffect="clip" hideEffect="explode" />
+            </p:panel> 
         </h:form>
         
     </ui:define>
