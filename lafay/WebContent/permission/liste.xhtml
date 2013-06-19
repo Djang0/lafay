@@ -10,27 +10,38 @@
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 
     <ui:define name="content">
-	    <h:form>
-	     <!-- widgetVar="carsTable">   -->  
-	    	<p:dataTable id="users" value="#{permissionCtrl.permissions}" var="p" editable="true" editMode="cell">
+    	<h1 class="title ui-widget-header ui-corner-all"><h:outputText value="#{i18n['i18n.permlst']}" /></h1>
+	    <h:form id="form">
+	    <p:growl id="messages" showDetail="true"/> 
+	    	<p:dataTable id="users" resizableColumns="true" value="#{permissionCtrl.permissions}" var="p" editable="true" paginator="true" rows="10"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15" emptyMessage="#{i18n['i18n.nothingFound']}" filteredValue="#{permissionCtrl.filtered}">
 	    		
-	    		<p:column headerText="#{i18n['i18n.valeur']}">
+        		<p:ajax event="rowEdit" listener="#{permissionCtrl.onEdit}" update=":form:messages" />  
+        		<p:ajax event="rowEditCancel" listener="#{permissionCtrl.onCancel}" update=":form:messages" />    
+	    		<p:column headerText="#{i18n['i18n.valeur']}" sortBy="valeur" filterMatchMode="contains" filterBy="#{p.valeur}" style="width:90%">
 	    			<p:cellEditor>
 	    				<f:facet name="output"><h:outputText value="#{p.valeur}" /></f:facet>  
                     	<f:facet name="input"><p:inputText id="nameInput" value="#{p.valeur}" style="width:96%"/></f:facet>
 	    			</p:cellEditor>
+	    			<p:tooltip for="nameInput" value="#{i18n['i18n.permvalue']}" showEffect="clip" hideEffect="fade" /> 
 	    		</p:column>
 	    		
-	    		<p:column headerText="#{i18n['i18n.action']}">
-		    		<p:splitButton value="#{i18n['i18n.save']}" actionListener="#{permissionCtrl.update}" icon="ui-icon-gear">    
-		    			<p:menuitem value="#{i18n['i18n.edit']}" action="#{permissionCtrl.editPermission}" ajax="false" icon="ui-icon-gear"/>
-	        			<p:menuitem value="#{i18n['i18n.del']}" actionListener="#{permissionCtrl.delete}" ajax="false" icon="ui-icon-close"/>
-	    			</p:splitButton> 
-		    		  
-	    			
+	    		<p:column style="width:6%">
+		    		<p:rowEditor id="editor"/>
+	    		</p:column>
+	    		<p:column style="width:4%">
+	    		<p:commandLink action="#{permissionCtrl.delete}">
+	    			<p:graphicImage id="delimg"  alt="#{i18n['i18n.del']}" styleClass="ui-icon ui-icon-circle-close"/>
+	    		</p:commandLink>
+	    		<p:tooltip for="delimg" value="#{i18n['i18n.del']}" showEffect="clip" hideEffect="fade" /> 
+		    		
 	    		</p:column>
 	    	</p:dataTable>
+	    	<p:commandButton id="addbut" action="#{permissionCtrl.goCreate}" icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}"/>
+	    	<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip" hideEffect="fade" />
 	    </h:form>
+	    
     </ui:define>
 </ui:composition>
 </html>

@@ -10,22 +10,21 @@
 </h:head>
 
 <body>
-<div id="header">
-    <ui:insert name="header">
-        <ui:include src="header.xhtml"/>
-    </ui:insert>
-</div>
-
-<div id="content">
-    <ui:insert name="content">
-    </ui:insert>
-</div>
-
-<div id="footer">
-    <ui:insert name="footer">
-        <ui:include src="footer.xhtml"/>
-    </ui:insert>
-</div>
+<p:layout fullPage="true">
+	<p:layoutUnit position="north" size="100" header="Méthode Lafay" resizable="true" closable="true" collapsible="true">
+	 	<ui:include src="header.xhtml"/>
+	</p:layoutUnit>
+	<p:layoutUnit position="center">
+		<ui:insert name="content">
+   		 </ui:insert>
+    </p:layoutUnit>
+	<p:layoutUnit position="west" size="200" header="Menu" resizable="true" closable="true" collapsible="true">
+	
+	</p:layoutUnit>
+	<p:layoutUnit position="south" size="100" resizable="true" closable="true" collapsible="true">
+		<ui:include src="footer.xhtml"/>
+	</p:layoutUnit>
+</p:layout>
 
 </body>
 </html>
