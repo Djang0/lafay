@@ -78,8 +78,8 @@
 		<redirect/>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>create</from-outcome>
-		<to-view-id>/test/create.xhtml</to-view-id>
+		<from-outcome>createUser</from-outcome>
+		<to-view-id>/utilisateur/creation.xhtml</to-view-id>
 		<redirect/>
 	</navigation-case>
 </navigation-rule>

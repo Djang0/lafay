@@ -3,9 +3,9 @@
  */
 package be.lreenaers.lafay.web.control;
 
-import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
@@ -15,20 +15,24 @@ import org.primefaces.event.RowEditEvent;
 import be.lreenaers.lafay.DAOs.UtilisateurDAO;
 import be.lreenaers.lafay.beans.Utilisateur;
 import be.lreenaers.lafay.factories.DAOFactory;
+import be.lreenaers.lafay.web.interfaces.Controlable;
+import be.lreenaers.lafay.web.interfaces.Filterable;
+import be.lreenaers.lafay.web.interfaces.RowEditable;
 
 /**
  * @author media
  *
  */
-public class UtilisateurCtrl implements Serializable{
+public class UtilisateurCtrl implements Controlable, RowEditable, Filterable<Utilisateur>{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	
 	private UtilisateurDAO dao;
 	private ListDataModel<Utilisateur> utilisateurs;
 	private Utilisateur utilisateur;
 	private Utilisateur utilisateurEdit;
+	private List<Utilisateur> filtered;
 	public UtilisateurCtrl(){
 		dao = DAOFactory.getUtilisateurDAO();
 		utilisateurs = new ListDataModel<Utilisateur>();
@@ -53,7 +57,9 @@ public class UtilisateurCtrl implements Serializable{
 		this.utilisateurs.setWrappedData(this.dao.all());
 		return "goUserList";
 	}
-
+	public String goCreate(){
+		return "createUser";
+	}
 	public String create(){
 		this.dao.save(this.utilisateur);
 		this.utilisateur = new Utilisateur();
@@ -107,6 +113,15 @@ public class UtilisateurCtrl implements Serializable{
         //FacesMessage msg = new FacesMessage("Car Cancelled", ((Utilisateur) event.getObject()).getPrenom());  
   
         //FacesContext.getCurrentInstance().addMessage(null, msg);  
-    }  
+    }
+	@Override
+	public List<Utilisateur> getFiltered() {
+		return this.filtered;
+	}
+	@Override
+	public void setFiltered(List<Utilisateur> list) {
+		this.filtered = list;
+		
+	}  
 	
 }
