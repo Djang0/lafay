@@ -31,9 +31,7 @@
 		    		<p:rowEditor id="editor"/>
 	    		</p:column>
 	    		<p:column style="width:4%">
-	    		<p:commandLink action="#{permissionCtrl.delete}">
-	    			<p:graphicImage id="delimg"  alt="#{i18n['i18n.del']}" styleClass="ui-icon ui-icon-circle-close"/>
-	    		</p:commandLink>
+	    		<p:commandLink id="delimg" action="#{permissionCtrl.delete}" ajax="false" styleClass="ui-icon ui-icon-trash"/>
 	    		<p:tooltip for="delimg" value="#{i18n['i18n.del']}" showEffect="clip" hideEffect="fade" /> 
 		    		
 	    		</p:column>

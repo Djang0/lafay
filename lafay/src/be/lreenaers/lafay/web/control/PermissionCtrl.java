@@ -3,6 +3,7 @@
  */
 package be.lreenaers.lafay.web.control;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -11,7 +12,9 @@ import javax.faces.model.ListDataModel;
 
 import org.primefaces.event.RowEditEvent;
 
+import be.lreenaers.lafay.DAOs.GroupeDAO;
 import be.lreenaers.lafay.DAOs.PermissionDAO;
+import be.lreenaers.lafay.beans.Groupe;
 import be.lreenaers.lafay.beans.Permission;
 import be.lreenaers.lafay.factories.DAOFactory;
 import be.lreenaers.lafay.web.interfaces.Controlable;
@@ -27,6 +30,7 @@ import be.lreenaers.lafay.web.interfaces.RowEditable;
 public class PermissionCtrl implements Controlable, RowEditable, Filterable<Permission>{
 	// TODO:  implements Controlable, RowEditable for other COntrolers
 	private PermissionDAO dao;
+	private GroupeDAO gdao;
 	private ListDataModel<Permission> permissions;
 	private Permission permission;
 	private Permission permissionEdit;
@@ -35,6 +39,7 @@ public class PermissionCtrl implements Controlable, RowEditable, Filterable<Perm
 
 	public PermissionCtrl(){
 		this.dao = DAOFactory.getPermissionDAO();
+		this.gdao = DAOFactory.getGroupeDAO();
 		this.permissions = new ListDataModel<Permission>();
 		this.permissions.setWrappedData(this.dao.all());
 		this.permission = new Permission();
@@ -43,6 +48,17 @@ public class PermissionCtrl implements Controlable, RowEditable, Filterable<Perm
 	}
 	public String delete(){
 		Permission p = (Permission) permissions.getRowData();
+		List<Groupe> groups = gdao.all();
+		Iterator<Groupe> it = groups.iterator();
+		while (it.hasNext()){
+			Groupe g =it.next();
+			List<Permission> perms = g.getPermissions();
+			if(perms.contains(p)){
+				perms.remove(p);
+				g.setPermissions(perms);
+			}
+			this.gdao.save(g);
+		}
 		this.dao.delete(p);
 		this.permissions.setWrappedData(this.dao.all());
 		return "goPermList";
@@ -59,8 +75,8 @@ public class PermissionCtrl implements Controlable, RowEditable, Filterable<Perm
 		return "goPermList";
 	}
 	public void onEdit(RowEditEvent event){
-		 this.permissionEdit = (Permission) event.getObject();
-		 this.update();
+		 this.dao.save((Permission) event.getObject());
+		 //this.update();
 	}
 	public void onCancel(RowEditEvent event){
 		

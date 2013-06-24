@@ -96,8 +96,7 @@ public class GroupeCtrl implements Controlable, RowEditable, Filterable<Groupe>,
 
 	@Override
 	public void onEdit(RowEditEvent event) {
-		this.groupeEdit = (Groupe) event.getObject();
-		this.update();
+		this.dao.save((Groupe) event.getObject());
 	}
 
 	@Override
@@ -116,7 +115,7 @@ public class GroupeCtrl implements Controlable, RowEditable, Filterable<Groupe>,
 
 	@Override
 	public String update() {
-		this.dao.save(groupeEdit);
+		this.dao.save(this.groupeEdit);
 		this.groupes.setWrappedData(dao.all());
 		return "goGrpList";
 	}

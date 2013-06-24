@@ -10,7 +10,7 @@
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 
     <ui:define name="content">
-    	<h1 class="title ui-widget-header ui-corner-all"><h:outputText value="#{i18n['i18n.permlst']}" /></h1>
+    	<h1 class="title ui-widget-header ui-corner-all"><h:outputText value="#{i18n['i18n.grplst']}" /></h1>
 	    <h:form id="form">
 	    <p:growl id="messages" showDetail="true"/> 
 	    	<p:dataTable id="users" resizableColumns="true" value="#{groupeCtrl.groupes}" var="g" editable="true" paginator="true" rows="10"  
@@ -31,15 +31,11 @@
 		    		<p:rowEditor id="editor"/>
 	    		</p:column>
 	    		<p:column style="width:5%">
-	    		<p:commandLink action="#{groupeCtrl.delete}">
-	    			<p:graphicImage id="delimg"  alt="#{i18n['i18n.del']}" styleClass="ui-icon ui-icon-circle-close"/>
-	    		</p:commandLink>
+	    		<p:commandLink action="#{groupeCtrl.delete}" id="delimg" styleClass="ui-icon ui-icon-trash" ajax="false"/>
 	    		<p:tooltip for="delimg" value="#{i18n['i18n.del']}" showEffect="clip" hideEffect="fade" /> 
 		    	</p:column>
 		    	<p:column style="width:5%">
-		    	<p:commandLink action="#{groupeCtrl.edit}">
-	    			<p:graphicImage id="editimg"  alt="#{i18n['i18n.edit']}" styleClass="ui-icon ui-icon-wrench"/>
-	    		</p:commandLink>
+		    	<p:commandLink id="editimg" action="#{groupeCtrl.edit}" styleClass="ui-icon ui-icon-wrench" ajax="false"/>
 	    		<p:tooltip for="editimg" value="#{i18n['i18n.edit']}" showEffect="clip" hideEffect="fade" /> 
 	    		</p:column>
 	    	</p:dataTable>
