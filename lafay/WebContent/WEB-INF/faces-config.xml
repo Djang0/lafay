@@ -38,8 +38,18 @@
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
+		<from-outcome>goModGroup</from-outcome>
+		<to-view-id>/groupe/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
 		<from-outcome>goGrpList</from-outcome>
 		<to-view-id>/groupe/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>goCreateGroup</from-outcome>
+		<to-view-id>/groupe/creation.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
