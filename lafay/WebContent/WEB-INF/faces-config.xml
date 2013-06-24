@@ -38,6 +38,11 @@
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
+		<from-outcome>goGrpList</from-outcome>
+		<to-view-id>/groupe/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
 		<from-outcome>goCreatePerm</from-outcome>
 		<to-view-id>/permission/creation.xhtml</to-view-id>
 		<redirect></redirect>

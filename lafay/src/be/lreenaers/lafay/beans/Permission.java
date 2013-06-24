@@ -11,8 +11,13 @@ import com.google.code.morphia.annotations.Entity;
  */
 @Entity
 public class Permission extends Bean {
-	private String valeur;
 
+	private String valeur;
+	
+	public Permission(){
+		super();
+		this.valeur = new String();
+	}
 	public String getValeur() {
 		return valeur;
 	}

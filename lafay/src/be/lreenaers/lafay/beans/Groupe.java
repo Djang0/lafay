@@ -3,6 +3,7 @@
  */
 package be.lreenaers.lafay.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.code.morphia.annotations.Entity;
@@ -17,6 +18,12 @@ public class Groupe extends Bean{
 	private String nom;
 	@Reference
 	private List<Permission> permissions;
+	
+	public Groupe(){
+		super();
+		this.permissions = new ArrayList<Permission>();
+		this.nom = new String();
+	}
 	public String getNom() {
 		return nom;
 	}

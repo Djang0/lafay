@@ -31,7 +31,7 @@ public abstract class DAO<T> {
 	}
 	
 	public T findById(ObjectId id) {
-		return this.ds.get(this.entityClass,id.toString());
+		return this.ds.get(this.entityClass,id);
 	}
 	
 	public void delete(T entity) {
