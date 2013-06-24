@@ -12,12 +12,15 @@
     <ui:define name="content">
         <h:form>
             <h:panelGrid columns="2">
-                <h:outputText value="#{i18n['i18n.email']}" />
-                <h:inputText value="#{utilisateurCtrl.utilisateur.email}" />
-                <h:outputText value="#{i18n['i18n.pws']}" />
-                <h:inputSecret value="#{utilisateurCtrl.utilisateur.passe}" />
+                <h:outputText value="#{i18n['i18n.email']}" style="font-weight:bold" />
+                <h:inputText id="email" value="#{utilisateurCtrl.utilisateur.email}" />
+                <p:tooltip for="email" value="#{i18n['i18n.mailtip']}" showEffect="clip" hideEffect="fade" />
+                <h:outputText value="#{i18n['i18n.pws']}" style="font-weight:bold" />
+                <h:inputSecret id="pws" value="#{utilisateurCtrl.utilisateur.passe}" />
+                <p:tooltip for="pws" value="#{i18n['i18n.pwstip']}" showEffect="clip" hideEffect="fade" />
             </h:panelGrid>
-            <h:commandButton value="#{i18n['i18n.conn']}" action="#{utilisateurCtrl.login}" />
+            <h:commandButton id="logbut" value="#{i18n['i18n.conn']}" action="#{utilisateurCtrl.login}" />
+            <p:tooltip for="logbut" value="#{i18n['i18n.logtip']}" showEffect="clip" hideEffect="fade" />
         </h:form>
         
     </ui:define>

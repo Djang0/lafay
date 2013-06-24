@@ -25,12 +25,12 @@
         			
 	    		<p:column headerText="#{i18n['i18n.id']}" sortBy="id" filterMatchMode="contains" filterBy="#{u.id}">
 	    		
-	    				<h:outputText value="#{u.id}" />  
+	    				<h:outputText value="#{u.id}" style="font-weight:bold" />  
 	    	
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.nom']}"  sortBy="nom" filterMatchMode="contains" filterBy="#{u.nom}">
 	    			<p:cellEditor>
-	    				<f:facet name="output"><h:outputText value="#{u.nom}" /></f:facet>  
+	    				<f:facet name="output"><h:outputText value="#{u.nom}"  style="font-weight:bold"/></f:facet>  
                     	<f:facet name="input"><p:inputText id="nameInput" value="#{u.nom}" style="width:96%" required="true" requiredMessage="#{i18n['i18n.prenreq']}">
                     	<f:validateLength minimum="2" />
                     	</p:inputText></f:facet>
@@ -39,16 +39,16 @@
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.prenom']}"  sortBy="prenom" filterMatchMode="contains" filterBy="#{u.prenom}">
 	    			<p:cellEditor>
-	    				<f:facet name="output"><h:outputText value="#{u.prenom}" /></f:facet>  
+	    				<f:facet name="output"><h:outputText value="#{u.prenom}" style="font-weight:bold" /></f:facet>  
                     	<f:facet name="input"><p:inputText id="surnameInput" value="#{u.prenom}" style="width:96%"/></f:facet>
 	    			</p:cellEditor>
 	    			<p:tooltip for="surnameInput" value="#{i18n['i18n.prenomtip']}" showEffect="clip" hideEffect="fade" />	
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.pseudo']}" sortBy="pseudo" filterMatchMode="contains" filterBy="#{u.pseudo}">
-	    			<h:outputText value="#{u.pseudo}" />
+	    			<h:outputText value="#{u.pseudo}" style="font-weight:bold" />
 	    		</p:column>
 	    		<p:column headerText="#{i18n['i18n.email']}" sortBy="email" filterMatchMode="contains" filterBy="#{u.email}">
-	    			<h:outputText value="#{u.email}" />
+	    			<h:outputText value="#{u.email}" style="font-weight:bold" />
 	    			
 	    		</p:column>
 	    		<p:column>
