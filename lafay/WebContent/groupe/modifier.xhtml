@@ -36,7 +36,9 @@
 				</h3>
 				<p:pickList id="permlist" value="#{groupeCtrl.pickEditPerms}"
 					var="permission" itemLabel="#{permission.valeur}"
-					itemValue="#{permission}" converter="permissionConverter">
+					itemValue="#{permission}" converter="permissionConverter" showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" >
+					<f:facet name="sourceCaption"><h:outputText value="#{i18n['i18n.available']}" /></f:facet>  
+        			<f:facet name="targetCaption"><h:outputText value="#{i18n['i18n.selected']}" /></f:facet>  
 					<p:ajax event="transfer" listener="#{groupeCtrl.onTransferEdit}"
 						update="growl" />
 					<p:column style="width:75%;">  
@@ -45,8 +47,8 @@
 				</p:pickList>
 
 				<p:commandButton id="saveButton" update="growl"
-					value="#{i18n['i18n.edit']}" action="#{groupeCtrl.update}" />
-				<p:tooltip for="saveButton" value="#{i18n['i18n.edit']}"
+					value="#{i18n['i18n.save']}" action="#{groupeCtrl.update}" />
+				<p:tooltip for="saveButton" value="#{i18n['i18n.save']}"
 					showEffect="clip" hideEffect="fade" />
 			</p:panel>
 		</h:form>
