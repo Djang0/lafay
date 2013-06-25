@@ -69,7 +69,25 @@
 					<p:tooltip for="pwd2" value="#{i18n['i18n.pws2tip']}"
 						showEffect="clip" hideEffect="fade" />
 				</h:panelGrid>
-
+				<h3 class="title ui-widget-header ui-corner-all">
+					<h:outputText value="#{i18n['i18n.usrgrp']}" />
+				</h3>
+				<p:pickList id="permlist" value="#{utilisateurCtrl.pickEditGroups}"
+					var="group" itemLabel="#{group.nom}" itemValue="#{group}"
+					converter="groupeConverter" showSourceFilter="true"
+					showTargetFilter="true" filterMatchMode="contains">
+					<f:facet name="sourceCaption">
+						<h:outputText value="#{i18n['i18n.available']}" />
+					</f:facet>
+					<f:facet name="targetCaption">
+						<h:outputText value="#{i18n['i18n.selected']}" />
+					</f:facet>
+					<p:ajax event="transfer"
+						listener="#{UtilisateurCtrl.onTransferEdit}" update="growl" />
+					<p:column style="width:75%;">  
+          				  #{group.nom}  
+        			</p:column>
+				</p:pickList>
 				<p:commandButton id="saveButton" update="growl,grid"
 					value="#{i18n['i18n.save']}" action="#{utilisateurCtrl.update}" />
 				<p:tooltip for="saveButton" value="#{i18n['i18n.save']}"

@@ -11,8 +11,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.event.TransferEvent;
+import org.primefaces.model.DualListModel;
 
+import be.lreenaers.lafay.DAOs.GroupeDAO;
 import be.lreenaers.lafay.DAOs.UtilisateurDAO;
+import be.lreenaers.lafay.beans.Groupe;
 import be.lreenaers.lafay.beans.Utilisateur;
 import be.lreenaers.lafay.factories.DAOFactory;
 import be.lreenaers.lafay.web.interfaces.Controlable;
@@ -29,16 +33,39 @@ public class UtilisateurCtrl implements Controlable, RowEditable, Filterable<Uti
 	 */
 	
 	private UtilisateurDAO dao;
+	private GroupeDAO gdao;
 	private ListDataModel<Utilisateur> utilisateurs;
 	private Utilisateur utilisateur;
 	private Utilisateur utilisateurEdit;
 	private List<Utilisateur> filtered;
+	private DualListModel<Groupe> pickEditGroups;
+	
 	public UtilisateurCtrl(){
 		dao = DAOFactory.getUtilisateurDAO();
+		this.gdao = DAOFactory.getGroupeDAO();
 		utilisateurs = new ListDataModel<Utilisateur>();
 		utilisateur = new Utilisateur();
 		utilisateurEdit = new Utilisateur();
 		this.utilisateurs.setWrappedData(this.dao.all());
+	}
+	
+	public DualListModel<Groupe> getPickEditGroups() {
+		List<Groupe> target = this.utilisateurEdit.getGroups();
+		List<Groupe> source = this.gdao.all();
+		source.removeAll(target);
+		this.pickEditGroups = new DualListModel<Groupe>(source, target);
+		return this.pickEditGroups;
+	}
+	public void onTransferEdit(TransferEvent event) { 
+		List<Groupe> g = this.utilisateurEdit.getGroups();
+		for(Object item : event.getItems()){
+			Groupe grp = (Groupe) item;
+			g.add(grp);
+		}
+		this.utilisateurEdit.setGroups(g);
+	}
+	public void setPickEditPerms(DualListModel<Groupe> pickEditGroups) {
+		this.pickEditGroups = pickEditGroups;
 	}
 	public Utilisateur getUtilisateurEdit() {
 		return utilisateurEdit;
