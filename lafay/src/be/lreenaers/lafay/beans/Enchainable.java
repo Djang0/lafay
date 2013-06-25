@@ -13,6 +13,10 @@ import com.google.code.morphia.annotations.Reference;
  */
 @Entity
 public class Enchainable extends Bean {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Reference
 	private Exercice exercice;
 	private int repetitionMinimum;

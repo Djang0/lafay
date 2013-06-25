@@ -17,6 +17,10 @@ import com.google.code.morphia.annotations.Reference;
 @Entity
 public class Niveau extends Bean{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nom;
 	@Reference
 	private List<Enchainable> series;
@@ -33,5 +37,4 @@ public class Niveau extends Bean{
 	public String getName(){
 		return this.nom;
 	}
-	
 }

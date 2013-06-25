@@ -12,6 +12,10 @@ import com.google.code.morphia.annotations.Entity;
 @Entity
 public class Permission extends Bean {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String valeur;
 	
 	public Permission(){
@@ -24,8 +28,5 @@ public class Permission extends Bean {
 
 	public void setValeur(String valeur) {
 		this.valeur = valeur;
-	}
-	public boolean equals(Object o){
-		return ((Permission) o).getId().toString().equals(this.id.toString());
 	}
 }

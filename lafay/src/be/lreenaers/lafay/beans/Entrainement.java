@@ -16,6 +16,10 @@ import com.google.code.morphia.annotations.Reference;
 @Entity
 public class Entrainement extends Bean{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Date debutEntrainement;
 	private Date finEntrainement;
 	@Reference

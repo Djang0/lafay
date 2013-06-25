@@ -15,6 +15,10 @@ import com.google.code.morphia.annotations.Reference;
 @Entity
 public class Utilisateur extends Bean{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nom;
 	private String prenom;
 	private String email;
@@ -74,5 +78,8 @@ public class Utilisateur extends Bean{
 	}
 	public void setNiveau(Niveau niveau) {
 		this.niveau = niveau;
+	}
+	public boolean equals(Object o){
+		return ((Utilisateur) o).getId().toString().equals(this.id.toString());
 	}
 }

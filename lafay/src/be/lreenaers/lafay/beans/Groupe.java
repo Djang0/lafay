@@ -15,6 +15,10 @@ import com.google.code.morphia.annotations.Reference;
  */
 @Entity
 public class Groupe extends Bean{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nom;
 	@Reference
 	private List<Permission> permissions;

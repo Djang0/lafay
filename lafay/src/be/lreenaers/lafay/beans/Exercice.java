@@ -13,6 +13,10 @@ import com.google.code.morphia.annotations.Entity;
 @Entity
 public class Exercice extends Bean{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nom;
 	private String description;
 	
