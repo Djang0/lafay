@@ -132,15 +132,19 @@ public class GroupeCtrl implements Controlable, RowEditable, Filterable<Groupe>,
 		this.groupes.setWrappedData(dao.all());
 		return "goGrpList";
 	}
+	public void onTransferEdit(TransferEvent event) { 
+		List<Permission> p = this.groupeEdit.getPermissions();
+		for(Object item : event.getItems()){
+			Permission perm = (Permission) item;
+			p.add(perm);
+		}
+		this.groupeEdit.setPermissions(p);
+	}
 	public void onTransfer(TransferEvent event) { 
 		List<Permission> p = this.groupe.getPermissions();
 		for(Object item : event.getItems()){
-			
 			Permission perm = (Permission) item;
 			p.add(perm);
-			System.out.println("transfert:"+perm.getId().toString()+"//"+perm.getValeur());
-			
-			
 		}
 		this.groupe.setPermissions(p);
 	}

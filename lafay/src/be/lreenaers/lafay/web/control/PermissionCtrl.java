@@ -53,10 +53,8 @@ public class PermissionCtrl implements Controlable, RowEditable, Filterable<Perm
 		while (it.hasNext()){
 			Groupe g =it.next();
 			List<Permission> perms = g.getPermissions();
-			if(perms.contains(p)){
-				perms.remove(p);
-				g.setPermissions(perms);
-			}
+			perms.remove(p);
+			g.setPermissions(perms);
 			this.gdao.save(g);
 		}
 		this.dao.delete(p);

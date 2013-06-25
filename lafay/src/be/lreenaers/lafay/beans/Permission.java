@@ -25,4 +25,7 @@ public class Permission extends Bean {
 	public void setValeur(String valeur) {
 		this.valeur = valeur;
 	}
+	public boolean equals(Object o){
+		return ((Permission) o).getId().toString().equals(this.id.toString());
+	}
 }
