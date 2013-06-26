@@ -7,7 +7,7 @@ import com.google.code.morphia.annotations.Entity;
 
 /**
  * @author media
- *
+ * 
  */
 @Entity
 public class Permission extends Bean {
@@ -17,11 +17,12 @@ public class Permission extends Bean {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String valeur;
-	
-	public Permission(){
+
+	public Permission() {
 		super();
 		this.valeur = new String();
 	}
+
 	public String getValeur() {
 		return valeur;
 	}

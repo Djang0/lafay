@@ -32,6 +32,22 @@ public class LangageBean implements Serializable {
 		// countries.put("Chinese", Locale.SIMPLIFIED_CHINESE);
 	}
 
+	// value change event listener
+	public void countryLocaleCodeChanged(ValueChangeEvent e) {
+
+		String newLocaleValue = e.getNewValue().toString();
+
+		// loop country map to compare the locale code
+		for (Map.Entry<String, Object> entry : countries.entrySet()) {
+
+			if (entry.getValue().toString().equals(newLocaleValue)) {
+				FacesContext.getCurrentInstance().getViewRoot()
+						.setLocale((Locale) entry.getValue());
+
+			}
+		}
+	}
+
 	public Map<String, Object> getCountriesInMap() {
 		return countries;
 	}
@@ -42,21 +58,6 @@ public class LangageBean implements Serializable {
 
 	public void setLocaleCode(String localeCode) {
 		this.localeCode = localeCode;
-	}
-
-	// value change event listener
-	public void countryLocaleCodeChanged(ValueChangeEvent e) {
-
-		String newLocaleValue = e.getNewValue().toString();
-
-		// loop country map to compare the locale code
-		for (Map.Entry<String, Object> entry : countries.entrySet()) {
-
-			if (entry.getValue().toString().equals(newLocaleValue)) {
-				FacesContext.getCurrentInstance().getViewRoot().setLocale((Locale) entry.getValue());
-
-			}
-		}
 	}
 
 }

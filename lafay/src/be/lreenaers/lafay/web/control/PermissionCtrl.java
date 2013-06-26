@@ -29,7 +29,6 @@ import be.lreenaers.lafay.web.interfaces.RowEditable;
 @SessionScoped
 public class PermissionCtrl implements Controlable, RowEditable,
 		Filterable<Permission> {
-	// TODO: implements Controlable, RowEditable for other COntrolers
 	private PermissionDAO dao;
 	private GroupeDAO gdao;
 	private ListDataModel<Permission> permissions;
@@ -44,6 +43,13 @@ public class PermissionCtrl implements Controlable, RowEditable,
 		this.permission = new Permission();
 		this.permissionEdit = new Permission();
 
+	}
+
+	public String create() {
+		this.dao.save(this.permission);
+		this.permission = new Permission();
+		this.permissions.setWrappedData(this.dao.all());
+		return "goPermList";
 	}
 
 	public String delete() {
@@ -65,17 +71,32 @@ public class PermissionCtrl implements Controlable, RowEditable,
 		return "goPermList";
 	}
 
-	public String update() {
-		this.dao.save(this.permissionEdit);
-		this.permissions.setWrappedData(this.dao.all());
-		return "goPermList";
+	public PermissionDAO getDao() {
+		return dao;
 	}
 
-	public String create() {
-		this.dao.save(this.permission);
-		this.permission = new Permission();
-		this.permissions.setWrappedData(this.dao.all());
-		return "goPermList";
+	public List<Permission> getFiltered() {
+		return filtered;
+	}
+
+	public Permission getPermission() {
+		return permission;
+	}
+
+	public Permission getPermissionEdit() {
+		return permissionEdit;
+	}
+
+	public ListDataModel<Permission> getPermissions() {
+		return this.permissions;
+	}
+
+	public String goCreate() {
+		return "goCreatePerm";
+	}
+
+	public void onCancel(RowEditEvent event) {
+
 	}
 
 	public void onEdit(RowEditEvent event) {
@@ -83,51 +104,29 @@ public class PermissionCtrl implements Controlable, RowEditable,
 		// this.update();
 	}
 
-	public void onCancel(RowEditEvent event) {
-
-	}
-
-	public String goCreate() {
-		return "goCreatePerm";
-	}
-
-	public PermissionDAO getDao() {
-		return dao;
-	}
-
 	public void setDao(PermissionDAO dao) {
 		this.dao = dao;
 	}
 
-	public ListDataModel<Permission> getPermissions() {
-		return this.permissions;
-	}
-
-	public void setPermissions(ListDataModel<Permission> permissions) {
-		this.permissions = permissions;
-	}
-
-	public Permission getPermission() {
-		return permission;
+	public void setFiltered(List<Permission> filtered) {
+		this.filtered = filtered;
 	}
 
 	public void setPermission(Permission permission) {
 		this.permission = permission;
 	}
 
-	public Permission getPermissionEdit() {
-		return permissionEdit;
-	}
-
 	public void setPermissionEdit(Permission permissionEdit) {
 		this.permissionEdit = permissionEdit;
 	}
 
-	public List<Permission> getFiltered() {
-		return filtered;
+	public void setPermissions(ListDataModel<Permission> permissions) {
+		this.permissions = permissions;
 	}
 
-	public void setFiltered(List<Permission> filtered) {
-		this.filtered = filtered;
+	public String update() {
+		this.dao.save(this.permissionEdit);
+		this.permissions.setWrappedData(this.dao.all());
+		return "goPermList";
 	}
 }

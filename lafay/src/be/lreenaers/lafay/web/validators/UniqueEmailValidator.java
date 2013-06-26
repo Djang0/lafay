@@ -17,24 +17,24 @@ import be.lreenaers.lafay.i18n.BundleProvider;
 
 /**
  * @author media
- *
+ * 
  */
 @FacesValidator("be.lreenaers.lafay.web.validators.UniqueEmailValidator")
-public class UniqueEmailValidator implements Validator{
+public class UniqueEmailValidator implements Validator {
 
- 
 	@Override
-	public void validate(FacesContext context, UIComponent component,Object value) {
-		
-			UtilisateurDAO dao = DAOFactory.getUtilisateurDAO();
-			Utilisateur usr = dao.findByEmail(value.toString());
-			String err = BundleProvider.getBundle().getString("err_email_not_unique");
-			if(usr!=null){
-				FacesMessage msg = 	new FacesMessage(err);
-				msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-				throw new ValidatorException(msg);
-			}
-			
- 
+	public void validate(FacesContext context, UIComponent component,
+			Object value) {
+
+		UtilisateurDAO dao = DAOFactory.getUtilisateurDAO();
+		Utilisateur usr = dao.findByEmail(value.toString());
+		String err = BundleProvider.getBundle().getString(
+				"err_email_not_unique");
+		if (usr != null) {
+			FacesMessage msg = new FacesMessage(err);
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			throw new ValidatorException(msg);
+		}
+
 	}
 }

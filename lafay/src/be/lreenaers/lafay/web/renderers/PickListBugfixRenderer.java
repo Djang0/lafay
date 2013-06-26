@@ -9,10 +9,12 @@ import org.primefaces.util.WidgetBuilder;
 
 public class PickListBugfixRenderer extends PickListRenderer {
 
-    @Override
-    protected void encodeClientBehaviors(FacesContext context, ClientBehaviorHolder component, WidgetBuilder wb) throws IOException {
-        super.encodeClientBehaviors(context, component, wb);
-        PickList pickList = (PickList) component;
-        wb.attr("filterMatchMode", pickList.getFilterMatchMode(), null);
-    }
+	@Override
+	protected void encodeClientBehaviors(FacesContext context,
+			ClientBehaviorHolder component, WidgetBuilder wb)
+			throws IOException {
+		super.encodeClientBehaviors(context, component, wb);
+		PickList pickList = (PickList) component;
+		wb.attr("filterMatchMode", pickList.getFilterMatchMode(), null);
+	}
 }

@@ -11,7 +11,7 @@ import be.lreenaers.lafay.DAOs.PermissionDAO;
 import be.lreenaers.lafay.beans.Permission;
 import be.lreenaers.lafay.factories.DAOFactory;
 
-@FacesConverter(forClass=Permission.class,value="permissionConverter")
+@FacesConverter(forClass = Permission.class, value = "permissionConverter")
 public class PermissionConverter implements Converter {
 
 	@Override
@@ -22,7 +22,7 @@ public class PermissionConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
-		return ((Permission)arg2).getId().toString();
+		return ((Permission) arg2).getId().toString();
 	}
 
 }

@@ -12,7 +12,7 @@ import be.lreenaers.lafay.beans.Groupe;
 import be.lreenaers.lafay.beans.Permission;
 import be.lreenaers.lafay.factories.DAOFactory;
 
-@FacesConverter(forClass=Permission.class,value="groupeConverter")
+@FacesConverter(forClass = Permission.class, value = "groupeConverter")
 public class GroupeConverter implements Converter {
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {
@@ -22,6 +22,6 @@ public class GroupeConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
-		return (( Groupe )arg2).getId().toString();
+		return ((Groupe) arg2).getId().toString();
 	}
 }

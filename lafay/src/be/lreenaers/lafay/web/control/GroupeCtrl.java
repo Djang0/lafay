@@ -70,7 +70,7 @@ public class GroupeCtrl implements Controlable, RowEditable,
 		Iterator<Utilisateur> it = usrs.iterator();
 		Utilisateur usr;
 		List<Groupe> grps;
-		while(it.hasNext()){
+		while (it.hasNext()) {
 			usr = it.next();
 			grps = usr.getGroups();
 			grps.remove(g);

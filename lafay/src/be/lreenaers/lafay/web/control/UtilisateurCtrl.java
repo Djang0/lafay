@@ -7,6 +7,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 
@@ -27,6 +29,8 @@ import be.lreenaers.lafay.web.interfaces.RowEditable;
  * @author media
  *
  */
+@ManagedBean(name = "utilisateurCtrl")
+@SessionScoped
 public class UtilisateurCtrl implements Controlable, RowEditable, Filterable<Utilisateur>{
 	/**
 	 * 
@@ -49,29 +53,11 @@ public class UtilisateurCtrl implements Controlable, RowEditable, Filterable<Uti
 		this.utilisateurs.setWrappedData(this.dao.all());
 	}
 	
-	public DualListModel<Groupe> getPickEditGroups() {
-		List<Groupe> target = this.utilisateurEdit.getGroups();
-		List<Groupe> source = this.gdao.all();
-		source.removeAll(target);
-		this.pickEditGroups = new DualListModel<Groupe>(source, target);
-		return this.pickEditGroups;
-	}
-	public void onTransferEdit(TransferEvent event) { 
-		List<Groupe> g = this.utilisateurEdit.getGroups();
-		for(Object item : event.getItems()){
-			Groupe grp = (Groupe) item;
-			g.add(grp);
-		}
-		this.utilisateurEdit.setGroups(g);
-	}
-	public void setPickEditPerms(DualListModel<Groupe> pickEditGroups) {
-		this.pickEditGroups = pickEditGroups;
-	}
-	public Utilisateur getUtilisateurEdit() {
-		return utilisateurEdit;
-	}
-	public void setUtilisateurEdit(Utilisateur utilisateurEdit) {
-		this.utilisateurEdit = utilisateurEdit;
+	public String create(){
+		this.dao.save(this.utilisateur);
+		this.utilisateur = new Utilisateur();
+		this.utilisateurs.setWrappedData(this.dao.all());
+		return "userCreatedd";
 	}
 	public String delete(){
 		Utilisateur u = (Utilisateur) utilisateurs.getRowData();
@@ -79,40 +65,33 @@ public class UtilisateurCtrl implements Controlable, RowEditable, Filterable<Uti
 		this.utilisateurs.setWrappedData(this.dao.all());
 		return "goUserList";
 	}
-	public String update(){
-		this.dao.save(this.utilisateurEdit);
-		this.utilisateurs.setWrappedData(this.dao.all());
-		return "goUserList";
-	}
-	public String goCreate(){
-		return "createUser";
-	}
-	public String create(){
-		this.dao.save(this.utilisateur);
-		this.utilisateur = new Utilisateur();
-		this.utilisateurs.setWrappedData(this.dao.all());
-		return "userCreatedd";
-	}
 	public String editUtilisateur(){
 		this.utilisateurEdit = (Utilisateur) utilisateurs.getRowData();
 		return "editUser";
 	}
-	public ListDataModel<Utilisateur> getUtilisateurs() {
-		return this.utilisateurs;
+	@Override
+	public List<Utilisateur> getFiltered() {
+		return this.filtered;
 	}
-
-	public void setUtilisateurs(ListDataModel<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+	public DualListModel<Groupe> getPickEditGroups() {
+		List<Groupe> target = this.utilisateurEdit.getGroups();
+		List<Groupe> source = this.gdao.all();
+		source.removeAll(target);
+		this.pickEditGroups = new DualListModel<Groupe>(source, target);
+		return this.pickEditGroups;
 	}
-
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
-
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public Utilisateur getUtilisateurEdit() {
+		return utilisateurEdit;
 	}
-	
+	public ListDataModel<Utilisateur> getUtilisateurs() {
+		return this.utilisateurs;
+	}
+	public String goCreate(){
+		return "createUser";
+	}
 	public String login(){
 		this.utilisateur = this.dao.findByEmail(this.utilisateur.getEmail());
 		String returned = "";
@@ -131,24 +110,49 @@ public class UtilisateurCtrl implements Controlable, RowEditable, Filterable<Uti
 		}
 		return returned;
 	}
-	
-	public void onEdit(RowEditEvent event) {  
-        this.dao.save((Utilisateur) event.getObject());
-    }  
-      
-    public void onCancel(RowEditEvent event) {  
+	public void onCancel(RowEditEvent event) {  
         //FacesMessage msg = new FacesMessage("Car Cancelled", ((Utilisateur) event.getObject()).getPrenom());  
   
         //FacesContext.getCurrentInstance().addMessage(null, msg);  
     }
-	@Override
-	public List<Utilisateur> getFiltered() {
-		return this.filtered;
+
+	public void onEdit(RowEditEvent event) {  
+        this.dao.save((Utilisateur) event.getObject());
+    }
+
+	public void onTransferEdit(TransferEvent event) { 
+		List<Groupe> g = this.utilisateurEdit.getGroups();
+		for(Object item : event.getItems()){
+			Groupe grp = (Groupe) item;
+			g.add(grp);
+		}
+		this.utilisateurEdit.setGroups(g);
 	}
+
 	@Override
 	public void setFiltered(List<Utilisateur> list) {
 		this.filtered = list;
 		
+	}
+	
+	public void setPickEditPerms(DualListModel<Groupe> pickEditGroups) {
+		this.pickEditGroups = pickEditGroups;
+	}
+	
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}  
+      
+    public void setUtilisateurEdit(Utilisateur utilisateurEdit) {
+		this.utilisateurEdit = utilisateurEdit;
+	}
+	public void setUtilisateurs(ListDataModel<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
+	public String update(){
+		this.dao.save(this.utilisateurEdit);
+		this.utilisateurs.setWrappedData(this.dao.all());
+		return "goUserList";
 	}  
 	
 }

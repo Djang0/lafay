@@ -10,10 +10,10 @@ import com.google.code.morphia.annotations.Reference;
 
 /**
  * @author media
- *
+ * 
  */
 @Entity
-public class Utilisateur extends Bean{
+public class Utilisateur extends Bean {
 
 	/**
 	 * 
@@ -25,61 +25,72 @@ public class Utilisateur extends Bean{
 	private String pseudo;
 	private String passe;
 	private String hash;
-	public String getPasse() {
-		return passe;
-	}
-	public String getHash() {
-		return hash;
-	}
-	public void setHash(String hash) {
-		this.hash = hash;
-	}
-	public void setPasse(String passe) {
-		this.passe = passe;
-	}
 	@Reference
 	private Niveau niveau;
 	@Reference
 	private List<Groupe> groups;
-	
+
+	public String getEmail() {
+		return email;
+	}
 
 	public List<Groupe> getGroups() {
 		return groups;
 	}
-	public void setGroups(List<Groupe> groups) {
-		this.groups = groups;
+
+	public String getHash() {
+		return hash;
 	}
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	public String getPrenom() {
-		return prenom;
-	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email.toLowerCase();
-	}
-	public String getPseudo() {
-		return pseudo;
-	}
-	public void setPseudo(String nomUtilisateur) {
-		this.pseudo = nomUtilisateur;
-	}
+
 	public Niveau getNiveau() {
 		return niveau;
 	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPasse() {
+		return passe;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public void setEmail(String email) {
+		this.email = email.toLowerCase();
+	}
+
+	public void setGroups(List<Groupe> groups) {
+		this.groups = groups;
+	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
 	public void setNiveau(Niveau niveau) {
 		this.niveau = niveau;
 	}
-	public boolean equals(Object o){
-		return ((Utilisateur) o).getId().toString().equals(this.id.toString());
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setPasse(String passe) {
+		this.passe = passe;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public void setPseudo(String nomUtilisateur) {
+		this.pseudo = nomUtilisateur;
 	}
 }

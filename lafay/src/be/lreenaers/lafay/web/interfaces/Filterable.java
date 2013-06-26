@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface Filterable<p> {
 	public List<p> getFiltered();
+
 	public void setFiltered(List<p> list);
 }

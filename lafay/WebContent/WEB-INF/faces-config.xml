@@ -24,16 +24,6 @@
 	   	be.lreenaers.lafay.i18n.Messages
 	   </message-bundle>
      </application>
-<managed-bean>
-	<managed-bean-name>enchainableCtrl</managed-bean-name>
-	<managed-bean-class>be.lreenaers.lafay.web.control.EnchainableCtrl</managed-bean-class>
-	<managed-bean-scope>session</managed-bean-scope>
-</managed-bean>
-<managed-bean>
-	<managed-bean-name>utilisateurCtrl</managed-bean-name>
-	<managed-bean-class>be.lreenaers.lafay.web.control.UtilisateurCtrl</managed-bean-class>
-	<managed-bean-scope>session</managed-bean-scope>
-</managed-bean>
 
 <lifecycle>
 	<phase-listener>be.lreenaers.lafay.web.security.AuthorizationListener</phase-listener>

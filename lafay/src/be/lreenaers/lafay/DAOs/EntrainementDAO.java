@@ -7,7 +7,7 @@ import be.lreenaers.lafay.beans.Entrainement;
 
 /**
  * @author media
- *
+ * 
  */
 public class EntrainementDAO extends DAO<Entrainement> {
 

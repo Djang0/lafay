@@ -7,7 +7,7 @@ import be.lreenaers.lafay.beans.Exercice;
 
 /**
  * @author media
- *
+ * 
  */
 public class ExerciceDAO extends DAO<Exercice> {
 
