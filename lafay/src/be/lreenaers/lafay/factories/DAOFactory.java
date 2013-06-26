@@ -4,49 +4,82 @@
 package be.lreenaers.lafay.factories;
 
 import be.lreenaers.lafay.DAOs.EnchainableDAO;
+import be.lreenaers.lafay.DAOs.EntrainementDAO;
+import be.lreenaers.lafay.DAOs.ExerciceDAO;
 import be.lreenaers.lafay.DAOs.GroupeDAO;
+import be.lreenaers.lafay.DAOs.NiveauDAO;
 import be.lreenaers.lafay.DAOs.PermissionDAO;
 import be.lreenaers.lafay.DAOs.UtilisateurDAO;
 import be.lreenaers.lafay.beans.Enchainable;
+import be.lreenaers.lafay.beans.Entrainement;
+import be.lreenaers.lafay.beans.Exercice;
+import be.lreenaers.lafay.beans.Niveau;
 import be.lreenaers.lafay.beans.Permission;
 import be.lreenaers.lafay.beans.Utilisateur;
 import be.lreenaers.lafay.beans.Groupe;
 
-
 /**
  * @author media
- *
+ * 
  */
 public class DAOFactory {
 	private static EnchainableDAO enchainable;
 	private static UtilisateurDAO utilisateur;
 	private static PermissionDAO permission;
 	private static GroupeDAO groupe;
-	private DAOFactory(){}
-	
-	public static GroupeDAO getGroupeDAO(){
-		if(groupe == null){
-			groupe = new GroupeDAO(Groupe.class);
-		}
-		return groupe;
-	}
-	public static EnchainableDAO getEnchainableDAO(){
-		if(enchainable == null){
+	private static EntrainementDAO entrainement;
+	private static ExerciceDAO exercice;
+	private static NiveauDAO niveau;
+
+	public static EnchainableDAO getEnchainableDAO() {
+		if (enchainable == null) {
 			enchainable = new EnchainableDAO(Enchainable.class);
 		}
 		return enchainable;
 	}
-	public static UtilisateurDAO getUtilisateurDAO(){
-		if(utilisateur == null){
+
+	public static EntrainementDAO getEntrainementDAO() {
+		if (entrainement == null) {
+			entrainement = new EntrainementDAO(Entrainement.class);
+		}
+		return entrainement;
+	}
+
+	public static ExerciceDAO getExerciceDAO() {
+		if (exercice == null) {
+			exercice = new ExerciceDAO(Exercice.class);
+		}
+		return exercice;
+	}
+
+	public static GroupeDAO getGroupeDAO() {
+		if (groupe == null) {
+			groupe = new GroupeDAO(Groupe.class);
+		}
+		return groupe;
+	}
+
+	public static NiveauDAO getNiveauDAO() {
+		if (niveau == null) {
+			niveau = new NiveauDAO(Niveau.class);
+		}
+		return niveau;
+	}
+
+	public static PermissionDAO getPermissionDAO() {
+		if (permission == null) {
+			permission = new PermissionDAO(Permission.class);
+		}
+		return permission;
+	}
+
+	public static UtilisateurDAO getUtilisateurDAO() {
+		if (utilisateur == null) {
 			utilisateur = new UtilisateurDAO(Utilisateur.class);
 		}
 		return utilisateur;
 	}
 
-	public static PermissionDAO getPermissionDAO() {
-		if(permission == null){
-			permission = new PermissionDAO(Permission.class);
-		}
-		return permission;
+	private DAOFactory() {
 	}
 }
