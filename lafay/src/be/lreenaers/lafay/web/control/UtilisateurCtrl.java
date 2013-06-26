@@ -23,6 +23,7 @@ import be.lreenaers.lafay.beans.Utilisateur;
 import be.lreenaers.lafay.factories.DAOFactory;
 import be.lreenaers.lafay.web.interfaces.Controlable;
 import be.lreenaers.lafay.web.interfaces.Filterable;
+import be.lreenaers.lafay.web.interfaces.Modifiable;
 import be.lreenaers.lafay.web.interfaces.RowEditable;
 
 /**
@@ -31,7 +32,7 @@ import be.lreenaers.lafay.web.interfaces.RowEditable;
  */
 @ManagedBean(name = "utilisateurCtrl")
 @SessionScoped
-public class UtilisateurCtrl implements Controlable, RowEditable, Filterable<Utilisateur>{
+public class UtilisateurCtrl implements Controlable, RowEditable, Filterable<Utilisateur>, Modifiable{
 	/**
 	 * 
 	 */
@@ -65,7 +66,7 @@ public class UtilisateurCtrl implements Controlable, RowEditable, Filterable<Uti
 		this.utilisateurs.setWrappedData(this.dao.all());
 		return "goUserList";
 	}
-	public String editUtilisateur(){
+	public String edit(){
 		this.utilisateurEdit = (Utilisateur) utilisateurs.getRowData();
 		return "editUser";
 	}

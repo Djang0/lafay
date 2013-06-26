@@ -50,12 +50,6 @@ public class GroupeCtrl implements Controlable, RowEditable,
 
 	@Override
 	public String create() {
-		Iterator<Permission> i = this.groupe.getPermissions().iterator();
-		while (i.hasNext()) {
-			Permission permission = i.next();
-			System.out.println("saving:" + permission.getId().toString() + "//"
-					+ permission.getValeur());
-		}
 		this.dao.save(this.groupe);
 		this.groupe = new Groupe();
 		this.groupes.setWrappedData(dao.all());

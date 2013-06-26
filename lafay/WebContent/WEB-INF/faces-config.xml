@@ -30,6 +30,31 @@
 </lifecycle>
 <navigation-rule>
 	<navigation-case>
+		<from-outcome>goCreateEnch</from-outcome>
+		<to-view-id>/enchainable/creation.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>goExMod</from-outcome>
+		<to-view-id>/exercice/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>goEnchList</from-outcome>
+		<to-view-id>/enchainable/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>goCreateEx</from-outcome>
+		<to-view-id>/exercice/creation.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>goExLst</from-outcome>
+		<to-view-id>/exercice/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
 		<from-outcome>goUserList</from-outcome>
 		<to-view-id>/utilisateur/liste.xhtml</to-view-id>
 		<redirect></redirect>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+
+			<h1 class="title ui-widget-header ui-corner-all">
+				<h:outputText value="#{i18n['i18n.addench']}" />
+			</h1>
+			<p:panel header="#{i18n['i18n.add']}">
+				<h:panelGrid columns="4">
+
+					<h:outputLabel for="label" value="#{i18n['i18n.exname']}"
+						style="font-weight:bold" />
+					<p:selectOneMenu id="label"
+						value="#{enchainableCtrl.enchainable.exercice}"
+						converter="exerciceConverter" panelStyle="width:150px"
+						effect="fade" var="p" style="width:160px" filter="true"
+						filterMatchMode="contains">
+
+						<f:selectItems value="#{enchainableCtrl.exercices}" var="exercice"
+							itemLabel="#{exercice.nom}" itemValue="#{exercice}" />
+
+
+					</p:selectOneMenu>
+					</p:inputText>
+					<p:message for="label" display="icon" />
+					<p:tooltip for="label" value="#{i18n['i18n.exname']}"
+						showEffect="clip" hideEffect="fade" />
+
+
+
+				</h:panelGrid>
+
+
+
+				<p:commandButton id="saveButton" update="growl"
+					value="#{i18n['i18n.create']}" action="#{enchainableCtrl.create}" />
+				<p:tooltip for="saveButton" value="#{i18n['i18n.create']}"
+					showEffect="clip" hideEffect="fade" />
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

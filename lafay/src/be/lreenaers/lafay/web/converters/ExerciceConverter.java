@@ -7,20 +7,22 @@ import javax.faces.convert.FacesConverter;
 
 import org.bson.types.ObjectId;
 
-import be.lreenaers.lafay.DAOs.GroupeDAO;
-import be.lreenaers.lafay.beans.Groupe;
+import be.lreenaers.lafay.DAOs.ExerciceDAO;
+import be.lreenaers.lafay.beans.Exercice;
 import be.lreenaers.lafay.factories.DAOFactory;
 
-@FacesConverter(forClass = Groupe.class, value = "groupeConverter")
-public class GroupeConverter implements Converter {
+@FacesConverter(forClass = Exercice.class, value = "exerciceConverter")
+public class ExerciceConverter implements Converter {
+
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {
-		GroupeDAO dao = DAOFactory.getGroupeDAO();
+		ExerciceDAO dao = DAOFactory.getExerciceDAO();
 		return dao.findById(new ObjectId(arg2));
 	}
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
-		return ((Groupe) arg2).getId().toString();
+		return ((Exercice) arg2).getId().toString();
 	}
+
 }
