@@ -43,6 +43,8 @@ public class EnchainableCtrl implements Controlable, RowEditable,
 
 	public EnchainableCtrl() {
 		this.dao = DAOFactory.getEnchainableDAO();
+		this.edao = DAOFactory.getExerciceDAO();
+		this.exercices = this.edao.all();
 		this.enchainable = new Enchainable();
 		this.enchainableEdit = new Enchainable();
 		this.enchainables = new ListDataModel<Enchainable>();
@@ -95,7 +97,6 @@ public class EnchainableCtrl implements Controlable, RowEditable,
 	}
 
 	public String goCreate() {
-System.out.println("go");
 		return "goCreateEnch";
 	}
 
@@ -111,7 +112,6 @@ System.out.println("go");
 	}
 
 	public void setEnchainable(Enchainable enchainable) {
-		System.out.println("set");
 		this.enchainable = enchainable;
 	}
 
@@ -137,11 +137,6 @@ System.out.println("go");
 	}
 
 	public List<Exercice> getExercices() {
-		
-		if(this.exercices == null){
-			this.edao = DAOFactory.getExerciceDAO();
-			this.exercices = this.edao.all();
-		}
 		return this.exercices;
 	}
 
