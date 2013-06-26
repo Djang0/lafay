@@ -39,6 +39,7 @@ public class ExerciceCtrl implements Controlable, RowEditable,
 	@Override
 	public String create() {
 		this.dao.save(this.exercice);
+		this.exercice = new Exercice();
 		this.exercices.setWrappedData(this.dao.all());
 		return "goExLst";
 	}
