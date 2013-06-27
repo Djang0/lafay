@@ -17,69 +17,57 @@
 				<h:outputText value="#{i18n['i18n.addench']}" />
 			</h1>
 			<p:panel>
-			
+
 				<h:panelGrid id="nopause" columns="4">
 
-
+					
 
 					<h:outputLabel for="pausb" value="#{i18n['i18n.pausebool']}"
 						style="font-weight:bold" />
 					<p:selectBooleanCheckbox id="pausb"
-						value="#{enchainableCtrl.enchainable.compteur}">
+						value="#{enchainableCtrl.enchainable.pause}">
 						<p:ajax event="change" update="nopause" />
 					</p:selectBooleanCheckbox>
-					<p:message for="pausb" display="icon"
-								 />
+					<p:message for="pausb" display="icon" />
 					<p:tooltip for="pausb" value="#{i18n['i18n.pausebooltip']}"
 						showEffect="clip" hideEffect="fade" />
-				
-				
 					
-						
-							<h:outputLabel for="label" value="#{i18n['i18n.exname']}" style="font-weight:bold"/>
-							<p:selectOneMenu 
-								disabled="#{enchainableCtrl.enchainable.compteur}" id="label"
-								value="#{enchainableCtrl.enchainable.exercice}"
-								converter="exerciceConverter" panelStyle="width:150px"
-								effect="fade" style="width:160px" filter="true"
-								filterMatchMode="contains">
-								<f:selectItem itemLabel="Select One" itemValue="#{null}" />
+					<h:outputLabel for="nom" value="#{i18n['i18n.enchname']}" style="font-weight:bold" />
+					<p:inputText id="nom"/>
+					<p:message for="nom" display="icon" />
+					<p:tooltip for="nom" value="#{i18n['i18n.enchname']}" showEffect="clip" hideEffect="fade" />
 
-
-								<f:selectItems value="#{enchainableCtrl.exercices}"
-									var="exercice" itemLabel="#{exercice.nom}"
-									itemValue="#{exercice}" />
-							</p:selectOneMenu>
-
-							<p:message for="label" display="icon"/>
-							<p:tooltip for="label" value="#{i18n['i18n.exname']}" showEffect="clip" hideEffect="fade" />
+					<h:outputLabel id="duree" value="#{i18n['i18n.setduree']}" style="font-weight:bold" />
+					<p:spinner disabled="#{!enchainableCtrl.enchainable.pause}"
+						id="durspin" max="300"
+						value="#{enchainableCtrl.enchainable.dureeEnSeconde}" />
+					<p:message for="durspin" display="icon" />
+					<p:tooltip for="durspin" value="#{i18n['i18n.setduree']}"
+						showEffect="clip" hideEffect="fade" />
+		
 
 
 
-
-							<h:outputLabel for="toto" value="toto" style="font-weight:bold"/>
-							<p:inputText id="toto" disabled="#{enchainableCtrl.enchainable.compteur}"></p:inputText>
-							<p:message for="toto" display="icon" />
-							<p:tooltip for="toto" value="#{i18n['i18n.exname']}" showEffect="clip" hideEffect="fade"/>
-								
-								
-								
-							
-							 
-							<h:outputLabel id="duree" value="#{i18n['i18n.setduree']}"/>  
-        					<p:spinner disabled="#{!enchainableCtrl.enchainable.compteur}" id="durspin" max="300" value="#{enchainableCtrl.enchainable.dureeEnSeconde}" />
-        					
-        					
-						</h:panelGrid>
-					
+					<h:outputLabel for="label" value="#{i18n['i18n.exname']}"
+						style="font-weight:bold" />
+					<p:selectOneMenu disabled="#{enchainableCtrl.enchainable.pause}"
+						id="label" value="#{enchainableCtrl.enchainable.exercice}"
+						converter="exerciceConverter" panelStyle="width:150px"
+						effect="fade" style="width:160px" filter="true"
+						filterMatchMode="contains">
+						<f:selectItem itemLabel="Select One" itemValue="#{null}" />
 
 
+						<f:selectItems value="#{enchainableCtrl.exercices}" var="exercice"
+							itemLabel="#{exercice.nom}" itemValue="#{exercice}" />
+					</p:selectOneMenu>
+
+					<p:message for="label" display="icon" />
+					<p:tooltip for="label" value="#{i18n['i18n.exname']}"
+						showEffect="clip" hideEffect="fade" />
 
 
-				
-
-
-
+				</h:panelGrid>
 				<p:commandButton id="saveButton" update="growl"
 					value="#{i18n['i18n.create']}" action="#{enchainableCtrl.create}" />
 				<p:tooltip for="saveButton" value="#{i18n['i18n.create']}"
