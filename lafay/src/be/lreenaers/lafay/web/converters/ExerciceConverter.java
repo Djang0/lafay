@@ -22,7 +22,11 @@ public class ExerciceConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
-		return ((Exercice) arg2).getId().toString();
+		String str= "null";
+		if(arg2 != null){
+			str = ((Exercice) arg2).getId().toString();
+		}
+		return str;
 	}
 
 }
