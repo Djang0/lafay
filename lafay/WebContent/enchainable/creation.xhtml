@@ -33,7 +33,9 @@
 						showEffect="clip" hideEffect="fade" />
 					
 					<h:outputLabel for="nom" value="#{i18n['i18n.enchname']}" style="font-weight:bold" />
-					<p:inputText id="nom"/>
+					<p:inputText id="nom" value="#{enchainableCtrl.enchainable.nom}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
 					<p:message for="nom" display="icon" />
 					<p:tooltip for="nom" value="#{i18n['i18n.enchname']}" showEffect="clip" hideEffect="fade" />
 
