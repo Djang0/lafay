@@ -45,7 +45,13 @@
 					<p:tooltip for="durspin" value="#{i18n['i18n.setduree']}"
 						showEffect="clip" hideEffect="fade" />
 		
-
+					<h:outputLabel id="reps" value="#{i18n['i18n.repMin']}" style="font-weight:bold" />
+					<p:spinner disabled="#{enchainableCtrl.enchainable.pause}"
+						id="repspin" max="300"
+						value="#{enchainableCtrl.enchainable.repetitionMinimum}" />
+					<p:message for="repspin" display="icon" />
+					<p:tooltip for="repspin" value="#{i18n['i18n.repMin']}"
+						showEffect="clip" hideEffect="fade" />
 
 
 					<h:outputLabel for="label" value="#{i18n['i18n.exname']}"

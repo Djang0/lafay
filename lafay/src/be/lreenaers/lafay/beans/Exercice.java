@@ -46,7 +46,6 @@ public class Exercice extends Bean {
 	}
 
 	public String getNom() {
-		System.out.println("nom: "+this.nom);
 		return nom;
 	}
 
