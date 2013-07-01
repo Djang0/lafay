@@ -27,13 +27,16 @@
 					update=":form:messages" />
 				<p:ajax event="rowEditCancel" listener="#{enchainableCtrl.onCancel}"
 					update=":form:messages" />
-				
-				<p:column headerText="#{i18n['i18n.pausebool']}" sortBy="#{g.pause}" style="width:10%">
-					<p:commandLink styleClass="ui-icon ui-icon-circle-close" rendered="#{g.pause}"/>
-   					<p:commandLink styleClass="ui-icon ui-icon-check"  rendered="#{!g.pause}"/>
+
+				<p:column headerText="#{i18n['i18n.pause']}" sortBy="#{g.pause}"
+					style="width:5%">
+					<p:commandLink styleClass="ui-icon ui-icon-circle-close"
+						rendered="#{g.pause}" />
+					<p:commandLink styleClass="ui-icon ui-icon-check"
+						rendered="#{!g.pause}" />
 				</p:column>
-				<p:column headerText="#{i18n['i18n.enchname']}" sortBy="nom"
-					filterMatchMode="contains" filterBy="#{g.nom}" style="width:70%">
+				<p:column headerText="#{i18n['i18n.enchname']}" sortBy="#{g.nom}"
+					filterMatchMode="contains" filterBy="#{g.nom}" style="width:20%">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{g.nom}" />
@@ -48,8 +51,55 @@
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 
-				
+				<p:column headerText="#{i18n['i18n.ex']}" sortBy="#{g.exercice.nom}"
+					filterMatchMode="contains" filterBy="#{g.exercice.nom}"
+					style="width:20%">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.exercice.nom}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:selectOneMenu id="exls" disabled="#{g.pause}" 
+								value="#{g.exercice}" converter="exerciceConverter"
+								panelStyle="width:150px" effect="fade" style="width:160px">
 
+								<f:selectItems value="#{enchainableCtrl.exercices}" var="exercice"
+									itemLabel="#{exercice.nom}" itemValue="#{exercice}" />
+							</p:selectOneMenu>
+						</f:facet>
+					</p:cellEditor>
+					
+				</p:column>
+
+				<p:column headerText="#{i18n['i18n.duree']}"
+					sortBy="#{g.dureeEnSeconde}" style="width:20%">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.dureeEnSeconde}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:spinner disabled="#{!g.pause}"
+								id="durspin" max="300" value="#{g.dureeEnSeconde}" />
+						</f:facet>
+					</p:cellEditor>
+					<p:tooltip for="durspin" value="#{i18n['i18n.setduree']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+
+				<p:column headerText="#{i18n['i18n.rep']}"
+					sortBy="#{g.repetitionMinimum}" style="width:20%">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.repetitionMinimum}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:spinner disabled="#{g.pause}"
+								id="repspin" max="300" value="#{g.repetitionMinimum}" />
+						</f:facet>
+					</p:cellEditor>
+					<p:tooltip for="repspin" value="#{i18n['i18n.repMin']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
 
 				<p:column style="width:10%">
 					<p:rowEditor id="editor" />
@@ -60,12 +110,7 @@
 					<p:tooltip for="delimg" value="#{i18n['i18n.del']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
-				<p:column style="width:5%">
-					<p:commandLink id="editimg" action="#{enchainableCtrl.edit}"
-						styleClass="ui-icon ui-icon-wrench" ajax="false" />
-					<p:tooltip for="editimg" value="#{i18n['i18n.edit']}"
-						showEffect="clip" hideEffect="fade" />
-				</p:column>
+				
 			</p:dataTable>
 			<p:commandButton id="addbut" action="#{enchainableCtrl.goCreate}"
 				icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}" />
