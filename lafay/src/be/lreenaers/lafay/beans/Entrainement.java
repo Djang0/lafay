@@ -15,17 +15,15 @@ import com.google.code.morphia.annotations.Reference;
 @Entity
 public class Entrainement extends Bean {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
 	private Date debutEntrainement;
+
 	private Date finEntrainement;
 	@Reference
-	private Niveau niveauEntrainement;
+	private Progression progression;
 	@Reference
 	private Utilisateur utilisateur;
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -45,10 +43,10 @@ public class Entrainement extends Bean {
 				return false;
 		} else if (!finEntrainement.equals(other.finEntrainement))
 			return false;
-		if (niveauEntrainement == null) {
-			if (other.niveauEntrainement != null)
+		if (progression == null) {
+			if (other.progression != null)
 				return false;
-		} else if (!niveauEntrainement.equals(other.niveauEntrainement))
+		} else if (!progression.equals(other.progression))
 			return false;
 		if (utilisateur == null) {
 			if (other.utilisateur != null)
@@ -57,17 +55,12 @@ public class Entrainement extends Bean {
 			return false;
 		return true;
 	}
-
 	public Date getDebutEntrainement() {
 		return debutEntrainement;
 	}
 
 	public Date getFinEntrainement() {
 		return finEntrainement;
-	}
-
-	public Niveau getNiveauEntrainement() {
-		return niveauEntrainement;
 	}
 
 	public Utilisateur getUtilisateur() {
@@ -84,10 +77,8 @@ public class Entrainement extends Bean {
 						.hashCode());
 		result = prime * result
 				+ ((finEntrainement == null) ? 0 : finEntrainement.hashCode());
-		result = prime
-				* result
-				+ ((niveauEntrainement == null) ? 0 : niveauEntrainement
-						.hashCode());
+		result = prime * result
+				+ ((progression == null) ? 0 : progression.hashCode());
 		result = prime * result
 				+ ((utilisateur == null) ? 0 : utilisateur.hashCode());
 		return result;
@@ -99,10 +90,6 @@ public class Entrainement extends Bean {
 
 	public void setFinEntrainement(Date finEntrainement) {
 		this.finEntrainement = finEntrainement;
-	}
-
-	public void setNiveauEntrainement(Niveau niveauEntrainement) {
-		this.niveauEntrainement = niveauEntrainement;
 	}
 
 	public void setUtilisateur(Utilisateur utilisateur) {

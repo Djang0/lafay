@@ -20,9 +20,21 @@ public class Enchainable extends Bean {
 	private Exercice exercice;
 	private String nom;
 	private int repetitionMinimum;
-	private int repetitionEffective;
 	private int dureeEnSeconde;
 	private boolean pause;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + dureeEnSeconde;
+		result = prime * result
+				+ ((exercice == null) ? 0 : exercice.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + (pause ? 1231 : 1237);
+		result = prime * result + repetitionMinimum;
+		return result;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -47,8 +59,6 @@ public class Enchainable extends Bean {
 			return false;
 		if (pause != other.pause)
 			return false;
-		if (repetitionEffective != other.repetitionEffective)
-			return false;
 		if (repetitionMinimum != other.repetitionMinimum)
 			return false;
 		return true;
@@ -66,26 +76,9 @@ public class Enchainable extends Bean {
 		return nom;
 	}
 
-	public int getRepetitionEffective() {
-		return repetitionEffective;
-	}
 
 	public int getRepetitionMinimum() {
 		return repetitionMinimum;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + dureeEnSeconde;
-		result = prime * result
-				+ ((exercice == null) ? 0 : exercice.hashCode());
-		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		result = prime * result + (pause ? 1231 : 1237);
-		result = prime * result + repetitionEffective;
-		result = prime * result + repetitionMinimum;
-		return result;
 	}
 
 	public boolean isPause() {
@@ -106,10 +99,6 @@ public class Enchainable extends Bean {
 
 	public void setPause(boolean pause) {
 		this.pause = pause;
-	}
-
-	public void setRepetitionEffective(int repetitionEffective) {
-		this.repetitionEffective = repetitionEffective;
 	}
 
 	public void setRepetitionMinimum(int repetitionMinimum) {
