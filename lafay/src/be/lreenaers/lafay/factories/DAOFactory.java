@@ -9,7 +9,6 @@ import be.lreenaers.lafay.DAOs.ExerciceDAO;
 import be.lreenaers.lafay.DAOs.GroupeDAO;
 import be.lreenaers.lafay.DAOs.NiveauDAO;
 import be.lreenaers.lafay.DAOs.PermissionDAO;
-import be.lreenaers.lafay.DAOs.ProgressionDAO;
 import be.lreenaers.lafay.DAOs.SerieDAO;
 import be.lreenaers.lafay.DAOs.UtilisateurDAO;
 import be.lreenaers.lafay.beans.Enchainable;
@@ -17,7 +16,6 @@ import be.lreenaers.lafay.beans.Entrainement;
 import be.lreenaers.lafay.beans.Exercice;
 import be.lreenaers.lafay.beans.Niveau;
 import be.lreenaers.lafay.beans.Permission;
-import be.lreenaers.lafay.beans.Progression;
 import be.lreenaers.lafay.beans.Serie;
 import be.lreenaers.lafay.beans.Utilisateur;
 import be.lreenaers.lafay.beans.Groupe;
@@ -34,7 +32,6 @@ public class DAOFactory {
 	private static EntrainementDAO entrainement;
 	private static ExerciceDAO exercice;
 	private static NiveauDAO niveau;
-	private static ProgressionDAO progression;
 	private static SerieDAO serie;
 
 	public static EnchainableDAO getEnchainableDAO() {
@@ -77,13 +74,6 @@ public class DAOFactory {
 			permission = new PermissionDAO(Permission.class);
 		}
 		return permission;
-	}
-
-	public static ProgressionDAO getProgressionDAO() {
-		if (progression == null) {
-			progression = new ProgressionDAO(Progression.class);
-		}
-		return progression;
 	}
 
 	public static SerieDAO getSerieDAO() {

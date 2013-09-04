@@ -18,10 +18,9 @@ public class Entrainement extends Bean {
 	private static final long serialVersionUID = 1L;
 
 	private Date debutEntrainement;
-
 	private Date finEntrainement;
 	@Reference
-	private Progression progression;
+	private Niveau niveau;
 	@Reference
 	private Utilisateur utilisateur;
 	@Override
@@ -43,10 +42,10 @@ public class Entrainement extends Bean {
 				return false;
 		} else if (!finEntrainement.equals(other.finEntrainement))
 			return false;
-		if (progression == null) {
-			if (other.progression != null)
+		if (niveau == null) {
+			if (other.niveau != null)
 				return false;
-		} else if (!progression.equals(other.progression))
+		} else if (!niveau.equals(other.niveau))
 			return false;
 		if (utilisateur == null) {
 			if (other.utilisateur != null)
@@ -77,8 +76,7 @@ public class Entrainement extends Bean {
 						.hashCode());
 		result = prime * result
 				+ ((finEntrainement == null) ? 0 : finEntrainement.hashCode());
-		result = prime * result
-				+ ((progression == null) ? 0 : progression.hashCode());
+		result = prime * result + ((niveau == null) ? 0 : niveau.hashCode());
 		result = prime * result
 				+ ((utilisateur == null) ? 0 : utilisateur.hashCode());
 		return result;
@@ -94,6 +92,12 @@ public class Entrainement extends Bean {
 
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
+	}
+	public Niveau getNiveau() {
+		return niveau;
+	}
+	public void setNiveau(Niveau niveau) {
+		this.niveau = niveau;
 	}
 
 }

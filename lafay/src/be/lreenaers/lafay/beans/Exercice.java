@@ -4,21 +4,50 @@
 package be.lreenaers.lafay.beans;
 
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Reference;
 
 /**
  * @author media
  * 
  */
 @Entity
-public class Exercice extends Bean {
-
-	/**
-	 * 
-	 */
+public class Exercice extends Enchainable{
 	private static final long serialVersionUID = 1L;
-	private String nom;
-	private String description;
-
+	@Reference
+	private Mouvement mouvement;
+	private int nombreDeSerie;
+	private int dureePause;
+	private int repetitionMinimum;
+	
+	public Mouvement getMouvement() {
+		return mouvement;
+	}
+	public void setMouvement(Mouvement mouvement) {
+		this.mouvement = mouvement;
+	}
+	public int getNombreDeSerie() {
+		return nombreDeSerie;
+	}
+	public void setNombreDeSerie(int nombreDeSerie) {
+		this.nombreDeSerie = nombreDeSerie;
+	}
+	public int getDureePause() {
+		return dureePause;
+	}
+	public void setDureePause(int dureePause) {
+		this.dureePause = dureePause;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + dureePause;
+		result = prime * result
+				+ ((mouvement == null) ? 0 : mouvement.hashCode());
+		result = prime * result + nombreDeSerie;
+		result = prime * result + repetitionMinimum;
+		return result;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -28,42 +57,23 @@ public class Exercice extends Bean {
 		if (getClass() != obj.getClass())
 			return false;
 		Exercice other = (Exercice) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
+		if (dureePause != other.dureePause)
 			return false;
-		if (nom == null) {
-			if (other.nom != null)
+		if (mouvement == null) {
+			if (other.mouvement != null)
 				return false;
-		} else if (!nom.equals(other.nom))
+		} else if (!mouvement.equals(other.mouvement))
+			return false;
+		if (nombreDeSerie != other.nombreDeSerie)
+			return false;
+		if (repetitionMinimum != other.repetitionMinimum)
 			return false;
 		return true;
 	}
-
-	public String getDescription() {
-		return description;
+	public int getRepetitionMinimum() {
+		return repetitionMinimum;
 	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		return result;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setRepetitionMinimum(int repetitionMinimum) {
+		this.repetitionMinimum = repetitionMinimum;
 	}
 }

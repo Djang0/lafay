@@ -16,26 +16,30 @@ public class Enchainable extends Bean {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private int ordre;
 	@Reference
-	private Exercice exercice;
-	private String nom;
-	private int repetitionMinimum;
-	private int dureeEnSeconde;
-	private boolean pause;
-
+	private Niveau niveau;
+	public int getOrdre() {
+		return ordre;
+	}
+	public void setOrdre(int ordre) {
+		this.ordre = ordre;
+	}
+	public Niveau getNiveau() {
+		return niveau;
+	}
+	public void setNiveau(Niveau niveau) {
+		this.niveau = niveau;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + dureeEnSeconde;
-		result = prime * result
-				+ ((exercice == null) ? 0 : exercice.hashCode());
-		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		result = prime * result + (pause ? 1231 : 1237);
-		result = prime * result + repetitionMinimum;
+		result = prime * result + ((niveau == null) ? 0 : niveau.hashCode());
+		result = prime * result + ordre;
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -45,64 +49,15 @@ public class Enchainable extends Bean {
 		if (getClass() != obj.getClass())
 			return false;
 		Enchainable other = (Enchainable) obj;
-		if (dureeEnSeconde != other.dureeEnSeconde)
-			return false;
-		if (exercice == null) {
-			if (other.exercice != null)
+		if (niveau == null) {
+			if (other.niveau != null)
 				return false;
-		} else if (!exercice.equals(other.exercice))
+		} else if (!niveau.equals(other.niveau))
 			return false;
-		if (nom == null) {
-			if (other.nom != null)
-				return false;
-		} else if (!nom.equals(other.nom))
-			return false;
-		if (pause != other.pause)
-			return false;
-		if (repetitionMinimum != other.repetitionMinimum)
+		if (ordre != other.ordre)
 			return false;
 		return true;
 	}
 
-	public int getDureeEnSeconde() {
-		return dureeEnSeconde;
-	}
-
-	public Exercice getExercice() {
-		return exercice;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-
-	public int getRepetitionMinimum() {
-		return repetitionMinimum;
-	}
-
-	public boolean isPause() {
-		return pause;
-	}
-
-	public void setDureeEnSeconde(int dureeEnSeconde) {
-		this.dureeEnSeconde = dureeEnSeconde;
-	}
-
-	public void setExercice(Exercice exercice) {
-		this.exercice = exercice;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public void setPause(boolean pause) {
-		this.pause = pause;
-	}
-
-	public void setRepetitionMinimum(int repetitionMinimum) {
-		this.repetitionMinimum = repetitionMinimum;
-	}
-
+	
 }

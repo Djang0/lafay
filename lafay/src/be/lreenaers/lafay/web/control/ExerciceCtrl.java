@@ -46,20 +46,7 @@ public class ExerciceCtrl implements Controlable, RowEditable,
 
 	@Override
 	public String delete() {
-		Exercice e = (Exercice) this.exercices.getRowData();
-		EnchainableDAO edao = DAOFactory.getEnchainableDAO();
-		List<Enchainable> enchs = edao.all();
-		Iterator<Enchainable> it = enchs.iterator();
-		Enchainable ench;
-		while (it.hasNext()) {
-			ench = it.next();
-			if (ench.getExercice().equals(e)) {
-				ench.setExercice(null);
-				edao.save(ench);
-			}
-		}
-		this.dao.delete(e);
-		this.exercices.setWrappedData(this.dao.all());
+		//TODO: do it
 		return "goExLst";
 	}
 
