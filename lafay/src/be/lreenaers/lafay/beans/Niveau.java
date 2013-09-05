@@ -21,7 +21,7 @@ public class Niveau extends Bean {
 	private static final long serialVersionUID = 1L;
 	private String nom;
 	@Reference
-	private List<Enchainable> series;
+	private List<Enchainable> enchainables;
 
 	@Override
 	public boolean equals(Object obj) {
@@ -37,20 +37,22 @@ public class Niveau extends Bean {
 				return false;
 		} else if (!nom.equals(other.nom))
 			return false;
-		if (series == null) {
-			if (other.series != null)
+		if (enchainables == null) {
+			if (other.enchainables != null)
 				return false;
-		} else if (!series.equals(other.series))
+		} else if (!enchainables.equals(other.enchainables))
 			return false;
 		return true;
 	}
 
-	public String getName() {
+	public String getNom() {
 		return this.nom;
 	}
-
+	public void removeEnchainable(Enchainable ench){
+		this.enchainables.remove(ench);
+	}
 	public List<Enchainable> getSeries() {
-		return series;
+		return enchainables;
 	}
 
 	@Override
@@ -58,15 +60,15 @@ public class Niveau extends Bean {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		result = prime * result + ((series == null) ? 0 : series.hashCode());
+		result = prime * result + ((enchainables == null) ? 0 : enchainables.hashCode());
 		return result;
 	}
 
-	public void setName(String nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	public void setSeries(List<Enchainable> series) {
-		this.series = series;
+		this.enchainables = series;
 	}
 }

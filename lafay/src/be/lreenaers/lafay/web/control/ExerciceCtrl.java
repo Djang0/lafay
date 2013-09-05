@@ -9,10 +9,10 @@ import javax.faces.model.ListDataModel;
 
 import org.primefaces.event.RowEditEvent;
 
-import be.lreenaers.lafay.DAOs.EnchainableDAO;
 import be.lreenaers.lafay.DAOs.ExerciceDAO;
-import be.lreenaers.lafay.beans.Enchainable;
+import be.lreenaers.lafay.DAOs.NiveauDAO;
 import be.lreenaers.lafay.beans.Exercice;
+import be.lreenaers.lafay.beans.Niveau;
 import be.lreenaers.lafay.factories.DAOFactory;
 import be.lreenaers.lafay.web.interfaces.Controlable;
 import be.lreenaers.lafay.web.interfaces.Filterable;
@@ -24,6 +24,7 @@ public class ExerciceCtrl implements Controlable, RowEditable,
 		Filterable<Exercice>, Modifiable {
 	private List<Exercice> filtered;
 	private ExerciceDAO dao;
+	private NiveauDAO ndao;
 	private Exercice exercice;
 	private Exercice exerciceEdit;
 	private ListDataModel<Exercice> exercices;
@@ -46,7 +47,18 @@ public class ExerciceCtrl implements Controlable, RowEditable,
 
 	@Override
 	public String delete() {
-		//TODO: do it
+		this.ndao = DAOFactory.getNiveauDAO();
+		Exercice e = (Exercice) exercices.getRowData();
+		List<Niveau> nivs = ndao.all();
+		Iterator<Niveau> it = nivs.iterator();
+		Niveau n;
+		while (it.hasNext()) {
+			n = it.next();
+			n.removeEnchainable(e);
+			this.ndao.save(n);
+		}
+		this.dao.delete(e);
+		this.exercices.setWrappedData(this.dao.all());
 		return "goExLst";
 	}
 

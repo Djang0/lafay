@@ -27,6 +27,7 @@ import be.lreenaers.lafay.web.interfaces.RowEditable;
  * @author media
  * 
  */
+@Deprecated
 @ManagedBean(name = "enchainableCtrl")
 @SessionScoped
 public class EnchainableCtrl implements Controlable, RowEditable,
