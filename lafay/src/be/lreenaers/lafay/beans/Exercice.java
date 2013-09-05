@@ -25,6 +25,11 @@ public class Exercice extends Enchainable{
 	public void setMouvement(Mouvement mouvement) {
 		this.mouvement = mouvement;
 	}
+	public void remove(Mouvement tmp){
+		if (this.mouvement.equals(tmp)){
+			this.mouvement = null;
+		}
+	}
 	public int getNombreDeSerie() {
 		return nombreDeSerie;
 	}

@@ -3,11 +3,15 @@
  */
 package be.lreenaers.lafay.factories;
 
+import java.lang.reflect.InvocationTargetException;
+
 import be.lreenaers.lafay.DAOs.CibleDAO;
+import be.lreenaers.lafay.DAOs.DAO;
 import be.lreenaers.lafay.DAOs.EnchainableDAO;
 import be.lreenaers.lafay.DAOs.EntrainementDAO;
 import be.lreenaers.lafay.DAOs.ExerciceDAO;
 import be.lreenaers.lafay.DAOs.GroupeDAO;
+import be.lreenaers.lafay.DAOs.MouvementDAO;
 import be.lreenaers.lafay.DAOs.NiveauDAO;
 import be.lreenaers.lafay.DAOs.PermissionDAO;
 import be.lreenaers.lafay.DAOs.ReposDAO;
@@ -17,6 +21,7 @@ import be.lreenaers.lafay.beans.Cible;
 import be.lreenaers.lafay.beans.Enchainable;
 import be.lreenaers.lafay.beans.Entrainement;
 import be.lreenaers.lafay.beans.Exercice;
+import be.lreenaers.lafay.beans.Mouvement;
 import be.lreenaers.lafay.beans.Niveau;
 import be.lreenaers.lafay.beans.Permission;
 import be.lreenaers.lafay.beans.Repos;
@@ -41,12 +46,19 @@ public class DAOFactory {
 	private static SerieDAO serie;
 	private static CibleDAO cible;
 	private static ReposDAO repos;
+	private static MouvementDAO mouvement;
 	@Deprecated
 	public static EnchainableDAO getEnchainableDAO() {
 		if (enchainable == null) {
 			enchainable = new EnchainableDAO(Enchainable.class);
 		}
 		return enchainable;
+	}
+	public static MouvementDAO getMouvementDAO() {
+		if (mouvement == null) {
+			mouvement = new MouvementDAO(Mouvement.class);
+		}
+		return mouvement;
 	}
 	public static CibleDAO getCibleDAO() {
 		if (cible == null) {
@@ -108,6 +120,11 @@ public class DAOFactory {
 		}
 		return utilisateur;
 	}
+	
+	//public static DAO getFactory(Class factoryClass,Class beanClass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		//System.out.println(beanClass.getName());
+		//return (DAO) factoryClass.getConstructor(beanClass).newInstance();
+	//}
 
 	private DAOFactory() {
 	}
