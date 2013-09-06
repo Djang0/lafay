@@ -29,7 +29,7 @@ public abstract class DAO<T> {
 	}
 
 	public void delete(T entity) {
-		this.ds.delete(entity);
+		this.ds.delete((Class<T>) entity);
 	}
 
 	public T findById(ObjectId id) {

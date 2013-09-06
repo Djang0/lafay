@@ -1,4 +1,4 @@
-package be.lreenaers.lafay.web.control;
+package be.lreenaers.lafay.web.controls;
  
 import java.util.ArrayList;
 import java.util.Iterator;

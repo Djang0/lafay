@@ -1,4 +1,4 @@
-import be.lreenaers.lafay.web.control.TestCtrl;
+import be.lreenaers.lafay.web.controls.PermissionCtrl;
 
 
 public class Test {
@@ -8,8 +8,8 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		TestCtrl t = new TestCtrl();
-		t.prt();
+		PermissionCtrl t = new PermissionCtrl();
+		//t.getNavigationString();
 	}
 
 }

@@ -1,4 +1,4 @@
-package be.lreenaers.lafay.web.control;
+package be.lreenaers.lafay.web.controls;
 
 import be.lreenaers.lafay.beans.Permission;
 import be.lreenaers.lafay.factories.DAOFactory;
@@ -16,6 +16,12 @@ public class TestCtrl extends Controler<Permission> {
 	}
 	public void prt(){
 		System.out.println(this.dao.all().toString());
+	}
+
+	@Override
+	public String getNavList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

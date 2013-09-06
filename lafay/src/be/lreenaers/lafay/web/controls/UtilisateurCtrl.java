@@ -1,7 +1,7 @@
 /**
  * 
  */
-package be.lreenaers.lafay.web.control;
+package be.lreenaers.lafay.web.controls;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

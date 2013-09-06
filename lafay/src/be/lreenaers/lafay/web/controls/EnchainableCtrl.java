@@ -1,7 +1,7 @@
 /**
  * 
  */
-package be.lreenaers.lafay.web.control;
+package be.lreenaers.lafay.web.controls;
 
 import java.util.Iterator;
 import java.util.List;

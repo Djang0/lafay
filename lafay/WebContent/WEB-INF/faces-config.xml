@@ -55,7 +55,7 @@
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goUserList</from-outcome>
+		<from-outcome>UtilisateurList</from-outcome>
 		<to-view-id>/utilisateur/liste.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
@@ -85,37 +85,27 @@
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>editUser</from-outcome>
+		<from-outcome>UtilisateurModify</from-outcome>
 		<to-view-id>/utilisateur/modifier.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>userCreated</from-outcome>
+		<from-outcome>UtilisateurBoard</from-outcome>
 		<to-view-id>/utilisateur/moniteur.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>authorized</from-outcome>
-		<to-view-id>/utilisateur/moniteur.xhtml</to-view-id>
-		<redirect></redirect>
-	</navigation-case>
-	<navigation-case>
-		<from-outcome>unauthorized</from-outcome>
+		<from-outcome>UtilisateurForbide</from-outcome>
 		<to-view-id>/utilisateur/interdit.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>rejected</from-outcome>
+		<from-outcome>UtilisateurConnect</from-outcome>
 		<to-view-id>/utilisateur/connexion.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>list</from-outcome>
-		<to-view-id>/test/list.xhtml</to-view-id>
-		<redirect/>
-	</navigation-case>
-	<navigation-case>
-		<from-outcome>createUser</from-outcome>
+		<from-outcome>UtilisateurCreate</from-outcome>
 		<to-view-id>/utilisateur/creation.xhtml</to-view-id>
 		<redirect/>
 	</navigation-case>
