@@ -3,10 +3,7 @@
  */
 package be.lreenaers.lafay.factories;
 
-import java.lang.reflect.InvocationTargetException;
-
 import be.lreenaers.lafay.DAOs.CibleDAO;
-import be.lreenaers.lafay.DAOs.DAO;
 import be.lreenaers.lafay.DAOs.EnchainableDAO;
 import be.lreenaers.lafay.DAOs.EntrainementDAO;
 import be.lreenaers.lafay.DAOs.ExerciceDAO;
