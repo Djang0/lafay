@@ -39,4 +39,10 @@ public abstract class DAO<T> {
 	public void save(T entity) {
 		this.ds.save(entity);
 	}
+	public T findOne(String fieldname,String value){
+		return this.ds.find(this.entityClass).field(fieldname).equal(value).get();
+	}
+	public List<T> findAll(String fieldname,String value){
+		return this.ds.find(this.entityClass).field(fieldname).equal(value).asList();
+	}
 }

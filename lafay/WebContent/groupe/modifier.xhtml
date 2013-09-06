@@ -34,7 +34,7 @@
 				<h3 class="title ui-widget-header ui-corner-all">
 					<h:outputText value="#{i18n['i18n.grpperms']}" />
 				</h3>
-				<p:pickList id="permlist" value="#{groupeCtrl.pickEditPerms}"
+				<p:pickList id="permlist" value="#{groupeCtrl.pickEdit}"
 					var="permission" itemLabel="#{permission.valeur}"
 					itemValue="#{permission}" converter="permissionConverter" showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" >
 					<f:facet name="sourceCaption"><h:outputText value="#{i18n['i18n.available']}" /></f:facet>  

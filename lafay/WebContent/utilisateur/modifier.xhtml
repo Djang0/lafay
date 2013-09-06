@@ -72,7 +72,7 @@
 				<h3 class="title ui-widget-header ui-corner-all">
 					<h:outputText value="#{i18n['i18n.usrgrp']}" />
 				</h3>
-				<p:pickList id="permlist" value="#{utilisateurCtrl.pickEditGroups}"
+				<p:pickList id="permlist" value="#{utilisateurCtrl.pickEdit}"
 					var="group" itemLabel="#{group.nom}" itemValue="#{group}"
 					converter="groupeConverter" showSourceFilter="true"
 					showTargetFilter="true" filterMatchMode="contains">
