@@ -35,18 +35,26 @@ import be.lreenaers.lafay.beans.Groupe;
  */
 @SuppressWarnings("deprecation")
 public class DAOFactory {
+	private static CibleDAO cible;
 	@Deprecated
 	private static EnchainableDAO enchainable;
-	private static UtilisateurDAO utilisateur;
-	private static PermissionDAO permission;
-	private static GroupeDAO groupe;
 	private static EntrainementDAO entrainement;
 	private static ExerciceDAO exercice;
-	private static NiveauDAO niveau;
-	private static SerieDAO serie;
-	private static CibleDAO cible;
-	private static ReposDAO repos;
+	private static GroupeDAO groupe;
 	private static MouvementDAO mouvement;
+	private static NiveauDAO niveau;
+	private static PermissionDAO permission;
+	private static ReposDAO repos;
+	private static SerieDAO serie;
+	private static UtilisateurDAO utilisateur;
+
+	public static CibleDAO getCibleDAO() {
+		if (cible == null) {
+			cible = new CibleDAO(Cible.class);
+		}
+		return cible;
+	}
+
 	@Deprecated
 	public static EnchainableDAO getEnchainableDAO() {
 		if (enchainable == null) {
@@ -54,24 +62,7 @@ public class DAOFactory {
 		}
 		return enchainable;
 	}
-	public static MouvementDAO getMouvementDAO() {
-		if (mouvement == null) {
-			mouvement = new MouvementDAO(Mouvement.class);
-		}
-		return mouvement;
-	}
-	public static CibleDAO getCibleDAO() {
-		if (cible == null) {
-			cible = new CibleDAO(Cible.class);
-		}
-		return cible;
-	}
-	public static ReposDAO getReposDAO() {
-		if (repos == null) {
-			repos = new ReposDAO(Repos.class);
-		}
-		return repos;
-	}
+
 	public static EntrainementDAO getEntrainementDAO() {
 		if (entrainement == null) {
 			entrainement = new EntrainementDAO(Entrainement.class);
@@ -93,6 +84,13 @@ public class DAOFactory {
 		return groupe;
 	}
 
+	public static MouvementDAO getMouvementDAO() {
+		if (mouvement == null) {
+			mouvement = new MouvementDAO(Mouvement.class);
+		}
+		return mouvement;
+	}
+
 	public static NiveauDAO getNiveauDAO() {
 		if (niveau == null) {
 			niveau = new NiveauDAO(Niveau.class);
@@ -105,6 +103,13 @@ public class DAOFactory {
 			permission = new PermissionDAO(Permission.class);
 		}
 		return permission;
+	}
+
+	public static ReposDAO getReposDAO() {
+		if (repos == null) {
+			repos = new ReposDAO(Repos.class);
+		}
+		return repos;
 	}
 
 	public static SerieDAO getSerieDAO() {
@@ -120,11 +125,13 @@ public class DAOFactory {
 		}
 		return utilisateur;
 	}
-	
-	//public static DAO getFactory(Class factoryClass,Class beanClass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
-		//System.out.println(beanClass.getName());
-		//return (DAO) factoryClass.getConstructor(beanClass).newInstance();
-	//}
+
+	// public static DAO getFactory(Class factoryClass,Class beanClass) throws
+	// InstantiationException, IllegalAccessException, IllegalArgumentException,
+	// InvocationTargetException, NoSuchMethodException, SecurityException{
+	// System.out.println(beanClass.getName());
+	// return (DAO) factoryClass.getConstructor(beanClass).newInstance();
+	// }
 
 	private DAOFactory() {
 	}

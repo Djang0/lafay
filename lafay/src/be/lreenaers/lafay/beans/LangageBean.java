@@ -21,16 +21,16 @@ import javax.faces.event.ValueChangeEvent;
 @SessionScoped
 public class LangageBean implements Serializable {
 
+	private static Map<String, Object> countries;
+
 	private static final long serialVersionUID = 1L;
 
-	private String localeCode;
-
-	private static Map<String, Object> countries;
 	static {
 		countries = new LinkedHashMap<String, Object>();
 		countries.put("Français", Locale.FRENCH); // label, value
 		// countries.put("Chinese", Locale.SIMPLIFIED_CHINESE);
 	}
+	private String localeCode;
 
 	// value change event listener
 	public void countryLocaleCodeChanged(ValueChangeEvent e) {

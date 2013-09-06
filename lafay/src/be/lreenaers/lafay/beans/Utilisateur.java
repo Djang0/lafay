@@ -19,20 +19,21 @@ public class Utilisateur extends Bean {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String nom;
-	private String prenom;
 	private String email;
-	private String pseudo;
-	private String passe;
+	@Reference
+	private List<Groupe> groups;
 	private String hash;
 	@Reference
 	private Niveau niveau;
-	@Reference
-	private List<Groupe> groups;
+	private String nom;
+	private String passe;
+	private String prenom;
+	private String pseudo;
 
-	public Utilisateur(){
+	public Utilisateur() {
 		super();
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -155,6 +156,7 @@ public class Utilisateur extends Bean {
 	public void setPasse(String passe) {
 		this.passe = passe;
 	}
+
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
@@ -162,5 +164,5 @@ public class Utilisateur extends Bean {
 	public void setPseudo(String nomUtilisateur) {
 		this.pseudo = nomUtilisateur;
 	}
-	
+
 }

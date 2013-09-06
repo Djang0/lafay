@@ -23,6 +23,7 @@ public class Entrainement extends Bean {
 	private Niveau niveau;
 	@Reference
 	private Utilisateur utilisateur;
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -54,12 +55,17 @@ public class Entrainement extends Bean {
 			return false;
 		return true;
 	}
+
 	public Date getDebutEntrainement() {
 		return debutEntrainement;
 	}
 
 	public Date getFinEntrainement() {
 		return finEntrainement;
+	}
+
+	public Niveau getNiveau() {
+		return niveau;
 	}
 
 	public Utilisateur getUtilisateur() {
@@ -90,14 +96,12 @@ public class Entrainement extends Bean {
 		this.finEntrainement = finEntrainement;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
-	}
-	public Niveau getNiveau() {
-		return niveau;
-	}
 	public void setNiveau(Niveau niveau) {
 		this.niveau = niveau;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 }

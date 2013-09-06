@@ -24,8 +24,8 @@ public class EmailValidator implements Validator {
 			+ "[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*"
 			+ "(\\.[A-Za-z]{2,})$";
 
-	private Pattern pattern;
 	private Matcher matcher;
+	private Pattern pattern;
 
 	public EmailValidator() {
 		pattern = Pattern.compile(EMAIL_PATTERN);

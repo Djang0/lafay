@@ -24,19 +24,6 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 	protected ListDataModel<C> entityClassList;
 	protected List<C> filtered;
 
-	public String getNavigationString(Direction action){
-		
-		String act = action.getAction();
-		if(act == null ){
-			act="List";
-		}
-		String ctrl = cls.getSimpleName();
-		if (act.equals("Connect") || act.equals("Forbide") || act.equals("Board")){
-			ctrl = "Utilisateur";
-		}
-		String navigationString = ctrl+act;
-		return navigationString;
-	}
 	public Controler(Class<C> ccls) {
 		cls = ccls;
 		selectDAO();
@@ -49,6 +36,10 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String add() {
+		return getNavigationString(new CreateDirection());
 	}
 
 	@Override
@@ -72,9 +63,7 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 		entityClassList.setWrappedData(dao.all());
 		return getNavigationString(new ListDirection());
 	}
-	public String add(){
-		return getNavigationString(new CreateDirection());
-	}
+
 	public Class<C> getCls() {
 		return cls;
 	}
@@ -102,6 +91,21 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 	@Override
 	public List<C> getFiltered() {
 		return filtered;
+	}
+
+	public String getNavigationString(Direction action) {
+
+		String act = action.getAction();
+		if (act == null) {
+			act = "List";
+		}
+		String ctrl = cls.getSimpleName();
+		if (act.equals("Connect") || act.equals("Forbide")
+				|| act.equals("Board")) {
+			ctrl = "Utilisateur";
+		}
+		String navigationString = ctrl + act;
+		return navigationString;
 	}
 
 	@Override

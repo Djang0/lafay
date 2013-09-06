@@ -16,8 +16,8 @@ import com.google.code.morphia.Datastore;
  * 
  */
 public abstract class DAO<T> {
-	protected Class<T> entityClass;
 	protected Datastore ds;
+	protected Class<T> entityClass;
 
 	public DAO(Class<T> entityClass) {
 		this.entityClass = entityClass;

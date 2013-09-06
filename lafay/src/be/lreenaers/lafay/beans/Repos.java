@@ -9,28 +9,9 @@ public class Repos extends Enchainable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String label;
 	private int duree;
-	public String getLabel() {
-		return label;
-	}
-	public void setLabel(String label) {
-		this.label = label;
-	}
-	public int getDuree() {
-		return duree;
-	}
-	public void setDuree(int duree) {
-		this.duree = duree;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + duree;
-		result = prime * result + ((label == null) ? 0 : label.hashCode());
-		return result;
-	}
+	private String label;
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -48,6 +29,31 @@ public class Repos extends Enchainable {
 		} else if (!label.equals(other.label))
 			return false;
 		return true;
+	}
+
+	public int getDuree() {
+		return duree;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + duree;
+		result = prime * result + ((label == null) ? 0 : label.hashCode());
+		return result;
+	}
+
+	public void setDuree(int duree) {
+		this.duree = duree;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
 	}
 
 }

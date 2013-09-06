@@ -11,48 +11,14 @@ import com.google.code.morphia.annotations.Reference;
  * 
  */
 @Entity
-public class Exercice extends Enchainable{
+public class Exercice extends Enchainable {
 	private static final long serialVersionUID = 1L;
+	private int dureePause;
 	@Reference
 	private Mouvement mouvement;
 	private int nombreDeSerie;
-	private int dureePause;
 	private int repetitionMinimum;
-	
-	public Mouvement getMouvement() {
-		return mouvement;
-	}
-	public void setMouvement(Mouvement mouvement) {
-		this.mouvement = mouvement;
-	}
-	public void remove(Mouvement tmp){
-		if (this.mouvement.equals(tmp)){
-			this.mouvement = null;
-		}
-	}
-	public int getNombreDeSerie() {
-		return nombreDeSerie;
-	}
-	public void setNombreDeSerie(int nombreDeSerie) {
-		this.nombreDeSerie = nombreDeSerie;
-	}
-	public int getDureePause() {
-		return dureePause;
-	}
-	public void setDureePause(int dureePause) {
-		this.dureePause = dureePause;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + dureePause;
-		result = prime * result
-				+ ((mouvement == null) ? 0 : mouvement.hashCode());
-		result = prime * result + nombreDeSerie;
-		result = prime * result + repetitionMinimum;
-		return result;
-	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -75,9 +41,53 @@ public class Exercice extends Enchainable{
 			return false;
 		return true;
 	}
+
+	public int getDureePause() {
+		return dureePause;
+	}
+
+	public Mouvement getMouvement() {
+		return mouvement;
+	}
+
+	public int getNombreDeSerie() {
+		return nombreDeSerie;
+	}
+
 	public int getRepetitionMinimum() {
 		return repetitionMinimum;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + dureePause;
+		result = prime * result
+				+ ((mouvement == null) ? 0 : mouvement.hashCode());
+		result = prime * result + nombreDeSerie;
+		result = prime * result + repetitionMinimum;
+		return result;
+	}
+
+	public void remove(Mouvement tmp) {
+		if (this.mouvement.equals(tmp)) {
+			this.mouvement = null;
+		}
+	}
+
+	public void setDureePause(int dureePause) {
+		this.dureePause = dureePause;
+	}
+
+	public void setMouvement(Mouvement mouvement) {
+		this.mouvement = mouvement;
+	}
+
+	public void setNombreDeSerie(int nombreDeSerie) {
+		this.nombreDeSerie = nombreDeSerie;
+	}
+
 	public void setRepetitionMinimum(int repetitionMinimum) {
 		this.repetitionMinimum = repetitionMinimum;
 	}

@@ -16,8 +16,8 @@ public class Mouvement extends Bean {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String nom;
 	private String description;
+	private String nom;
 
 	@Override
 	public boolean equals(Object obj) {
