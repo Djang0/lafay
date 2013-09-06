@@ -16,7 +16,7 @@
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
 			<p:dataTable id="users" resizableColumns="true"
-				value="#{permissionCtrl.permissions}" var="p" editable="true"
+				value="#{permissionCtrl.entityClassList}" var="p" editable="true"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
@@ -54,7 +54,7 @@
 
 				</p:column>
 			</p:dataTable>
-			<p:commandButton id="addbut" action="#{permissionCtrl.goCreate}"
+			<p:commandButton id="addbut" action="#{permissionCtrl.add}"
 				icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}" />
 			<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip"
 				hideEffect="fade" />

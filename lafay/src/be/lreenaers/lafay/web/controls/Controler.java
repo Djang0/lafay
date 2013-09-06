@@ -7,6 +7,7 @@ import javax.faces.model.ListDataModel;
 import org.primefaces.event.RowEditEvent;
 
 import be.lreenaers.lafay.DAOs.DAO;
+import be.lreenaers.lafay.web.directions.CreateDirection;
 import be.lreenaers.lafay.web.directions.Direction;
 import be.lreenaers.lafay.web.directions.ListDirection;
 import be.lreenaers.lafay.web.interfaces.Controlable;
@@ -71,7 +72,9 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 		entityClassList.setWrappedData(dao.all());
 		return getNavigationString(new ListDirection());
 	}
-
+	public String add(){
+		return getNavigationString(new CreateDirection());
+	}
 	public Class<C> getCls() {
 		return cls;
 	}
