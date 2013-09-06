@@ -30,27 +30,27 @@
 </lifecycle>
 <navigation-rule>
 	<navigation-case>
-		<from-outcome>goCreateEnch</from-outcome>
+		<from-outcome>EnchainableCreate</from-outcome>
 		<to-view-id>/enchainable/creation.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goExMod</from-outcome>
+		<from-outcome>EnchainableModify</from-outcome>
 		<to-view-id>/exercice/modifier.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goEnchList</from-outcome>
+		<from-outcome>EnchainableList</from-outcome>
 		<to-view-id>/enchainable/liste.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goCreateEx</from-outcome>
+		<from-outcome>ExerciceCreate</from-outcome>
 		<to-view-id>/exercice/creation.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goExLst</from-outcome>
+		<from-outcome>ExerciceList</from-outcome>
 		<to-view-id>/exercice/liste.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
@@ -60,27 +60,27 @@
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goModGroup</from-outcome>
+		<from-outcome>GroupeModify</from-outcome>
 		<to-view-id>/groupe/modifier.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goGrpList</from-outcome>
+		<from-outcome>GroupeList</from-outcome>
 		<to-view-id>/groupe/liste.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goCreateGroup</from-outcome>
+		<from-outcome>GroupeCreate</from-outcome>
 		<to-view-id>/groupe/creation.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goCreatePerm</from-outcome>
+		<from-outcome>PermissionCreate</from-outcome>
 		<to-view-id>/permission/creation.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
-		<from-outcome>goPermList</from-outcome>
+		<from-outcome>PermissionList</from-outcome>
 		<to-view-id>/permission/liste.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
