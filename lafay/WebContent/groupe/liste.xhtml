@@ -16,7 +16,7 @@
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
 			<p:dataTable id="users" resizableColumns="true"
-				value="#{groupeCtrl.groupes}" var="g" editable="true"
+				value="#{groupeCtrl.entityClassList}" var="g" editable="true"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
@@ -59,7 +59,7 @@
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 			</p:dataTable>
-			<p:commandButton id="addbut" action="#{groupeCtrl.goCreate}"
+			<p:commandButton id="addbut" action="#{groupeCtrl.add}"
 				icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}" />
 			<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip"
 				hideEffect="fade" />

@@ -16,7 +16,7 @@
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
 			<p:dataTable id="exes" resizableColumns="true"
-				value="#{exerciceCtrl.exercices}" var="e" editable="true"
+				value="#{exerciceCtrl.entityClassList}" var="e" editable="true"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
@@ -60,7 +60,7 @@
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 			</p:dataTable>
-			<p:commandButton id="addbut" action="#{exerciceCtrl.goCreate}"
+			<p:commandButton id="addbut" action="#{exerciceCtrl.add}"
 				icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}" />
 			<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip"
 				hideEffect="fade" />

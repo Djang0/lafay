@@ -16,7 +16,7 @@
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
 			<p:dataTable id="users" resizableColumns="true"
-				value="#{enchainableCtrl.enchainables}" var="g" editable="true"
+				value="#{enchainableCtrl.entityClassList}" var="g" editable="true"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
@@ -63,7 +63,7 @@
 								value="#{g.exercice}" converter="exerciceConverter"
 								panelStyle="width:150px" effect="fade" style="width:160px">
 
-								<f:selectItems value="#{enchainableCtrl.exercices}" var="exercice"
+								<f:selectItems value="#{enchainableCtrl.entityClassList}" var="exercice"
 									itemLabel="#{exercice.nom}" itemValue="#{exercice}" />
 							</p:selectOneMenu>
 						</f:facet>
@@ -112,7 +112,7 @@
 				</p:column>
 				
 			</p:dataTable>
-			<p:commandButton id="addbut" action="#{enchainableCtrl.goCreate}"
+			<p:commandButton id="addbut" action="#{enchainableCtrl.add}"
 				icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}" />
 			<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip"
 				hideEffect="fade" />

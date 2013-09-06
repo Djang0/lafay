@@ -25,7 +25,7 @@
 					<h:outputLabel for="pausb" value="#{i18n['i18n.pausebool']}"
 						style="font-weight:bold" />
 					<p:selectBooleanCheckbox id="pausb"
-						value="#{enchainableCtrl.enchainable.pause}">
+						value="#{enchainableCtrl.entityClass.pause}">
 						<p:ajax event="change" update="nopause" />
 					</p:selectBooleanCheckbox>
 					<p:message for="pausb" display="icon" />
@@ -33,24 +33,24 @@
 						showEffect="clip" hideEffect="fade" />
 					
 					<h:outputLabel for="nom" value="#{i18n['i18n.enchname']}" style="font-weight:bold" />
-					<p:inputText id="nom" value="#{enchainableCtrl.enchainable.nom}">
+					<p:inputText id="nom" value="#{enchainableCtrl.entityClass.nom}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:message for="nom" display="icon" />
 					<p:tooltip for="nom" value="#{i18n['i18n.enchname']}" showEffect="clip" hideEffect="fade" />
 
 					<h:outputLabel id="duree" value="#{i18n['i18n.setduree']}" style="font-weight:bold" />
-					<p:spinner disabled="#{!enchainableCtrl.enchainable.pause}"
+					<p:spinner disabled="#{!enchainableCtrl.entityClass.pause}"
 						id="durspin" max="300"
-						value="#{enchainableCtrl.enchainable.dureeEnSeconde}" />
+						value="#{enchainableCtrl.entityClass.dureeEnSeconde}" />
 					<p:message for="durspin" display="icon" />
 					<p:tooltip for="durspin" value="#{i18n['i18n.setduree']}"
 						showEffect="clip" hideEffect="fade" />
 		
 					<h:outputLabel id="reps" value="#{i18n['i18n.repMin']}" style="font-weight:bold" />
-					<p:spinner disabled="#{enchainableCtrl.enchainable.pause}"
+					<p:spinner disabled="#{enchainableCtrl.entityClass.pause}"
 						id="repspin" max="300"
-						value="#{enchainableCtrl.enchainable.repetitionMinimum}" />
+						value="#{enchainableCtrl.entityClass.repetitionMinimum}" />
 					<p:message for="repspin" display="icon" />
 					<p:tooltip for="repspin" value="#{i18n['i18n.repMin']}"
 						showEffect="clip" hideEffect="fade" />
@@ -58,15 +58,15 @@
 
 					<h:outputLabel for="label" value="#{i18n['i18n.exname']}"
 						style="font-weight:bold" />
-					<p:selectOneMenu disabled="#{enchainableCtrl.enchainable.pause}"
-						id="label" value="#{enchainableCtrl.enchainable.exercice}"
+					<p:selectOneMenu disabled="#{enchainableCtrl.entityClass.pause}"
+						id="label" value="#{enchainableCtrl.entityClass.exercice}"
 						converter="exerciceConverter" panelStyle="width:150px"
 						effect="fade" style="width:160px" filter="true"
 						filterMatchMode="contains">
 						<f:selectItem itemLabel="Select One" itemValue="#{null}" />
 
 
-						<f:selectItems value="#{enchainableCtrl.exercices}" var="exercice"
+						<f:selectItems value="#{enchainableCtrl.entityClassList}" var="exercice"
 							itemLabel="#{exercice.nom}" itemValue="#{exercice}" />
 					</p:selectOneMenu>
 

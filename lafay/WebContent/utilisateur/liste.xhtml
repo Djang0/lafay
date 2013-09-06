@@ -12,7 +12,7 @@
 	<ui:define name="content">
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
-			<p:dataTable var="u" value="#{utilisateurCtrl.utilisateurs}"
+			<p:dataTable var="u" value="#{utilisateurCtrl.entityClassList}"
 				id="users" editable="true" resizableColumns="true" paginator="true"
 				rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -96,7 +96,7 @@
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 			</p:dataTable>
-			<p:commandButton id="addbut" action="#{utilisateurCtrl.goCreate}"
+			<p:commandButton id="addbut" action="#{utilisateurCtrl.add}"
 				icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}" />
 			<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip"
 				hideEffect="fade" />

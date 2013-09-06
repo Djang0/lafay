@@ -20,7 +20,7 @@
 
 					<h:outputLabel for="name" value="#{i18n['i18n.nom']}"
 						style="font-weight:bold" />
-					<p:inputText id="name" value="#{utilisateurCtrl.utilisateur.nom}"
+					<p:inputText id="name" value="#{utilisateurCtrl.entityClass.nom}"
 						label="#{i18n['i18n.nom']}" required="true"
 						requiredMessage="#{i18n['i18n.nomreq']}">
 						<f:validateLength minimum="2" />
@@ -32,7 +32,7 @@
 					<h:outputLabel for="surname" value="#{i18n['i18n.prenom']}"
 						style="font-weight:bold" />
 					<p:inputText id="surname" Label="#{i18n['i18n.prenom']}"
-						value="#{utilisateurCtrl.utilisateur.prenom}" required="true"
+						value="#{utilisateurCtrl.entityClass.prenom}" required="true"
 						requiredMessage="#{i18n['i18n.prenreq']}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
@@ -43,7 +43,7 @@
 					<h:outputLabel for="mail" value="#{i18n['i18n.email']}"
 						style="font-weight:bold" />
 					<p:inputText id="mail" label="#{i18n['i18n.email']}"
-						value="#{utilisateurCtrl.utilisateur.email}" required="true"
+						value="#{utilisateurCtrl.entityClass.email}" required="true"
 						requiredMessage="#{i18n['i18n.mailreq']}">
 						<f:validator
 							validatorId="be.lreenaers.lafay.web.validators.UniqueEmailValidator" />
@@ -57,7 +57,7 @@
 					<h:outputLabel for="pseudo" value="#{i18n['i18n.pseudo']}"
 						style="font-weight:bold" />
 					<p:inputText id="pseudo" label="#{i18n['i18n.pseudo']}"
-						value="#{utilisateurCtrl.utilisateur.pseudo}" required="true"
+						value="#{utilisateurCtrl.entityClass.pseudo}" required="true"
 						requiredMessage="#{i18n['i18n.pseudoreq']}">
 						<f:validator
 							validatorId="be.lreenaers.lafay.web.validators.UniquePseudoValidator" />
@@ -70,7 +70,7 @@
 						style="font-weight:bold" />
 					<p:password feedback="true" inline="true"
 						label="#{i18n['i18n.pws']}"
-						value="#{utilisateurCtrl.utilisateur.passe}" required="true"
+						value="#{utilisateurCtrl.entityClass.passe}" required="true"
 						id="pwd1" match="pwd2" requiredMessage="#{i18n['i18n.pwsreq']}"
 						promptLabel="#{i18n['i18n.prompt_strength']}"
 						weakLabel="#{i18n['i18n.strength_WEAK']}"
@@ -85,7 +85,7 @@
 					<h:outputLabel for="pwd2" value="#{i18n['i18n.pwsConf']}"
 						style="font-weight:bold" />
 					<p:password label="#{i18n['i18n.pwsConf']}"
-						value="#{utilisateurCtrl.utilisateur.passe}" id="pwd2"
+						value="#{utilisateurCtrl.entityClass.passe}" id="pwd2"
 						required="true" requiredMessage="#{i18n['i18n.confreq']}">
 						<f:validateLength minimum="6" />
 					</p:password>
