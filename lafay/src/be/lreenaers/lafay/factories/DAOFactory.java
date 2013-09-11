@@ -30,10 +30,8 @@ import be.lreenaers.lafay.beans.Groupe;
  * @author media
  * 
  */
-@SuppressWarnings("deprecation")
 public class DAOFactory {
 	private static CibleDAO cible;
-	@Deprecated
 	private static EnchainableDAO enchainable;
 	private static EntrainementDAO entrainement;
 	private static ExerciceDAO exercice;
@@ -52,7 +50,6 @@ public class DAOFactory {
 		return cible;
 	}
 
-	@Deprecated
 	public static EnchainableDAO getEnchainableDAO() {
 		if (enchainable == null) {
 			enchainable = new EnchainableDAO(Enchainable.class);

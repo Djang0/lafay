@@ -8,4 +8,7 @@ public class CibleDAO extends DAO<Cible> {
 		super(entityClass);
 	}
 
+	@Override
+	public void deleteRelatedAncestors(Cible entity) {}
+
 }

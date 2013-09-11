@@ -49,7 +49,7 @@ public class Niveau extends Bean {
 		return this.nom;
 	}
 
-	public List<Enchainable> getSeries() {
+	public List<Enchainable> getEnchainable() {
 		return enchainables;
 	}
 
@@ -71,7 +71,7 @@ public class Niveau extends Bean {
 		this.nom = nom;
 	}
 
-	public void setSeries(List<Enchainable> series) {
-		this.enchainables = series;
+	public void setEnchainables(List<Enchainable> enchainables) {
+		this.enchainables = enchainables;
 	}
 }

@@ -3,7 +3,7 @@ package be.lreenaers.lafay.beans;
 import com.google.code.morphia.annotations.Entity;
 
 @Entity
-public class Repos extends Enchainable {
+public class Repos extends Bean {
 
 	/**
 	 * 

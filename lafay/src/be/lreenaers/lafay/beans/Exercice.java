@@ -11,7 +11,7 @@ import com.google.code.morphia.annotations.Reference;
  * 
  */
 @Entity
-public class Exercice extends Enchainable {
+public class Exercice extends Bean {
 	private static final long serialVersionUID = 1L;
 	private int dureePause;
 	@Reference
