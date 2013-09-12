@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+
+			<h1 class="title ui-widget-header ui-corner-all">
+				<h:outputText value="#{i18n['i18n.grpedit']}" />
+			</h1>
+			<p:panel header="#{i18n['i18n.edit']}">
+				<h:panelGrid columns="4">
+
+					<h:outputLabel for="label" value="#{i18n['i18n.grpname']}"
+						style="font-weight:bold" />
+					<p:inputText id="label" value="#{groupeCtrl.entityClassEdit.nom}"
+						label="#{i18n['i18n.grpname']}" required="true"
+						requiredMessage="#{i18n['i18n.grpnamereq']}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+					<p:message for="label" display="icon" />
+					<p:tooltip for="label" value="#{i18n['i18n.grpname']}"
+						showEffect="clip" hideEffect="fade" />
+				</h:panelGrid>
+
+				<h3 class="title ui-widget-header ui-corner-all">
+					<h:outputText value="#{i18n['i18n.grpperms']}" />
+				</h3>
+				<p:pickList id="permlist" value="#{groupeCtrl.pickEdit}"
+					var="permission" itemLabel="#{permission.valeur}"
+					itemValue="#{permission}" converter="permissionConverter" showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" >
+					<f:facet name="sourceCaption"><h:outputText value="#{i18n['i18n.available']}" /></f:facet>  
+        			<f:facet name="targetCaption"><h:outputText value="#{i18n['i18n.selected']}" /></f:facet>  
+					<p:ajax event="transfer" listener="#{groupeCtrl.onTransferEdit}"
+						update="growl" />
+					<p:column style="width:75%;">  
+            #{permission.valeur}  
+        </p:column>
+				</p:pickList>
+
+				<p:commandButton id="saveButton" update="growl"
+					value="#{i18n['i18n.save']}" action="#{groupeCtrl.update}" />
+				<p:tooltip for="saveButton" value="#{i18n['i18n.save']}"
+					showEffect="clip" hideEffect="fade" />
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
