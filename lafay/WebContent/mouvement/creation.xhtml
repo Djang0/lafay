@@ -14,38 +14,36 @@
 			<p:growl id="growl" showDetail="true" sticky="true" />
 
 			<h1 class="title ui-widget-header ui-corner-all">
-				<h:outputText value="#{i18n['groupe.add']}" />
+				<h:outputText value="#{i18n['mouvement.add']}" />
 			</h1>
 			<p:panel header="#{i18n['common.add']}">
 				<h:panelGrid columns="4">
 
-					<h:outputLabel for="label" value="#{i18n['groupe.name']}"
+					<h:outputLabel for="label" value="#{i18n['mouvement.name']}"
 						style="font-weight:bold" />
-					<p:inputText id="label" value="#{groupeCtrl.entityClass.nom}"
-						label="#{i18n['groupe.name']}" required="true"
-						requiredMessage="#{i18n['groupe.name.required']}">
+					<p:inputText id="label" value="#{mouvementCtrl.entityClass.nom}"
+						label="#{i18n['mouvement.name']}" required="true"
+						requiredMessage="#{i18n['mouvement.name.required']}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:message for="label" display="icon" />
-					<p:tooltip for="label" value="#{i18n['groupe.name']}"
+					<p:tooltip for="label" value="#{i18n['mouvement.name']}"
 						showEffect="clip" hideEffect="fade" />
+						
+					<h:outputLabel for="desc" value="#{i18n['mouvement.desc']}"
+						style="font-weight:bold" />
+					<p:inputTextarea rows="6" cols="33" id="desc" value="#{mouvementCtrl.entityClass.description}"
+						label="#{i18n['mouvement.desc.tip']}" required="true"
+						requiredMessage="#{i18n['mouvement.desc.required']}"><f:validateLength minimum="2" /></p:inputTextarea> 
+						<p:message for="desc" display="icon" />
+					<p:tooltip for="desc" value="#{i18n['mouvement.desc.tip']}"
+						showEffect="clip" hideEffect="fade" />	
 				</h:panelGrid>
 
-				<h3 class="title ui-widget-header ui-corner-all">
-					<h:outputText value="#{i18n['groupe.perms.tip']}" />
-				</h3>
-				<p:pickList id="permlist" value="#{groupeCtrl.pickEdit}"
-					var="permission" itemLabel="#{permission.valeur}"
-					itemValue="#{permission}" converter="permissionConverter">
-					<p:ajax event="transfer" listener="#{groupeCtrl.onTransferCreate}"
-						update="growl" />
-					<p:column style="width:75%;">  
-            #{permission.valeur}  
-        </p:column>
-				</p:pickList>
+				
 
 				<p:commandButton id="saveButton" update="growl"
-					value="#{i18n['common.create']}" action="#{groupeCtrl.create}" />
+					value="#{i18n['common.create']}" action="#{mouvementCtrl.create}" />
 				<p:tooltip for="saveButton" value="#{i18n['common.create']}"
 					showEffect="clip" hideEffect="fade" />
 			</p:panel>

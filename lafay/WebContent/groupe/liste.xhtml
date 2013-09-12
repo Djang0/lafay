@@ -11,7 +11,7 @@
 
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">
-			<h:outputText value="#{i18n['common.groupe.list']}" />
+			<h:outputText value="#{i18n['groupe.list']}" />
 		</h1>
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
@@ -27,7 +27,7 @@
 					update=":form:messages" />
 				<p:ajax event="rowEditCancel" listener="#{groupeCtrl.onCancel}"
 					update=":form:messages" />
-				<p:column headerText="#{i18n['common.groupe']}" sortBy="nom"
+				<p:column headerText="#{i18n['groupe']}" sortBy="nom"
 					filterMatchMode="contains" filterBy="#{g.nom}" style="width:80%">
 					<p:cellEditor>
 						<f:facet name="output">
