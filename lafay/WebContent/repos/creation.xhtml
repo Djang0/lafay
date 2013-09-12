@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+
+			<h1 class="title ui-widget-header ui-corner-all">
+				<h:outputText value="#{i18n['repos.add']}" />
+			</h1>
+			<p:panel header="#{i18n['common.add']}">
+				<h:panelGrid columns="4">
+
+					<h:outputLabel for="label" value="#{i18n['repos.name']}"
+						style="font-weight:bold" />
+					<p:inputText id="label" value="#{reposCtrl.entityClass.label}"
+						label="#{i18n['repos.name']}" required="true"
+						requiredMessage="#{i18n['repos.name.required']}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+					<p:message for="label" display="icon" />
+					<p:tooltip for="label" value="#{i18n['repos.name']}"
+						showEffect="clip" hideEffect="fade" />
+						
+						
+					<h:outputLabel for="spinnerBasic" value="#{i18n['repos.duree']}" style="font-weight:bold"/>  
+            		<p:spinner id="spinnerBasic" value="#{reposCtrl.entityClass.duree}" label="#{i18n['repos.duree.tip']}"/>  
+            		<p:message for="spinnerBasic" display="icon" />
+					<p:tooltip for="spinnerBasic" value="#{i18n['repos.duree.tip']}" showEffect="clip" hideEffect="fade" />
+				</h:panelGrid>
+
+				
+
+				<p:commandButton id="saveButton" update="growl"
+					value="#{i18n['common.create']}" action="#{reposCtrl.create}" />
+				<p:tooltip for="saveButton" value="#{i18n['common.create']}"
+					showEffect="clip" hideEffect="fade" />
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">
+			<h:outputText value="#{i18n['repos.list']}" />
+		</h1>
+		<h:form id="form">
+			<p:growl id="messages" showDetail="true" />
+			<p:dataTable id="users" resizableColumns="true"
+				value="#{reposCtrl.entityClassList}" var="g" editable="true"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15"
+				emptyMessage="#{i18n['common.notfound']}"
+				filteredValue="#{reposCtrl.filtered}">
+
+				<p:ajax event="rowEdit" listener="#{reposCtrl.onEdit}"
+					update=":form:messages" />
+				<p:ajax event="rowEditCancel" listener="#{reposCtrl.onCancel}"
+					update=":form:messages" />
+				<p:column headerText="#{i18n['repos']}" sortBy="label"
+					filterMatchMode="contains" filterBy="#{g.label}" style="width:80%">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.label}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="nameInput" value="#{g.label}" style="width:96%">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
+					<p:tooltip for="nameInput" value="#{i18n['repos.name']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+
+				<p:column style="width:10%">
+					<p:rowEditor id="editor" />
+				</p:column>
+				<p:column style="width:5%">
+					<p:commandLink action="#{reposCtrl.delete}" id="delimg"
+						styleClass="ui-icon ui-icon-trash" ajax="false" />
+					<p:tooltip for="delimg" value="#{i18n['common.delete']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+				<p:column style="width:5%">
+					<p:commandLink id="editimg" action="#{reposCtrl.edit}"
+						styleClass="ui-icon ui-icon-wrench" ajax="false" />
+					<p:tooltip for="editimg" value="#{i18n['common.edit']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+			</p:dataTable>
+			<p:commandButton id="addbut" action="#{reposCtrl.add}"
+				icon="ui-icon-circle-plus" value="#{i18n['common.add']}" />
+			<p:tooltip for="addbut" value="#{i18n['common.add']}" showEffect="clip"
+				hideEffect="fade" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
