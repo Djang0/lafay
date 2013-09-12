@@ -35,7 +35,7 @@ public class UniquePseudoValidator implements Validator {
 				.getLocale();
 		ResourceBundle bundle = PropertyResourceBundle.getBundle(
 				"be.lreenaers.lafay.i18n.i18n", locale);
-		String err = bundle.getString("err_pseudo_not_unique");
+		String err = bundle.getString("user.pseudo.notunique");
 		if (usr != null) {
 			FacesMessage msg = new FacesMessage(err);
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);

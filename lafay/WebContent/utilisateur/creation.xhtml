@@ -13,91 +13,91 @@
 		<h:form>
 			<p:growl id="growl" showDetail="true" sticky="true" />
 			<h1 class="title ui-widget-header ui-corner-all">
-				<h:outputText value="#{i18n['i18n.usradd']}" />
+				<h:outputText value="#{i18n['user.add.tip']}" />
 			</h1>
-			<p:panel header="#{i18n['i18n.add']}">
+			<p:panel header="#{i18n['common.add']}">
 				<h:panelGrid id="grid" columns="4">
 
-					<h:outputLabel for="name" value="#{i18n['i18n.nom']}"
+					<h:outputLabel for="name" value="#{i18n['user.nom']}"
 						style="font-weight:bold" />
 					<p:inputText id="name" value="#{utilisateurCtrl.entityClass.nom}"
-						label="#{i18n['i18n.nom']}" required="true"
-						requiredMessage="#{i18n['i18n.nomreq']}">
+						label="#{i18n['user.nom']}" required="true"
+						requiredMessage="#{i18n['user.nom.required']}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:message for="name" display="icon" />
-					<p:tooltip for="name" value="#{i18n['i18n.nomtip']}"
+					<p:tooltip for="name" value="#{i18n['user.nom.tip']}"
 						showEffect="clip" hideEffect="fade" />
 
-					<h:outputLabel for="surname" value="#{i18n['i18n.prenom']}"
+					<h:outputLabel for="surname" value="#{i18n['user.prenom']}"
 						style="font-weight:bold" />
-					<p:inputText id="surname" Label="#{i18n['i18n.prenom']}"
+					<p:inputText id="surname" Label="#{i18n['user.prenom']}"
 						value="#{utilisateurCtrl.entityClass.prenom}" required="true"
-						requiredMessage="#{i18n['i18n.prenreq']}">
+						requiredMessage="#{i18n['user.prenom.required']}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:message for="surname" display="icon" />
-					<p:tooltip for="surname" value="#{i18n['i18n.prenomtip']}"
+					<p:tooltip for="surname" value="#{i18n['user.prenom.tip']}"
 						showEffect="clip" hideEffect="fade" />
 
-					<h:outputLabel for="mail" value="#{i18n['i18n.email']}"
+					<h:outputLabel for="mail" value="#{i18n['common.email']}"
 						style="font-weight:bold" />
-					<p:inputText id="mail" label="#{i18n['i18n.email']}"
+					<p:inputText id="mail" label="#{i18n['common.email']}"
 						value="#{utilisateurCtrl.entityClass.email}" required="true"
-						requiredMessage="#{i18n['i18n.mailreq']}">
+						requiredMessage="#{i18n['common.mail.required']}">
 						<f:validator
 							validatorId="be.lreenaers.lafay.web.validators.UniqueEmailValidator" />
 						<f:validator
 							validatorId="be.lreenaers.lafay.web.validators.EmailValidator" />
 					</p:inputText>
 					<p:message for="mail" display="icon" />
-					<p:tooltip for="mail" value="#{i18n['i18n.mailtip']}"
+					<p:tooltip for="mail" value="#{i18n['common.mail']}"
 						showEffect="clip" hideEffect="fade" />
 
-					<h:outputLabel for="pseudo" value="#{i18n['i18n.pseudo']}"
+					<h:outputLabel for="pseudo" value="#{i18n['user.pseudo']}"
 						style="font-weight:bold" />
-					<p:inputText id="pseudo" label="#{i18n['i18n.pseudo']}"
+					<p:inputText id="pseudo" label="#{i18n['user.pseudo']}"
 						value="#{utilisateurCtrl.entityClass.pseudo}" required="true"
-						requiredMessage="#{i18n['i18n.pseudoreq']}">
+						requiredMessage="#{i18n['user.pseudo.required']}">
 						<f:validator
 							validatorId="be.lreenaers.lafay.web.validators.UniquePseudoValidator" />
 					</p:inputText>
 					<p:message for="pseudo" display="icon" />
-					<p:tooltip for="pseudo" value="#{i18n['i18n.pseudotip']}"
+					<p:tooltip for="pseudo" value="#{i18n['user.pseudo.tip']}"
 						showEffect="clip" hideEffect="fade" />
 
-					<h:outputLabel for="pwd1" value="#{i18n['i18n.pws']}"
+					<h:outputLabel for="pwd1" value="#{i18n['user.pws']}"
 						style="font-weight:bold" />
 					<p:password feedback="true" inline="true"
-						label="#{i18n['i18n.pws']}"
+						label="#{i18n['user.pws']}"
 						value="#{utilisateurCtrl.entityClass.passe}" required="true"
-						id="pwd1" match="pwd2" requiredMessage="#{i18n['i18n.pwsreq']}"
-						promptLabel="#{i18n['i18n.prompt_strength']}"
-						weakLabel="#{i18n['i18n.strength_WEAK']}"
-						goodLabel="#{i18n['i18n.strength_GOOD']}"
-						strongLabel="#{i18n['i18n.strength_STRONG']}">
+						id="pwd1" match="pwd2" requiredMessage="#{i18n['user.pws.required']}"
+						promptLabel="#{i18n['common.prompt.strength']}"
+						weakLabel="#{i18n['common.prompt.strength.WEAK']}"
+						goodLabel="#{i18n['common.prompt.strength.GOOD']}"
+						strongLabel="#{i18n['common.prompt.strength.STRONG']}">
 						<f:validateLength minimum="6" />
 					</p:password>
 					<p:message for="pwd1" display="icon" />
-					<p:tooltip for="pwd1" value="#{i18n['i18n.pwstip']}"
+					<p:tooltip for="pwd1" value="#{i18n['user.pws.tip']}"
 						showEffect="clip" hideEffect="fade" />
 
-					<h:outputLabel for="pwd2" value="#{i18n['i18n.pwsConf']}"
+					<h:outputLabel for="pwd2" value="#{i18n['user.pws.confirmation']}"
 						style="font-weight:bold" />
-					<p:password label="#{i18n['i18n.pwsConf']}"
+					<p:password label="#{i18n['user.pws.confirmation']}"
 						value="#{utilisateurCtrl.entityClass.passe}" id="pwd2"
-						required="true" requiredMessage="#{i18n['i18n.confreq']}">
+						required="true" requiredMessage="#{i18n['user.pws.confirmation.required']}">
 						<f:validateLength minimum="6" />
 					</p:password>
 					<p:message for="pwd2" display="icon" />
-					<p:tooltip for="pwd2" value="#{i18n['i18n.pws2tip']}"
+					<p:tooltip for="pwd2" value="#{i18n['user.pws2.tip']}"
 						showEffect="clip" hideEffect="fade" />
 
 
 				</h:panelGrid>
 				<p:commandButton id="saveButton" update="growl,grid"
-					value="#{i18n['i18n.create']}" action="#{utilisateurCtrl.create}" />
-				<p:tooltip for="saveButton" value="#{i18n['i18n.create']}"
+					value="#{i18n['common.create']}" action="#{utilisateurCtrl.create}" />
+				<p:tooltip for="saveButton" value="#{i18n['common.create']}"
 					showEffect="clip" hideEffect="fade" />
 			</p:panel>
 		</h:form>

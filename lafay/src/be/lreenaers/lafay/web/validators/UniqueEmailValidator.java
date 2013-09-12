@@ -29,7 +29,7 @@ public class UniqueEmailValidator implements Validator {
 		UtilisateurDAO dao = DAOFactory.getUtilisateurDAO();
 		Utilisateur usr = dao.findByEmail(value.toString());
 		String err = BundleProvider.getBundle().getString(
-				"err_email_not_unique");
+				"user.email.notunique");
 		if (usr != null) {
 			FacesMessage msg = new FacesMessage(err);
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);

@@ -14,25 +14,25 @@
 			<p:growl id="growl" showDetail="true" sticky="true" />
 
 			<h1 class="title ui-widget-header ui-corner-all">
-				<h:outputText value="#{i18n['i18n.addgroupe']}" />
+				<h:outputText value="#{i18n['groupe.add']}" />
 			</h1>
-			<p:panel header="#{i18n['i18n.add']}">
+			<p:panel header="#{i18n['common.add']}">
 				<h:panelGrid columns="4">
 
-					<h:outputLabel for="label" value="#{i18n['i18n.grpname']}"
+					<h:outputLabel for="label" value="#{i18n['groupe.name']}"
 						style="font-weight:bold" />
 					<p:inputText id="label" value="#{groupeCtrl.entityClass.nom}"
-						label="#{i18n['i18n.grpname']}" required="true"
-						requiredMessage="#{i18n['i18n.grpnamereq']}">
+						label="#{i18n['groupe.name']}" required="true"
+						requiredMessage="#{i18n['groupe.name.required']}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:message for="label" display="icon" />
-					<p:tooltip for="label" value="#{i18n['i18n.grpname']}"
+					<p:tooltip for="label" value="#{i18n['groupe.name']}"
 						showEffect="clip" hideEffect="fade" />
 				</h:panelGrid>
 
 				<h3 class="title ui-widget-header ui-corner-all">
-					<h:outputText value="#{i18n['i18n.grpperms']}" />
+					<h:outputText value="#{i18n['groupe.perms.tip']}" />
 				</h3>
 				<p:pickList id="permlist" value="#{groupeCtrl.pickEdit}"
 					var="permission" itemLabel="#{permission.valeur}"
@@ -45,8 +45,8 @@
 				</p:pickList>
 
 				<p:commandButton id="saveButton" update="growl"
-					value="#{i18n['i18n.create']}" action="#{groupeCtrl.create}" />
-				<p:tooltip for="saveButton" value="#{i18n['i18n.create']}"
+					value="#{i18n['common.create']}" action="#{groupeCtrl.create}" />
+				<p:tooltip for="saveButton" value="#{i18n['common.create']}"
 					showEffect="clip" hideEffect="fade" />
 			</p:panel>
 		</h:form>

@@ -12,18 +12,18 @@
 	<ui:define name="content">
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:outputText value="#{i18n['i18n.email']}" style="font-weight:bold" />
+				<h:outputText value="#{i18n['common.email']}" style="font-weight:bold" />
 				<h:inputText id="email" value="#{utilisateurCtrl.entityClass.email}" />
-				<p:tooltip for="email" value="#{i18n['i18n.mailtip']}"
+				<p:tooltip for="email" value="#{i18n['common.mail']}"
 					showEffect="clip" hideEffect="fade" />
-				<h:outputText value="#{i18n['i18n.pws']}" style="font-weight:bold" />
+				<h:outputText value="#{i18n['user.pws']}" style="font-weight:bold" />
 				<h:inputSecret id="pws" value="#{utilisateurCtrl.entityClass.passe}" />
-				<p:tooltip for="pws" value="#{i18n['i18n.pwstip']}"
+				<p:tooltip for="pws" value="#{i18n['user.pws.tip']}"
 					showEffect="clip" hideEffect="fade" />
 			</h:panelGrid>
-			<h:commandButton id="logbut" value="#{i18n['i18n.conn']}"
+			<h:commandButton id="logbut" value="#{i18n['common.conn']}"
 				action="#{utilisateurCtrl.login}" />
-			<p:tooltip for="logbut" value="#{i18n['i18n.logtip']}"
+			<p:tooltip for="logbut" value="#{i18n['common.conn.tip']}"
 				showEffect="clip" hideEffect="fade" />
 		</h:form>
 

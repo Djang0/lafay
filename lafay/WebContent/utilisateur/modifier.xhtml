@@ -14,73 +14,73 @@
 		<h:form id="form">
 			<p:growl id="growl" showDetail="true" sticky="true" />
 			<h1 class="title ui-widget-header ui-corner-all">
-				<h:outputText value="#{i18n['i18n.usredit']}" />
+				<h:outputText value="#{i18n['user.edit']}" />
 			</h1>
-			<p:panel header="#{i18n['i18n.edit']}">
+			<p:panel header="#{i18n['common.edit']}">
 				<h:panelGrid id="grid" columns="4">
 
-					<h:outputLabel for="firstname" value="#{i18n['i18n.nom']}"
+					<h:outputLabel for="firstname" value="#{i18n['user.nom']}"
 						style="font-weight:bold" />
 					<p:inputText id="firstname"
 						value="#{utilisateurCtrl.entityClassEdit.nom}"
-						label="#{i18n['i18n.nom']}" required="true"
-						requiredMessage="#{i18n['i18n.nomreq']}">
+						label="#{i18n['user.nom']}" required="true"
+						requiredMessage="#{i18n['user.nom.required']}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:message for="firstname" display="icon" />
-					<p:tooltip for="firstname" value="#{i18n['i18n.nomtip']}"
+					<p:tooltip for="firstname" value="#{i18n['user.nom.tip']}"
 						showEffect="clip" hideEffect="fade" />
 
-					<h:outputLabel for="surname" value="#{i18n['i18n.prenom']}"
+					<h:outputLabel for="surname" value="#{i18n['user.prenom']}"
 						style="font-weight:bold" />
-					<p:inputText id="surname" Label="#{i18n['i18n.prenom']}"
+					<p:inputText id="surname" Label="#{i18n['user.prenom']}"
 						value="#{utilisateurCtrl.entityClassEdit.prenom}" required="true"
-						requiredMessage="#{i18n['i18n.prenreq']}">
+						requiredMessage="#{i18n['user.prenom.required']}">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:message for="surname" display="icon" />
-					<p:tooltip for="surname" value="#{i18n['i18n.prenomtip']}"
+					<p:tooltip for="surname" value="#{i18n['user.prenom.tip']}"
 						showEffect="clip" hideEffect="fade" />
 
-					<h:outputLabel for="pwd1" value="#{i18n['i18n.pws']}"
+					<h:outputLabel for="pwd1" value="#{i18n['user.pws']}"
 						style="font-weight:bold" />
 					<p:password feedback="true" inline="true"
-						label="#{i18n['i18n.pws']}"
+						label="#{i18n['user.pws']}"
 						value="#{utilisateurCtrl.entityClassEdit.passe}" required="true"
-						id="pwd1" match="pwd2" requiredMessage="#{i18n['i18n.pwsreq']}"
-						promptLabel="#{i18n['i18n.prompt_strength']}"
-						weakLabel="#{i18n['i18n.strength_WEAK']}"
-						goodLabel="#{i18n['i18n.strength_GOOD']}"
-						strongLabel="#{i18n['i18n.strength_STRONG']}">
+						id="pwd1" match="pwd2" requiredMessage="#{i18n['user.pws.required']}"
+						promptLabel="#{i18n['common.prompt.strength']}"
+						weakLabel="#{i18n['common.prompt.strength.WEAK']}"
+						goodLabel="#{i18n['common.prompt.strength.GOOD']}"
+						strongLabel="#{i18n['common.prompt.strength.STRONG']}">
 						<f:validateLength minimum="6" />
 					</p:password>
 					<p:message for="pwd1" display="icon" />
-					<p:tooltip for="pwd1" value="#{i18n['i18n.pwstip']}"
+					<p:tooltip for="pwd1" value="#{i18n['user.pws.tip']}"
 						showEffect="clip" hideEffect="fade" />
 
-					<h:outputLabel for="pwd2" value="#{i18n['i18n.pwsConf']}"
+					<h:outputLabel for="pwd2" value="#{i18n['user.pws.confirmation']}"
 						style="font-weight:bold" />
-					<p:password label="#{i18n['i18n.pwsConf']}"
+					<p:password label="#{i18n['user.pws.confirmation']}"
 						value="#{utilisateurCtrl.entityClassEdit.passe}" id="pwd2"
-						required="true" requiredMessage="#{i18n['i18n.confreq']}">
+						required="true" requiredMessage="#{i18n['user.pws.confirmation.required']}">
 						<f:validateLength minimum="6" />
 					</p:password>
 					<p:message for="pwd2" display="icon" />
-					<p:tooltip for="pwd2" value="#{i18n['i18n.pws2tip']}"
+					<p:tooltip for="pwd2" value="#{i18n['user.pws2.tip']}"
 						showEffect="clip" hideEffect="fade" />
 				</h:panelGrid>
 				<h3 class="title ui-widget-header ui-corner-all">
-					<h:outputText value="#{i18n['i18n.usrgrp']}" />
+					<h:outputText value="#{i18n['user.groupe.tip']}" />
 				</h3>
 				<p:pickList id="permlist" value="#{utilisateurCtrl.pickEdit}"
 					var="group" itemLabel="#{group.nom}" itemValue="#{group}"
 					converter="groupeConverter" showSourceFilter="true"
 					showTargetFilter="true" filterMatchMode="contains">
 					<f:facet name="sourceCaption">
-						<h:outputText value="#{i18n['i18n.available']}" />
+						<h:outputText value="#{i18n['common.available']}" />
 					</f:facet>
 					<f:facet name="targetCaption">
-						<h:outputText value="#{i18n['i18n.selected']}" />
+						<h:outputText value="#{i18n['common.selected']}" />
 					</f:facet>
 					<p:ajax event="transfer"
 						listener="#{utilisateurCtrl.onTransferEdit}" update="growl" />
@@ -89,8 +89,8 @@
         			</p:column>
 				</p:pickList>
 				<p:commandButton id="saveButton" update="growl,grid"
-					value="#{i18n['i18n.save']}" action="#{utilisateurCtrl.update}" />
-				<p:tooltip for="saveButton" value="#{i18n['i18n.save']}"
+					value="#{i18n['common.save']}" action="#{utilisateurCtrl.update}" />
+				<p:tooltip for="saveButton" value="#{i18n['common.save']}"
 					showEffect="clip" hideEffect="fade" />
 			</p:panel>
 		</h:form>

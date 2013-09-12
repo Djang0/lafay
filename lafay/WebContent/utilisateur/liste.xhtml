@@ -17,25 +17,25 @@
 				rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
-				emptyMessage="#{i18n['i18n.nothingFound']}"
+				emptyMessage="#{i18n['common.notfound']}"
 				filteredValue="#{UtilisateurCtrl.filtered}">
 
 
 				<f:facet name="header">
-					<h:outputText value="#{i18n['i18n.usrlst']}" />
+					<h:outputText value="#{i18n['user.list']}" />
 				</f:facet>
 				<p:ajax event="rowEdit" listener="#{utilisateurCtrl.onEdit}"
 					update=":form:messages" />
 				<p:ajax event="rowEditCancel" listener="#{utilisateurCtrl.onCancel}"
 					update=":form:messages" />
 
-				<p:column headerText="#{i18n['i18n.id']}" sortBy="id"
+				<p:column headerText="#{i18n['common.id']}" sortBy="id"
 					filterMatchMode="contains" filterBy="#{u.id}">
 
 					<h:outputText value="#{u.id}" style="font-weight:bold" />
 
 				</p:column>
-				<p:column headerText="#{i18n['i18n.nom']}" sortBy="nom"
+				<p:column headerText="#{i18n['user.nom']}" sortBy="nom"
 					filterMatchMode="contains" filterBy="#{u.nom}">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -43,15 +43,15 @@
 						</f:facet>
 						<f:facet name="input">
 							<p:inputText id="nameInput" value="#{u.nom}" style="width:96%"
-								required="true" requiredMessage="#{i18n['i18n.prenreq']}">
+								required="true" requiredMessage="#{i18n['user.prenom.required']}">
 								<f:validateLength minimum="2" />
 							</p:inputText>
 						</f:facet>
 					</p:cellEditor>
-					<p:tooltip for="nameInput" value="#{i18n['i18n.nomtip']}"
+					<p:tooltip for="nameInput" value="#{i18n['user.nom.tip']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
-				<p:column headerText="#{i18n['i18n.prenom']}" sortBy="prenom"
+				<p:column headerText="#{i18n['user.prenom']}" sortBy="prenom"
 					filterMatchMode="contains" filterBy="#{u.prenom}">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -64,14 +64,14 @@
 							</p:inputText>
 						</f:facet>
 					</p:cellEditor>
-					<p:tooltip for="surnameInput" value="#{i18n['i18n.prenomtip']}"
+					<p:tooltip for="surnameInput" value="#{i18n['user.prenom.tip']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
-				<p:column headerText="#{i18n['i18n.pseudo']}" sortBy="pseudo"
+				<p:column headerText="#{i18n['user.pseudo']}" sortBy="pseudo"
 					filterMatchMode="contains" filterBy="#{u.pseudo}">
 					<h:outputText value="#{u.pseudo}" style="font-weight:bold" />
 				</p:column>
-				<p:column headerText="#{i18n['i18n.email']}" sortBy="email"
+				<p:column headerText="#{i18n['common.email']}" sortBy="email"
 					filterMatchMode="contains" filterBy="#{u.email}">
 					<h:outputText value="#{u.email}" style="font-weight:bold" />
 
@@ -85,20 +85,20 @@
 					<p:commandLink id="delbut"
 						actionListener="#{utilisateurCtrl.delete}" ajax="false"
 						styleClass="ui-icon ui-icon-trash" />
-					<p:tooltip for="delbut" value="#{i18n['i18n.del']}"
+					<p:tooltip for="delbut" value="#{i18n['common.delete']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 				<p:column>
 					<p:commandLink id="editbut"
 						action="#{utilisateurCtrl.edit}" ajax="false"
 						styleClass="ui-icon ui-icon-wrench" />
-					<p:tooltip for="editbut" value="#{i18n['i18n.edit']}"
+					<p:tooltip for="editbut" value="#{i18n['common.edit']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 			</p:dataTable>
 			<p:commandButton id="addbut" action="#{utilisateurCtrl.add}"
-				icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}" />
-			<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip"
+				icon="ui-icon-circle-plus" value="#{i18n['common.add']}" />
+			<p:tooltip for="addbut" value="#{i18n['common.add']}" showEffect="clip"
 				hideEffect="fade" />
 		</h:form>
 	</ui:define>

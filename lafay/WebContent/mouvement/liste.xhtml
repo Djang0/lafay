@@ -11,7 +11,7 @@
 
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">
-			<h:outputText value="#{i18n['i18n.grplst']}" />
+			<h:outputText value="#{i18n['common.groupe.list']}" />
 		</h1>
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
@@ -20,14 +20,14 @@
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
-				emptyMessage="#{i18n['i18n.nothingFound']}"
+				emptyMessage="#{i18n['common.notfound']}"
 				filteredValue="#{mouvementCtrl.filtered}">
 
 				<p:ajax event="rowEdit" listener="#{mouvementCtrl.onEdit}"
 					update=":form:messages" />
 				<p:ajax event="rowEditCancel" listener="#{mouvementCtrl.onCancel}"
 					update=":form:messages" />
-				<p:column headerText="#{i18n['i18n.grp']}" sortBy="nom"
+				<p:column headerText="#{i18n['common.groupe']}" sortBy="nom"
 					filterMatchMode="contains" filterBy="#{m.nom}" style="width:80%">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -39,7 +39,7 @@
 							</p:inputText>
 						</f:facet>
 					</p:cellEditor>
-					<p:tooltip for="nameInput" value="#{i18n['i18n.grpname']}"
+					<p:tooltip for="nameInput" value="#{i18n['groupe.name']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 
@@ -49,19 +49,19 @@
 				<p:column style="width:5%">
 					<p:commandLink action="#{mouvementCtrl.delete}" id="delimg"
 						styleClass="ui-icon ui-icon-trash" ajax="false" />
-					<p:tooltip for="delimg" value="#{i18n['i18n.del']}"
+					<p:tooltip for="delimg" value="#{i18n['common.delete']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 				<p:column style="width:5%">
 					<p:commandLink id="editimg" action="#{mouvementCtrl.edit}"
 						styleClass="ui-icon ui-icon-wrench" ajax="false" />
-					<p:tooltip for="editimg" value="#{i18n['i18n.edit']}"
+					<p:tooltip for="editimg" value="#{i18n['common.edit']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 			</p:dataTable>
 			<p:commandButton id="addbut" action="#{mouvementCtrl.add}"
-				icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}" />
-			<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip"
+				icon="ui-icon-circle-plus" value="#{i18n['common.add']}" />
+			<p:tooltip for="addbut" value="#{i18n['common.add']}" showEffect="clip"
 				hideEffect="fade" />
 		</h:form>
 

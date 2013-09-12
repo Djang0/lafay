@@ -11,7 +11,7 @@
 
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">
-			<h:outputText value="#{i18n['i18n.permlst']}" />
+			<h:outputText value="#{i18n['permission.list']}" />
 		</h1>
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
@@ -20,14 +20,14 @@
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
-				emptyMessage="#{i18n['i18n.nothingFound']}"
+				emptyMessage="#{i18n['common.notfound']}"
 				filteredValue="#{permissionCtrl.filtered}">
 
 				<p:ajax event="rowEdit" listener="#{permissionCtrl.onEdit}"
 					update=":form:messages" />
 				<p:ajax event="rowEditCancel" listener="#{permissionCtrl.onCancel}"
 					update=":form:messages" />
-				<p:column headerText="#{i18n['i18n.valeur']}" sortBy="valeur"
+				<p:column headerText="#{i18n['common.value']}" sortBy="valeur"
 					filterMatchMode="contains" filterBy="#{p.valeur}" style="width:90%">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -39,7 +39,7 @@
 							</p:inputText>
 						</f:facet>
 					</p:cellEditor>
-					<p:tooltip for="nameInput" value="#{i18n['i18n.permvalue']}"
+					<p:tooltip for="nameInput" value="#{i18n['permission.value']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
 
@@ -49,14 +49,14 @@
 				<p:column style="width:4%">
 					<p:commandLink id="delimg" action="#{permissionCtrl.delete}"
 						ajax="false" styleClass="ui-icon ui-icon-trash" />
-					<p:tooltip for="delimg" value="#{i18n['i18n.del']}"
+					<p:tooltip for="delimg" value="#{i18n['common.delete']}"
 						showEffect="clip" hideEffect="fade" />
 
 				</p:column>
 			</p:dataTable>
 			<p:commandButton id="addbut" action="#{permissionCtrl.add}"
-				icon="ui-icon-circle-plus" value="#{i18n['i18n.add']}" />
-			<p:tooltip for="addbut" value="#{i18n['i18n.add']}" showEffect="clip"
+				icon="ui-icon-circle-plus" value="#{i18n['common.add']}" />
+			<p:tooltip for="addbut" value="#{i18n['common.add']}" showEffect="clip"
 				hideEffect="fade" />
 		</h:form>
 
