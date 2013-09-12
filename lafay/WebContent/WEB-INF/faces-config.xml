@@ -30,35 +30,154 @@
 </lifecycle>
 <navigation-rule>
 	<navigation-case>
+		<from-outcome>EntrainementCreate</from-outcome>
+		<to-view-id>/entrainement/creation.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>EntrainementList</from-outcome>
+		<to-view-id>/entrainement/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>EntrainementModify</from-outcome>
+		<to-view-id>/entrainement/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>CibleCreate</from-outcome>
+		<to-view-id>/cible/creation.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>CibleList</from-outcome>
+		<to-view-id>/cible/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>CibleModify</from-outcome>
+		<to-view-id>/cible/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+
+	</navigation-case>
+
+	<navigation-case>
+		<from-outcome>NiveauCreate</from-outcome>
+		<to-view-id>/niveau/creation.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>NiveauList</from-outcome>
+		<to-view-id>/niveau/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>NiveauModify</from-outcome>
+		<to-view-id>/niveau/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+
+	<navigation-case>
+		<from-outcome>SerieCreate</from-outcome>
+		<to-view-id>/serie/creation.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>SerieList</from-outcome>
+		<to-view-id>/serie/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>SerieModify</from-outcome>
+		<to-view-id>/serie/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+
+
+
+	<navigation-case>
+		<from-outcome>ReposCreate</from-outcome>
+		<to-view-id>/repos/creation.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>ReposList</from-outcome>
+		<to-view-id>/repos/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>ReposModify</from-outcome>
+		<to-view-id>/repos/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+
+	<navigation-case>
+		<from-outcome>MouvementCreate</from-outcome>
+		<to-view-id>/mouvement/creation.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>MouvementList</from-outcome>
+		<to-view-id>/mouvement/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>MouvementModify</from-outcome>
+		<to-view-id>/mouvement/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+
+	<navigation-case>
 		<from-outcome>EnchainableCreate</from-outcome>
 		<to-view-id>/enchainable/creation.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
-	<navigation-case>
-		<from-outcome>EnchainableModify</from-outcome>
-		<to-view-id>/exercice/modifier.xhtml</to-view-id>
-		<redirect></redirect>
-	</navigation-case>
+	
 	<navigation-case>
 		<from-outcome>EnchainableList</from-outcome>
 		<to-view-id>/enchainable/liste.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>EnchainableModify</from-outcome>
+		<to-view-id>/enchainable/modifier.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
 	<navigation-case>
 		<from-outcome>ExerciceCreate</from-outcome>
 		<to-view-id>/exercice/creation.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
+	
 	<navigation-case>
 		<from-outcome>ExerciceList</from-outcome>
 		<to-view-id>/exercice/liste.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
+	
 	<navigation-case>
-		<from-outcome>UtilisateurList</from-outcome>
-		<to-view-id>/utilisateur/liste.xhtml</to-view-id>
+		<from-outcome>ExerciceModify</from-outcome>
+		<to-view-id>/exercice/modifier.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
+	
+	
 	<navigation-case>
 		<from-outcome>GroupeModify</from-outcome>
 		<to-view-id>/groupe/modifier.xhtml</to-view-id>
@@ -74,6 +193,7 @@
 		<to-view-id>/groupe/creation.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
+	
 	<navigation-case>
 		<from-outcome>PermissionCreate</from-outcome>
 		<to-view-id>/permission/creation.xhtml</to-view-id>
@@ -82,6 +202,12 @@
 	<navigation-case>
 		<from-outcome>PermissionList</from-outcome>
 		<to-view-id>/permission/liste.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	
+	<navigation-case>
+		<from-outcome>UtilisateurList</from-outcome>
+		<to-view-id>/utilisateur/liste.xhtml</to-view-id>
 		<redirect></redirect>
 	</navigation-case>
 	<navigation-case>
