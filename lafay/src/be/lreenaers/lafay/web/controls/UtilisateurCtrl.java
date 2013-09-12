@@ -64,6 +64,10 @@ public class UtilisateurCtrl extends Controler<Utilisateur> {
 		List<Groupe> g = this.entityClassEdit.getGroups();
 		this.entityClassEdit.setGroups(this.pickG.getTransfered(event,g));
 	}
+	public void onTransferCreate(TransferEvent event) { 
+		List<Groupe> g = this.entityClass.getGroups();
+		this.entityClass.setGroups(this.pickG.getTransfered(event,g));
+	}
 	public void setPickEdit(DualListModel<Groupe> pickEditGroups) {
 		this.pickG.setPicks(pickEditGroups);
 	}

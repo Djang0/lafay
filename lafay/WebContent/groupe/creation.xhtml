@@ -34,10 +34,10 @@
 				<h3 class="title ui-widget-header ui-corner-all">
 					<h:outputText value="#{i18n['i18n.grpperms']}" />
 				</h3>
-				<p:pickList id="permlist" value="#{groupeCtrl.pickCreatePerms}"
+				<p:pickList id="permlist" value="#{groupeCtrl.pickEdit}"
 					var="permission" itemLabel="#{permission.valeur}"
 					itemValue="#{permission}" converter="permissionConverter">
-					<p:ajax event="transfer" listener="#{groupeCtrl.onTransfer}"
+					<p:ajax event="transfer" listener="#{groupeCtrl.onTransferCreate}"
 						update="growl" />
 					<p:column style="width:75%;">  
             #{permission.valeur}  

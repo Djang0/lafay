@@ -13,8 +13,7 @@ public class EntityPicklist<C> {
 	private List<C> source;
 	
 	public EntityPicklist(DAO<C> dao){
-		List<C> source = dao.all();
-		source.removeAll(target);
+		source = dao.all();
 	}
 	public void setPicks(DualListModel<C> pickz) {
 		this.picks = pickz;
@@ -29,7 +28,11 @@ public class EntityPicklist<C> {
 	public List<C> getTransfered(TransferEvent event,List<C> lst){
 		for(Object item : event.getItems()){
 			C cls = (C) item;
-			lst.add(cls);
+			if(event.isAdd()){
+				lst.add(cls);
+			}else{
+				lst.remove(cls);
+			}
 		}
 		return lst;
 	}

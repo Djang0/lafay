@@ -10,6 +10,7 @@ import be.lreenaers.lafay.DAOs.DAO;
 import be.lreenaers.lafay.web.directions.CreateDirection;
 import be.lreenaers.lafay.web.directions.Direction;
 import be.lreenaers.lafay.web.directions.ListDirection;
+import be.lreenaers.lafay.web.directions.ModifyDirection;
 import be.lreenaers.lafay.web.interfaces.Controlable;
 import be.lreenaers.lafay.web.interfaces.Filterable;
 import be.lreenaers.lafay.web.interfaces.RowEditable;
@@ -37,7 +38,10 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 			e.printStackTrace();
 		}
 	}
-
+	public String edit(){
+		entityClassEdit = (C) entityClassList.getRowData();
+		return getNavigationString(new ModifyDirection());
+	}
 	public String add() {
 		return getNavigationString(new CreateDirection());
 	}

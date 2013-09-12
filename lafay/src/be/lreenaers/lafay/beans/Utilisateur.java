@@ -34,55 +34,77 @@ public class Utilisateur extends Bean {
 		super();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (!super.equals(obj)) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (!(obj instanceof Utilisateur)) {
 			return false;
+		}
 		Utilisateur other = (Utilisateur) obj;
 		if (email == null) {
-			if (other.email != null)
+			if (other.email != null) {
 				return false;
-		} else if (!email.equals(other.email))
+			}
+		} else if (!email.equals(other.email)) {
 			return false;
+		}
 		if (groups == null) {
-			if (other.groups != null)
+			if (other.groups != null) {
 				return false;
-		} else if (!groups.equals(other.groups))
+			}
+		} else if (!groups.equals(other.groups)) {
 			return false;
+		}
 		if (hash == null) {
-			if (other.hash != null)
+			if (other.hash != null) {
 				return false;
-		} else if (!hash.equals(other.hash))
+			}
+		} else if (!hash.equals(other.hash)) {
 			return false;
+		}
 		if (niveau == null) {
-			if (other.niveau != null)
+			if (other.niveau != null) {
 				return false;
-		} else if (!niveau.equals(other.niveau))
+			}
+		} else if (!niveau.equals(other.niveau)) {
 			return false;
+		}
 		if (nom == null) {
-			if (other.nom != null)
+			if (other.nom != null) {
 				return false;
-		} else if (!nom.equals(other.nom))
+			}
+		} else if (!nom.equals(other.nom)) {
 			return false;
+		}
 		if (passe == null) {
-			if (other.passe != null)
+			if (other.passe != null) {
 				return false;
-		} else if (!passe.equals(other.passe))
+			}
+		} else if (!passe.equals(other.passe)) {
 			return false;
+		}
 		if (prenom == null) {
-			if (other.prenom != null)
+			if (other.prenom != null) {
 				return false;
-		} else if (!prenom.equals(other.prenom))
+			}
+		} else if (!prenom.equals(other.prenom)) {
 			return false;
+		}
 		if (pseudo == null) {
-			if (other.pseudo != null)
+			if (other.pseudo != null) {
 				return false;
-		} else if (!pseudo.equals(other.pseudo))
+			}
+		} else if (!pseudo.equals(other.pseudo)) {
 			return false;
+		}
 		return true;
 	}
 
@@ -118,6 +140,9 @@ public class Utilisateur extends Bean {
 		return pseudo;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;

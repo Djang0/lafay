@@ -8,4 +8,6 @@ public interface Controlable {
 	public void selectDAO();
 
 	public String update();
+	public String add();
+	public String edit();
 }
