@@ -19,5 +19,4 @@ public class MouvementCtrl extends Controler<Mouvement> {
 		this.dao = DAOFactory.getMouvementDAO();
 
 	}
-
 }

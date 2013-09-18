@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+
+			<h1 class="title ui-widget-header ui-corner-all">
+				<h:outputText value="#{i18n['exercice.add']}" />
+			</h1>
+			<p:panel header="#{i18n['common.add']}">
+				<h:panelGrid columns="4">
+
+					<h:outputLabel for="label" value="#{i18n['exercice.mouvement']}"
+						style="font-weight:bold" />
+					
+					
+					<p:selectOneMenu id="label" value="#{exerciceCtrl.entityClass.mouvement}" effect="fade" converter="mouvementConverter" panelStyle="width:150px" style="width:160px" filter="true"
+						filterMatchMode="contains">  
+            			<f:selectItem itemLabel="Select One" itemValue="#{null}" />  
+            			<f:selectItems value="#{exerciceCtrl.mouvements}" var="mouvement" itemLabel="#{mouvement.nom}" itemValue="#{mouvement}"/>  
+        			</p:selectOneMenu>  
+					
+					<p:message for="label" display="icon" />
+					<p:tooltip for="label" value="#{i18n['exercice.mouvement.tip']}"
+						showEffect="clip" hideEffect="fade" />
+						
+						
+					<h:outputLabel for="spinnerBasic" value="#{i18n['exercice.dureepause']}" style="font-weight:bold"/>  
+            		<p:spinner id="spinnerBasic" value="#{exerciceCtrl.entityClass.dureePause}" label="#{i18n['exercice.dureepause.tip']}"/>  
+            		<p:message for="spinnerBasic" display="icon" />
+					<p:tooltip for="spinnerBasic" value="#{i18n['exercice.dureepause.tip']}" showEffect="clip" hideEffect="fade" />
+					
+					<h:outputLabel for="spinnerBasicserie" value="#{i18n['exercice.nombreseries']}" style="font-weight:bold"/>  
+            		<p:spinner id="spinnerBasicserie" value="#{exerciceCtrl.entityClass.nombreDeSerie}" label="#{i18n['exercice.nombreseries.tip']}"/>  
+            		<p:message for="spinnerBasicserie" display="icon" />
+					<p:tooltip for="spinnerBasicserie" value="#{i18n['exercice.nombreseries.tip']}" showEffect="clip" hideEffect="fade" />
+					
+					<h:outputLabel for="spinnerBasicrep" value="#{i18n['exercice.repetition']}" style="font-weight:bold"/>  
+            		<p:spinner id="spinnerBasicrep" value="#{exerciceCtrl.entityClass.repetitionMinimum}" label="#{i18n['exercice.repetition.tip']}"/>  
+            		<p:message for="spinnerBasicrep" display="icon" />
+					<p:tooltip for="spinnerBasicrep" value="#{i18n['exercice.repetition.tip']}" showEffect="clip" hideEffect="fade" />
+				</h:panelGrid>
+
+				
+
+				<p:commandButton id="saveButton" update="growl"
+					value="#{i18n['common.create']}" action="#{exerciceCtrl.create}" />
+				<p:tooltip for="saveButton" value="#{i18n['common.create']}"
+					showEffect="clip" hideEffect="fade" />
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

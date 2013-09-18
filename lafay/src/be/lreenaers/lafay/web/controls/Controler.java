@@ -29,6 +29,7 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 		cls = ccls;
 		selectDAO();
 		entityClassList = new ListDataModel<C>();
+		
 		try {
 			entityClassEdit = cls.newInstance();
 			entityClass = cls.newInstance();
