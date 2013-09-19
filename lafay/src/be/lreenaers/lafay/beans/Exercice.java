@@ -13,32 +13,51 @@ import com.google.code.morphia.annotations.Reference;
 @Entity
 public class Exercice extends Bean {
 	private static final long serialVersionUID = 1L;
+	private String description;
 	private int dureePause;
 	@Reference
 	private Mouvement mouvement;
 	private int nombreDeSerie;
 	private int repetitionMinimum;
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (!super.equals(obj)) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (!(obj instanceof Exercice)) {
 			return false;
+		}
 		Exercice other = (Exercice) obj;
-		if (dureePause != other.dureePause)
-			return false;
-		if (mouvement == null) {
-			if (other.mouvement != null)
+		if (description == null) {
+			if (other.description != null) {
 				return false;
-		} else if (!mouvement.equals(other.mouvement))
+			}
+		} else if (!description.equals(other.description)) {
 			return false;
-		if (nombreDeSerie != other.nombreDeSerie)
+		}
+		if (dureePause != other.dureePause) {
 			return false;
-		if (repetitionMinimum != other.repetitionMinimum)
+		}
+		if (mouvement == null) {
+			if (other.mouvement != null) {
+				return false;
+			}
+		} else if (!mouvement.equals(other.mouvement)) {
 			return false;
+		}
+		if (nombreDeSerie != other.nombreDeSerie) {
+			return false;
+		}
+		if (repetitionMinimum != other.repetitionMinimum) {
+			return false;
+		}
 		return true;
 	}
 
@@ -58,10 +77,15 @@ public class Exercice extends Bean {
 		return repetitionMinimum;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result + dureePause;
 		result = prime * result
 				+ ((mouvement == null) ? 0 : mouvement.hashCode());
@@ -90,5 +114,19 @@ public class Exercice extends Bean {
 
 	public void setRepetitionMinimum(int repetitionMinimum) {
 		this.repetitionMinimum = repetitionMinimum;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

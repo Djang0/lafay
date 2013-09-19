@@ -16,43 +16,98 @@
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
 			<p:dataTable id="users" resizableColumns="true"
-				value="#{exerciceCtrl.entityClassList}" var="g" paginator="true" rows="10"
+				value="#{exerciceCtrl.entityClassList}" var="g" paginator="true" rows="10" editable="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
 				emptyMessage="#{i18n['common.notfound']}"
 				filteredValue="#{exerciceCtrl.filtered}">
-				<p:column headerText="#{i18n['exercice']}"  style="width:80%">
+				<p:column headerText="#{i18n['exercice']}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.description}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="nameInput" value="#{g.description}" style="width:96%">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
+					<p:tooltip for="nameInput" value="#{i18n['exercice.description']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+				
+				<p:ajax event="rowEdit" listener="#{exerciceCtrl.onEdit}"
+					update=":form:messages" />
+				<p:ajax event="rowEditCancel" listener="#{exerciceCtrl.onCancel}"
+					update=":form:messages" />
+				<p:column headerText="#{i18n['mouvement']}" style="width:8%">
 						<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{g.mouvement.nom}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText id="nameInput" value="#{g.mouvement.nom}" style="width:96%">
-								<f:validateLength minimum="2" />
-							</p:inputText>
+							<p:selectOneMenu id="label" value="#{g.mouvement}" effect="fade" converter="mouvementConverter" panelStyle="width:100px" style="width:90px" filter="true" filterMatchMode="contains">  
+            					<f:selectItem itemLabel="Select One" itemValue="#{null}" />  
+            					<f:selectItems value="#{exerciceCtrl.mouvements}" var="mouvement" itemLabel="#{mouvement.nom}" itemValue="#{mouvement}"/>  
+        					</p:selectOneMenu>
 						</f:facet>
 					</p:cellEditor>
-					<p:tooltip for="nameInput" value="#{i18n['groupe.name']}"
+					<p:tooltip for="label" value="#{i18n['mouvement.name']}"
 						showEffect="clip" hideEffect="fade" />	
 				</p:column>
 
-				<p:column headerText="#{i18n['common.repetition']}"  style="width:7%">
-					<h:outputText value="#{g.repetitionMinimum}" />
-				</p:column>
-				<p:column headerText="#{i18n['exercice.nombreseries']}"  style="width:5%">
-					<h:outputText value="#{g.nombreDeSerie}" />
-				</p:column>
-				<p:column headerText="#{i18n['common.pause']}"  style="width:5%">
-					<h:outputText value="#{g.dureePause}" />
+
+				<p:column headerText="#{i18n['common.repetition']}" style="width:100px">
+				<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.repetitionMinimum}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:spinner id="spinnerBasicrep" value="#{g.repetitionMinimum}" label="#{i18n['exercice.repetition.tip']}" min="0" max="500" size="3"/>
+						</f:facet>
+				</p:cellEditor>
+					<p:tooltip for="spinnerBasicrep" value="#{i18n['exercice.repetition.tip']}" showEffect="clip" hideEffect="fade" />
 				</p:column>
 				
-				<p:column style="width:5%">
+				
+				<p:column headerText="#{i18n['exercice.nombreseries']}" style="width:100px">
+					<p:cellEditor>
+					
+						<f:facet name="output" >
+						
+							<h:outputText value="#{g.nombreDeSerie}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:spinner id="spinnerBasicserie" value="#{g.nombreDeSerie}" label="#{i18n['exercice.nombreseries.tip']}"  min="0" max="500" size="3"/>  
+						</f:facet>
+					</p:cellEditor>
+					<p:tooltip for="spinnerBasicserie" value="#{i18n['exercice.nombreseries.tip']}" showEffect="clip" hideEffect="fade" />
+				</p:column>
+				
+				
+				<p:column headerText="#{i18n['common.pause']}" style="width:100px">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.dureePause}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:spinner id="spinnerBasic" value="#{g.dureePause}" label="#{i18n['exercice.dureepause.tip']}"  min="0" max="500" size="3"/>  
+						</f:facet>
+					</p:cellEditor>
+					<p:tooltip for="spinnerBasic" value="#{i18n['exercice.dureepause.tip']}" showEffect="clip" hideEffect="fade" />
+			
+				</p:column>
+				
+				<p:column style="width:100px">
+					<p:rowEditor id="editor" />
+				</p:column>
+				<p:column style="width:100px">
 					<p:commandLink action="#{exerciceCtrl.delete}" id="delimg"
 						styleClass="ui-icon ui-icon-trash" ajax="false" />
 					<p:tooltip for="delimg" value="#{i18n['common.delete']}"
 						showEffect="clip" hideEffect="fade" />
 				</p:column>
-				<p:column style="width:5%">
+				<p:column style="width:100px">
 					<p:commandLink id="editimg" action="#{exerciceCtrl.edit}"
 						styleClass="ui-icon ui-icon-wrench" ajax="false" />
 					<p:tooltip for="editimg" value="#{i18n['common.edit']}"
