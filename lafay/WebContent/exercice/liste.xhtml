@@ -48,7 +48,7 @@
 						<f:facet name="input">
 							<p:selectOneMenu id="label" value="#{g.mouvement}" effect="fade" converter="mouvementConverter" panelStyle="width:100px" style="width:90px" filter="true" filterMatchMode="contains">  
             					<f:selectItem itemLabel="Select One" itemValue="#{null}" />  
-            					<f:selectItems value="#{exerciceCtrl.mouvements}" var="mouvement" itemLabel="#{mouvement.nom}" itemValue="#{mouvement}"/>  
+            					<f:selectItems value="#{mouvementCtrl.mouvements}" var="mouvement" itemLabel="#{mouvement.nom}" itemValue="#{mouvement}"/>  
         					</p:selectOneMenu>
 						</f:facet>
 					</p:cellEditor>
