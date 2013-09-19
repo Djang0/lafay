@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">
+			<h:outputText value="#{i18n['enchainable.list']}" /> 
+		</h1>
+		<h:form id="form">
+			<p:growl id="messages" showDetail="true" />
+			<p:dataTable id="users" resizableColumns="true"
+				value="#{enchainableCtrl.entityClassList}" var="g" paginator="true" rows="10" editable="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15"
+				emptyMessage="#{i18n['common.notfound']}"
+				filteredValue="#{enchainableCtrl.filtered}">
+				<p:column headerText="#{i18n['enchainable']}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.description}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="nameInput" value="#{g.description}" style="width:96%">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
+					<p:tooltip for="nameInput" value="#{i18n['enchainable.description']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+				
+				<p:ajax event="rowEdit" listener="#{enchainableCtrl.onEdit}"
+					update=":form:messages" />
+				<p:ajax event="rowEditCancel" listener="#{enchainableCtrl.onCancel}"
+					update=":form:messages" />
+				<p:column headerText="#{i18n['exercice']}" style="width:250px">
+						<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.exercice.description}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:selectOneMenu id="ex" value="#{g.exercice}" effect="fade" converter="exerciceConverter" panelStyle="width:250px" style="width:240px" filter="true" filterMatchMode="contains">  
+            					<f:selectItem itemLabel="Select One" itemValue="#{null}" />  
+            					<f:selectItems value="#{exerciceCtrl.exercices}" var="exercice" itemLabel="#{exercice.description}" itemValue="#{exercice}"/>  
+        					</p:selectOneMenu>
+						</f:facet>
+					</p:cellEditor>
+					<p:tooltip for="ex" value="#{i18n['exercice.description']}"
+						showEffect="clip" hideEffect="fade" />	
+				</p:column>
+
+
+				
+				<p:column headerText="#{i18n['repos']}" style="width:250px">
+						<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{g.repos.label}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:selectOneMenu id="repos" value="#{g.repos}" effect="fade" converter="reposConverter" panelStyle="width:250px" style="width:240px" filter="true" filterMatchMode="contains">  
+            					<f:selectItem itemLabel="Select One" itemValue="#{null}" />  
+            					<f:selectItems value="#{reposCtrl.repos}" var="repos" itemLabel="#{repos.label}" itemValue="#{repos}"/>  
+        					</p:selectOneMenu>
+						</f:facet>
+					</p:cellEditor>
+					<p:tooltip for="repos" value="#{i18n['repos.name']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+				
+				<p:column style="width:100px">
+					<p:rowEditor id="editor" />
+				</p:column>
+				<p:column style="width:100px">
+					<p:commandLink action="#{enchainableCtrl.delete}" id="delimg"
+						styleClass="ui-icon ui-icon-trash" ajax="false" />
+					<p:tooltip for="delimg" value="#{i18n['common.delete']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+				<p:column style="width:100px">
+					<p:commandLink id="editimg" action="#{enchainableCtrl.edit}"
+						styleClass="ui-icon ui-icon-wrench" ajax="false" />
+					<p:tooltip for="editimg" value="#{i18n['common.edit']}"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+			</p:dataTable>
+			<p:commandButton id="addbut" action="#{enchainableCtrl.add}"
+				icon="ui-icon-circle-plus" value="#{i18n['common.add']}" />
+			<p:tooltip for="addbut" value="#{i18n['common.add']}" showEffect="clip"
+				hideEffect="fade" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

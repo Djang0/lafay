@@ -16,6 +16,7 @@ public class Enchainable extends Bean {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String description;
 	@Reference
 	private Exercice exercice;
 	@Reference
@@ -36,6 +37,13 @@ public class Enchainable extends Bean {
 			return false;
 		}
 		Enchainable other = (Enchainable) obj;
+		if (description == null) {
+			if (other.description != null) {
+				return false;
+			}
+		} else if (!description.equals(other.description)) {
+			return false;
+		}
 		if (enchainable != other.enchainable) {
 			return false;
 		}
@@ -65,6 +73,8 @@ public class Enchainable extends Bean {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result + (enchainable ? 1231 : 1237);
 		result = prime * result
 				+ ((exercice == null) ? 0 : exercice.hashCode());
@@ -101,6 +111,24 @@ public class Enchainable extends Bean {
 
 	public void setEnchainable(boolean enchainable) {
 		this.enchainable = enchainable;
+	}
+
+
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

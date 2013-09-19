@@ -20,9 +20,6 @@ public class MouvementCtrl extends Controler<Mouvement> {
 		this.dao = DAOFactory.getMouvementDAO();
 
 	}
-	/**
-	 * @return the mouvements
-	 */
 	public List<Mouvement> getMouvements() {
 		return this.dao.all();
 	}

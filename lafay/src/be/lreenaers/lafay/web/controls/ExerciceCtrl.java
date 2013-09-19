@@ -1,5 +1,7 @@
 package be.lreenaers.lafay.web.controls;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -18,5 +20,8 @@ public class ExerciceCtrl extends Controler<Exercice> {
 	public void selectDAO() {
 		this.dao = DAOFactory.getExerciceDAO();
 
+	}
+	public List<Exercice> getExercices() {
+		return this.dao.all();
 	}
 }
