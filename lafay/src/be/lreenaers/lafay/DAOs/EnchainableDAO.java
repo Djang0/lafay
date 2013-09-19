@@ -29,7 +29,7 @@ public class EnchainableDAO extends DAO<Enchainable> {
 		List<Enchainable> enchs;
 		while(it.hasNext()){
 			niv =it.next();
-			enchs = niv.getEnchainable();
+			enchs = niv.getEnchainables();
 			enchs.remove(entity);
 			niv.setEnchainables(enchs);
 			ndao.save(niv);

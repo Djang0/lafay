@@ -3,6 +3,7 @@
  */
 package be.lreenaers.lafay.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.code.morphia.annotations.Entity;
@@ -22,7 +23,12 @@ public class Niveau extends Bean {
 	@Reference
 	private List<Enchainable> enchainables;
 	private String nom;
-
+	
+	public Niveau() {
+		super();
+		this.enchainables = new ArrayList<Enchainable>();
+		this.nom = new String();
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -49,7 +55,7 @@ public class Niveau extends Bean {
 		return this.nom;
 	}
 
-	public List<Enchainable> getEnchainable() {
+	public List<Enchainable> getEnchainables() {
 		return enchainables;
 	}
 

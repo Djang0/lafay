@@ -11,15 +11,20 @@ public class EntityPicklist<C> {
 	private DualListModel<C> picks;
 	private List<C> target;
 	private List<C> source;
-	
+	private DAO<C> dao;
 	public EntityPicklist(DAO<C> dao){
-		source = dao.all();
+		this.dao = dao;
+		source = this.dao.all();
 	}
 	public void setPicks(DualListModel<C> pickz) {
 		this.picks = pickz;
 	}
+	public List<C> getTarget(){
+		return this.picks.getTarget();
+	}
 	public DualListModel<C> getPicks(List<C> trgt){
 		this.target = trgt;
+		this.source = this.dao.all();
 		this.source.removeAll(this.target);
 		this.picks = new DualListModel<C>(this.source, this.target);
 		return this.picks;

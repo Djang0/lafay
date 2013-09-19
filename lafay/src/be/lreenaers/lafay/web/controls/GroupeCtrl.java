@@ -39,8 +39,17 @@ public class GroupeCtrl extends Controler<Groupe> {
 	}
 	public void setPickEdit(DualListModel<Permission> pickEditPerms) {
 		this.pickG.setPicks(pickEditPerms);
+		this.entityClassEdit.setPermissions(this.pickG.getTarget());
 	}
 	public DualListModel<Permission> getPickEdit() {
 		return this.pickG.getPicks(this.entityClassEdit.getPermissions());
+	}
+	public DualListModel<Permission> getPickCreate() {
+		return this.pickG.getPicks(this.entityClass.getPermissions());
+	}
+	
+	public void setPickCreate(DualListModel<Permission> pickEditPerms) {
+		this.pickG.setPicks(pickEditPerms);
+		this.entityClass.setPermissions(this.pickG.getTarget());
 	}
 }

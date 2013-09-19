@@ -14,38 +14,38 @@
 			<p:growl id="growl" showDetail="true" sticky="true" />
 
 			<h1 class="title ui-widget-header ui-corner-all">
-				<h:outputText value="#{i18n['groupe.add']}" />
+				<h:outputText value="#{i18n['niveau.add']}" />
 			</h1>
 			<p:panel header="#{i18n['common.add']}">
 				<h:panelGrid columns="4">
 
-					<h:outputLabel for="label" value="#{i18n['groupe.name']}"
+					<h:outputLabel for="label" value="#{i18n['niveau.name']}"
 						style="font-weight:bold" />
-					<p:inputText id="label" value="#{groupeCtrl.entityClass.nom}"
-						label="#{i18n['groupe.name']}" required="true"
-						requiredMessage="#{i18n['groupe.name.required']}">
+					<p:inputText id="label" value="#{niveauCtrl.entityClass.nom}"
+						label="#{i18n['niveau.name']}" required="true"
+						requiredMessage="#{i18n['niveau.name.required']}"> 
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:message for="label" display="icon" />
-					<p:tooltip for="label" value="#{i18n['groupe.name']}"
+					<p:tooltip for="label" value="#{i18n['niveau.name']}"
 						showEffect="clip" hideEffect="fade" />
 				</h:panelGrid>
 
 				<h3 class="title ui-widget-header ui-corner-all">
-					<h:outputText value="#{i18n['groupe.perms.tip']}" />
+					<h:outputText value="#{i18n['niveau.enchainables']}" />
 				</h3>
-				<p:pickList id="permlist" value="#{groupeCtrl.pickCreate}"
-					var="permission" itemLabel="#{permission.valeur}"
-					itemValue="#{permission}" converter="permissionConverter" showTargetControls="true" showTargetControls="true">
-					<p:ajax event="transfer" listener="#{groupeCtrl.onTransferCreate}"
+				<p:pickList id="permlist" value="#{niveauCtrl.pickCreate}"
+					var="enchainable" itemLabel="#{enchainable.description}"
+					itemValue="#{enchainable}" converter="enchainableConverter">
+					<p:ajax event="transfer" listener="#{niveauCtrl.onTransferCreate}"
 						update="growl" />
 					<p:column style="width:75%;">  
-            #{permission.valeur}  
+            #{enchainable.description}  
         </p:column>
 				</p:pickList>
 
 				<p:commandButton id="saveButton" update="growl"
-					value="#{i18n['common.create']}" action="#{groupeCtrl.create}" />
+					value="#{i18n['common.create']}" action="#{niveauCtrl.create}" />
 				<p:tooltip for="saveButton" value="#{i18n['common.create']}"
 					showEffect="clip" hideEffect="fade" />
 			</p:panel>
