@@ -1,30 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-   <title>Facelets Tutorial</title> 
+	<title>Facelets Tutorial</title>
 </h:head>
 
 <body>
-<p:layout fullPage="true">
-	<p:layoutUnit position="north" size="100" header="Méthode Lafay" resizable="true" closable="true" collapsible="true">
-	 	<ui:include src="header.xhtml"/>
-	</p:layoutUnit>
-	<p:layoutUnit position="center">
-		<ui:insert name="content">
-   		 </ui:insert>
-    </p:layoutUnit>
-	<p:layoutUnit position="west" size="200" header="Menu" resizable="true" closable="true" collapsible="true">
-	
-	</p:layoutUnit>
-	<p:layoutUnit position="south" size="100" resizable="true" closable="true" collapsible="true">
-		<ui:include src="footer.xhtml"/>
-	</p:layoutUnit>
-</p:layout>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="100" header="Méthode Lafay"
+			resizable="true" closable="true" collapsible="true">
+			<ui:include src="header.xhtml" />
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<ui:insert name="content">
+			</ui:insert>
+		</p:layoutUnit>
+		<p:layoutUnit position="west" size="200" header="Menu"
+			resizable="true" closable="true" collapsible="true">
+
+		</p:layoutUnit>
+		<p:layoutUnit position="south" size="100" resizable="true"
+			closable="true" collapsible="true">
+			<ui:include src="footer.xhtml" />
+		</p:layoutUnit>
+	</p:layout>
 
 </body>
 </html>

@@ -17,6 +17,13 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		super(entityClass);
 	}
 
+	@Override
+	public void deleteRelatedAncestors(Utilisateur entity) {
+		EntrainementDAO edao = DAOFactory.getEntrainementDAO();
+		edao.delete(ds.find(Entrainement.class).field("utilisateur")
+				.hasThisElement(entity).asList());
+	}
+
 	public Utilisateur findByEmail(String email) {
 		return this.ds.find(this.entityClass).field("email").equal(email).get();
 	}
@@ -24,11 +31,5 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	public Utilisateur findByPseudo(String pseudo) {
 		return this.ds.find(this.entityClass).field("pseudo").equal(pseudo)
 				.get();
-	}
-
-	@Override
-	public void deleteRelatedAncestors(Utilisateur entity) {
-		EntrainementDAO edao = DAOFactory.getEntrainementDAO();
-		edao.delete(ds.find(Entrainement.class).field("utilisateur").hasThisElement(entity).asList());	
 	}
 }

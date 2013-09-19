@@ -9,6 +9,7 @@ public class CibleDAO extends DAO<Cible> {
 	}
 
 	@Override
-	public void deleteRelatedAncestors(Cible entity) {}
+	public void deleteRelatedAncestors(Cible entity) {
+	}
 
 }

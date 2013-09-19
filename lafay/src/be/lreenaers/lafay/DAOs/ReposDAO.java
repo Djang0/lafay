@@ -15,16 +15,17 @@ public class ReposDAO extends DAO<Repos> {
 
 	@Override
 	public void deleteRelatedAncestors(Repos entity) {
-		EnchainableDAO edao = DAOFactory.getEnchainableDAO(); 
-		List<Enchainable> enchs = ds.find(Enchainable.class).field("repos").hasThisElement(entity).asList();
+		EnchainableDAO edao = DAOFactory.getEnchainableDAO();
+		List<Enchainable> enchs = ds.find(Enchainable.class).field("repos")
+				.hasThisElement(entity).asList();
 		Iterator<Enchainable> it = enchs.iterator();
 		Enchainable ench;
-		while(it.hasNext()){
+		while (it.hasNext()) {
 			ench = it.next();
 			ench.setRepos(null);
 			edao.save(ench);
 		}
-		
+
 	}
 
 }

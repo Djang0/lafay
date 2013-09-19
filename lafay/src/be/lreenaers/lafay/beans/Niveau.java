@@ -23,12 +23,13 @@ public class Niveau extends Bean {
 	@Reference
 	private List<Enchainable> enchainables;
 	private String nom;
-	
+
 	public Niveau() {
 		super();
 		this.enchainables = new ArrayList<Enchainable>();
 		this.nom = new String();
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -51,12 +52,12 @@ public class Niveau extends Bean {
 		return true;
 	}
 
-	public String getNom() {
-		return this.nom;
-	}
-
 	public List<Enchainable> getEnchainables() {
 		return enchainables;
+	}
+
+	public String getNom() {
+		return this.nom;
 	}
 
 	@Override
@@ -73,11 +74,11 @@ public class Niveau extends Bean {
 		this.enchainables.remove(ench);
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
 	public void setEnchainables(List<Enchainable> enchainables) {
 		this.enchainables = enchainables;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 }

@@ -23,19 +23,19 @@ public class EnchainableDAO extends DAO<Enchainable> {
 	@Override
 	public void deleteRelatedAncestors(Enchainable entity) {
 		NiveauDAO ndao = DAOFactory.getNiveauDAO();
-		List<Niveau> nivs = ds.find(Niveau.class).field("enchainables").hasThisElement(entity).asList();
+		List<Niveau> nivs = ds.find(Niveau.class).field("enchainables")
+				.hasThisElement(entity).asList();
 		Iterator<Niveau> it = nivs.iterator();
 		Niveau niv;
 		List<Enchainable> enchs;
-		while(it.hasNext()){
-			niv =it.next();
+		while (it.hasNext()) {
+			niv = it.next();
 			enchs = niv.getEnchainables();
 			enchs.remove(entity);
 			niv.setEnchainables(enchs);
 			ndao.save(niv);
 		}
-		
+
 	}
 
-	
 }

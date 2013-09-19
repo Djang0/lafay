@@ -29,7 +29,7 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 		cls = ccls;
 		selectDAO();
 		entityClassList = new ListDataModel<C>();
-		
+
 		try {
 			entityClassEdit = cls.newInstance();
 			entityClass = cls.newInstance();
@@ -39,10 +39,7 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 			e.printStackTrace();
 		}
 	}
-	public String edit(){
-		entityClassEdit = (C) entityClassList.getRowData();
-		return getNavigationString(new ModifyDirection());
-	}
+
 	public String add() {
 		return getNavigationString(new CreateDirection());
 	}
@@ -67,6 +64,11 @@ public abstract class Controler<C> implements Controlable, RowEditable,
 		dao.delete(entityClassDelete);
 		entityClassList.setWrappedData(dao.all());
 		return getNavigationString(new ListDirection());
+	}
+
+	public String edit() {
+		entityClassEdit = (C) entityClassList.getRowData();
+		return getNavigationString(new ModifyDirection());
 	}
 
 	public Class<C> getCls() {

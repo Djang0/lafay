@@ -17,10 +17,32 @@ import be.lreenaers.lafay.web.utils.EntityPicklist;
 @SessionScoped
 public class NiveauCtrl extends Controler<Niveau> {
 	private EntityPicklist<Enchainable> pickG;
+
 	public NiveauCtrl() {
 		super(Niveau.class);
 		this.entityClassList.setWrappedData(this.dao.all());
-		this.pickG = new EntityPicklist<Enchainable>(DAOFactory.getEnchainableDAO());
+		this.pickG = new EntityPicklist<Enchainable>(
+				DAOFactory.getEnchainableDAO());
+	}
+
+	public DualListModel<Enchainable> getPickCreate() {
+		return this.pickG.getPicks(this.entityClass.getEnchainables());
+	}
+
+	public DualListModel<Enchainable> getPickEdit() {
+		return this.pickG.getPicks(this.entityClassEdit.getEnchainables());
+	}
+
+	public void onTransferCreate(TransferEvent event) {
+		List<Enchainable> g = this.pickG.getTransfered(event,
+				this.entityClass.getEnchainables());
+		this.entityClass.setEnchainables(g);
+	}
+
+	public void onTransferEdit(TransferEvent event) {
+		List<Enchainable> g = this.pickG.getTransfered(event,
+				this.entityClassEdit.getEnchainables());
+		this.entityClassEdit.setEnchainables(g);
 	}
 
 	@Override
@@ -28,27 +50,14 @@ public class NiveauCtrl extends Controler<Niveau> {
 		this.dao = DAOFactory.getNiveauDAO();
 
 	}
-	
-	public void onTransferEdit(TransferEvent event) { 
-		List<Enchainable> g=this.pickG.getTransfered(event,this.entityClassEdit.getEnchainables());
-		this.entityClassEdit.setEnchainables(g);
-	}
-	public void onTransferCreate(TransferEvent event) { 
-		List<Enchainable> g=this.pickG.getTransfered(event,this.entityClass.getEnchainables());
-		this.entityClass.setEnchainables(g);
-	}
-	public void setPickEdit(DualListModel<Enchainable> pickEditPerms) {
-		this.pickG.setPicks(pickEditPerms);
-		this.entityClassEdit.setEnchainables(this.pickG.getTarget());
-	}
-	public DualListModel<Enchainable> getPickEdit() {
-		return this.pickG.getPicks(this.entityClassEdit.getEnchainables());
-	}
-	public DualListModel<Enchainable> getPickCreate() {
-		return this.pickG.getPicks(this.entityClass.getEnchainables());
-	}
+
 	public void setPickCreate(DualListModel<Enchainable> pickEditPerms) {
 		this.pickG.setPicks(pickEditPerms);
 		this.entityClass.setEnchainables(this.pickG.getTarget());
+	}
+
+	public void setPickEdit(DualListModel<Enchainable> pickEditPerms) {
+		this.pickG.setPicks(pickEditPerms);
+		this.entityClassEdit.setEnchainables(this.pickG.getTarget());
 	}
 }

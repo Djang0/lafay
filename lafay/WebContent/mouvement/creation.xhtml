@@ -29,18 +29,21 @@
 					<p:message for="label" display="icon" />
 					<p:tooltip for="label" value="#{i18n['mouvement.name']}"
 						showEffect="clip" hideEffect="fade" />
-						
+
 					<h:outputLabel for="desc" value="#{i18n['mouvement.desc']}"
 						style="font-weight:bold" />
-					<p:inputTextarea rows="6" cols="33" id="desc" value="#{mouvementCtrl.entityClass.description}"
+					<p:inputTextarea rows="6" cols="33" id="desc"
+						value="#{mouvementCtrl.entityClass.description}"
 						label="#{i18n['mouvement.desc.tip']}" required="true"
-						requiredMessage="#{i18n['mouvement.desc.required']}"><f:validateLength minimum="2" /></p:inputTextarea> 
-						<p:message for="desc" display="icon" />
+						requiredMessage="#{i18n['mouvement.desc.required']}">
+						<f:validateLength minimum="2" />
+					</p:inputTextarea>
+					<p:message for="desc" display="icon" />
 					<p:tooltip for="desc" value="#{i18n['mouvement.desc.tip']}"
-						showEffect="clip" hideEffect="fade" />	
+						showEffect="clip" hideEffect="fade" />
 				</h:panelGrid>
 
-				
+
 
 				<p:commandButton id="saveButton" update="growl"
 					value="#{i18n['common.create']}" action="#{mouvementCtrl.create}" />

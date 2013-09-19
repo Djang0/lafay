@@ -12,7 +12,8 @@
 	<ui:define name="content">
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:outputText value="#{i18n['common.email']}" style="font-weight:bold" />
+				<h:outputText value="#{i18n['common.email']}"
+					style="font-weight:bold" />
 				<h:inputText id="email" value="#{utilisateurCtrl.entityClass.email}" />
 				<p:tooltip for="email" value="#{i18n['common.mail']}"
 					showEffect="clip" hideEffect="fade" />

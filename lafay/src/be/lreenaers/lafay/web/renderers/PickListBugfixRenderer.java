@@ -1,8 +1,10 @@
 package be.lreenaers.lafay.web.renderers;
 
 import java.io.IOException;
+
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.component.picklist.PickList;
 import org.primefaces.component.picklist.PickListRenderer;
 import org.primefaces.util.WidgetBuilder;

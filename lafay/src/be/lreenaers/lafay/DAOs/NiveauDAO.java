@@ -14,6 +14,8 @@ public class NiveauDAO extends DAO<Niveau> {
 	public NiveauDAO(Class<Niveau> entityClass) {
 		super(entityClass);
 	}
+
 	@Override
-	public void deleteRelatedAncestors(Niveau entity) {}
+	public void deleteRelatedAncestors(Niveau entity) {
+	}
 }

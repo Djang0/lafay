@@ -23,11 +23,12 @@ public class GroupeDAO extends DAO<Groupe> {
 	@Override
 	public void deleteRelatedAncestors(Groupe entity) {
 		UtilisateurDAO udao = DAOFactory.getUtilisateurDAO();
-		List<Utilisateur> usrs = ds.find(Utilisateur.class).field("groups").hasThisElement(entity).asList();
+		List<Utilisateur> usrs = ds.find(Utilisateur.class).field("groups")
+				.hasThisElement(entity).asList();
 		Iterator<Utilisateur> it = usrs.iterator();
 		List<Groupe> grps;
 		Utilisateur usr;
-		while(it.hasNext()){
+		while (it.hasNext()) {
 			usr = it.next();
 			grps = usr.getGroups();
 			grps.remove(entity);
@@ -35,5 +36,5 @@ public class GroupeDAO extends DAO<Groupe> {
 			udao.save(usr);
 		}
 	}
-	
+
 }

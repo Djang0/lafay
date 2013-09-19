@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 import be.lreenaers.lafay.beans.Mouvement;
 import be.lreenaers.lafay.factories.DAOFactory;
 
@@ -15,12 +16,13 @@ public class MouvementCtrl extends Controler<Mouvement> {
 		this.entityClassList.setWrappedData(this.dao.all());
 	}
 
+	public List<Mouvement> getMouvements() {
+		return this.dao.all();
+	}
+
 	@Override
 	public void selectDAO() {
 		this.dao = DAOFactory.getMouvementDAO();
 
-	}
-	public List<Mouvement> getMouvements() {
-		return this.dao.all();
 	}
 }

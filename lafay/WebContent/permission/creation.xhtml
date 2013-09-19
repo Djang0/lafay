@@ -21,7 +21,8 @@
 
 					<h:outputLabel for="label" value="#{i18n['common.value']}"
 						style="font-weight:bold" />
-					<p:inputText id="label" value="#{permissionCtrl.entityClass.valeur}"
+					<p:inputText id="label"
+						value="#{permissionCtrl.entityClass.valeur}"
 						label="#{i18n['common.value']}" required="true"
 						requiredMessage="#{i18n['common.value.required']}">
 						<f:validateLength minimum="2" />

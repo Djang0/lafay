@@ -46,7 +46,7 @@ public class Mouvement extends Bean {
 	}
 
 	public String getNom() {
-		
+
 		return nom;
 	}
 

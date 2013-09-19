@@ -24,8 +24,11 @@ public class MouvementDAO extends DAO<Mouvement> {
 		SerieDAO sdao = DAOFactory.getSerieDAO();
 		CibleDAO cdao = DAOFactory.getCibleDAO();
 		ExerciceDAO edao = DAOFactory.getExerciceDAO();
-		sdao.delete(ds.find(Serie.class).field("mouvement").hasThisElement(entity).asList());
-		cdao.delete(ds.find(Cible.class).field("mouvement").hasThisElement(entity).asList());
-		edao.delete(ds.find(Exercice.class).field("mouvement").hasThisElement(entity).asList());
+		sdao.delete(ds.find(Serie.class).field("mouvement")
+				.hasThisElement(entity).asList());
+		cdao.delete(ds.find(Cible.class).field("mouvement")
+				.hasThisElement(entity).asList());
+		edao.delete(ds.find(Exercice.class).field("mouvement")
+				.hasThisElement(entity).asList());
 	}
 }

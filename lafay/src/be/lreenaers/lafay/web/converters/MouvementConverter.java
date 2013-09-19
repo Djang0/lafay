@@ -17,7 +17,7 @@ public class MouvementConverter implements Converter {
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {
 		MouvementDAO dao = DAOFactory.getMouvementDAO();
-		
+
 		return dao.findById(new ObjectId(arg2));
 	}
 

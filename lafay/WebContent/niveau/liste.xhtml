@@ -11,7 +11,7 @@
 
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">
-			<h:outputText value="#{i18n['niveau.list']}" /> 
+			<h:outputText value="#{i18n['niveau.list']}" />
 		</h1>
 		<h:form id="form">
 			<p:growl id="messages" showDetail="true" />
@@ -61,8 +61,8 @@
 			</p:dataTable>
 			<p:commandButton id="addbut" action="#{niveauCtrl.add}"
 				icon="ui-icon-circle-plus" value="#{i18n['common.add']}" />
-			<p:tooltip for="addbut" value="#{i18n['common.add']}" showEffect="clip"
-				hideEffect="fade" />
+			<p:tooltip for="addbut" value="#{i18n['common.add']}"
+				showEffect="clip" hideEffect="fade" />
 		</h:form>
 
 	</ui:define>

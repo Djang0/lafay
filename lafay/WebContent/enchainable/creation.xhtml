@@ -18,42 +18,54 @@
 			</h1>
 			<p:panel header="#{i18n['common.add']}">
 				<h:panelGrid columns="4">
-				
-					<h:outputLabel for="exdesc" value="#{i18n['enchainable.description']}" style="font-weight:bold"/>  
-            		<p:inputText id="exdesc" value="#{enchainableCtrl.entityClass.description}" label="#{i18n['enchainable.description.tip']}" min="0" max="500"/>  
-            		<p:message for="exdesc" display="icon" />
-					<p:tooltip for="exdesc" value="#{i18n['enchainable.description.tip']}" showEffect="clip" hideEffect="fade" />
-						
-						
+
+					<h:outputLabel for="exdesc"
+						value="#{i18n['enchainable.description']}"
+						style="font-weight:bold" />
+					<p:inputText id="exdesc"
+						value="#{enchainableCtrl.entityClass.description}"
+						label="#{i18n['enchainable.description.tip']}" min="0" max="500" />
+					<p:message for="exdesc" display="icon" />
+					<p:tooltip for="exdesc"
+						value="#{i18n['enchainable.description.tip']}" showEffect="clip"
+						hideEffect="fade" />
+
+
 					<h:outputLabel for="ex" value="#{i18n['exercice']}"
 						style="font-weight:bold" />
-					<p:selectOneMenu id="ex" value="#{enchainableCtrl.entityClass.exercice}" effect="fade" converter="exerciceConverter" panelStyle="width:150px" style="width:160px" filter="true"
-						filterMatchMode="contains">  
-            			<f:selectItem itemLabel="Select One" itemValue="#{null}" />  
-            			<f:selectItems value="#{exerciceCtrl.exercices}" var="exercice" itemLabel="#{exercice.description}" itemValue="#{exercice}"/>  
-        			</p:selectOneMenu>  
-					
+					<p:selectOneMenu id="ex"
+						value="#{enchainableCtrl.entityClass.exercice}" effect="fade"
+						converter="exerciceConverter" panelStyle="width:150px"
+						style="width:160px" filter="true" filterMatchMode="contains">
+						<f:selectItem itemLabel="Select One" itemValue="#{null}" />
+						<f:selectItems value="#{exerciceCtrl.exercices}" var="exercice"
+							itemLabel="#{exercice.description}" itemValue="#{exercice}" />
+					</p:selectOneMenu>
+
 					<p:message for="ex" display="icon" />
 					<p:tooltip for="ex" value="#{i18n['enchainable.exercice.tip']}"
 						showEffect="clip" hideEffect="fade" />
-						
-					
-					
-					
-					<h:outputLabel for="repos" value="#{i18n['repos']}" 
+
+
+
+
+					<h:outputLabel for="repos" value="#{i18n['repos']}"
 						style="font-weight:bold" />
-					<p:selectOneMenu id="repos" value="#{enchainableCtrl.entityClass.repos}" effect="fade" converter="reposConverter" panelStyle="width:150px" style="width:160px" filter="true"
-						filterMatchMode="contains">  
-            			<f:selectItem itemLabel="Select One" itemValue="#{null}" />  
-            			<f:selectItems value="#{reposCtrl.repos}" var="repos" itemLabel="#{repos.label}" itemValue="#{repos}"/>  
-        			</p:selectOneMenu>  
-					
+					<p:selectOneMenu id="repos"
+						value="#{enchainableCtrl.entityClass.repos}" effect="fade"
+						converter="reposConverter" panelStyle="width:150px"
+						style="width:160px" filter="true" filterMatchMode="contains">
+						<f:selectItem itemLabel="Select One" itemValue="#{null}" />
+						<f:selectItems value="#{reposCtrl.repos}" var="repos"
+							itemLabel="#{repos.label}" itemValue="#{repos}" />
+					</p:selectOneMenu>
+
 					<p:message for="repos" display="icon" />
 					<p:tooltip for="repos" value="#{i18n['enchainable.repos.tip']}"
 						showEffect="clip" hideEffect="fade" />
 				</h:panelGrid>
 
-				
+
 
 				<p:commandButton id="saveButton" update="growl"
 					value="#{i18n['common.create']}" action="#{enchainableCtrl.create}" />

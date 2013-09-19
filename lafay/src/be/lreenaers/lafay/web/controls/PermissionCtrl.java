@@ -5,6 +5,7 @@ package be.lreenaers.lafay.web.controls;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 import be.lreenaers.lafay.beans.Permission;
 import be.lreenaers.lafay.factories.DAOFactory;
 

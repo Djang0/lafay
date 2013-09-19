@@ -29,15 +29,18 @@
 					<p:message for="label" display="icon" />
 					<p:tooltip for="label" value="#{i18n['repos.name']}"
 						showEffect="clip" hideEffect="fade" />
-						
-						
-					<h:outputLabel for="spinnerBasic" value="#{i18n['repos.duree']}" style="font-weight:bold"/>  
-            		<p:spinner id="spinnerBasic" value="#{reposCtrl.entityClass.duree}" label="#{i18n['repos.duree.tip']}"/>  
-            		<p:message for="spinnerBasic" display="icon" />
-					<p:tooltip for="spinnerBasic" value="#{i18n['repos.duree.tip']}" showEffect="clip" hideEffect="fade" />
+
+
+					<h:outputLabel for="spinnerBasic" value="#{i18n['repos.duree']}"
+						style="font-weight:bold" />
+					<p:spinner id="spinnerBasic" value="#{reposCtrl.entityClass.duree}"
+						label="#{i18n['repos.duree.tip']}" />
+					<p:message for="spinnerBasic" display="icon" />
+					<p:tooltip for="spinnerBasic" value="#{i18n['repos.duree.tip']}"
+						showEffect="clip" hideEffect="fade" />
 				</h:panelGrid>
 
-				
+
 
 				<p:commandButton id="saveButton" update="growl"
 					value="#{i18n['common.create']}" action="#{reposCtrl.create}" />

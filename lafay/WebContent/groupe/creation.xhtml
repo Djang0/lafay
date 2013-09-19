@@ -36,7 +36,8 @@
 				</h3>
 				<p:pickList id="permlist" value="#{groupeCtrl.pickCreate}"
 					var="permission" itemLabel="#{permission.valeur}"
-					itemValue="#{permission}" converter="permissionConverter" showTargetControls="true" showTargetControls="true">
+					itemValue="#{permission}" converter="permissionConverter"
+					showTargetControls="true" showTargetControls="true">
 					<p:ajax event="transfer" listener="#{groupeCtrl.onTransferCreate}"
 						update="growl" />
 					<p:column style="width:75%;">  

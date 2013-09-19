@@ -18,13 +18,13 @@ import be.lreenaers.lafay.beans.Cible;
 import be.lreenaers.lafay.beans.Enchainable;
 import be.lreenaers.lafay.beans.Entrainement;
 import be.lreenaers.lafay.beans.Exercice;
+import be.lreenaers.lafay.beans.Groupe;
 import be.lreenaers.lafay.beans.Mouvement;
 import be.lreenaers.lafay.beans.Niveau;
 import be.lreenaers.lafay.beans.Permission;
 import be.lreenaers.lafay.beans.Repos;
 import be.lreenaers.lafay.beans.Serie;
 import be.lreenaers.lafay.beans.Utilisateur;
-import be.lreenaers.lafay.beans.Groupe;
 
 /**
  * @author media

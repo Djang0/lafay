@@ -20,7 +20,9 @@ public class Exercice extends Bean {
 	private int nombreDeSerie;
 	private int repetitionMinimum;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -61,6 +63,13 @@ public class Exercice extends Bean {
 		return true;
 	}
 
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
 	public int getDureePause() {
 		return dureePause;
 	}
@@ -77,7 +86,9 @@ public class Exercice extends Bean {
 		return repetitionMinimum;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -100,6 +111,14 @@ public class Exercice extends Bean {
 		}
 	}
 
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public void setDureePause(int dureePause) {
 		this.dureePause = dureePause;
 	}
@@ -114,19 +133,5 @@ public class Exercice extends Bean {
 
 	public void setRepetitionMinimum(int repetitionMinimum) {
 		this.repetitionMinimum = repetitionMinimum;
-	}
-
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
 	}
 }

@@ -23,26 +23,9 @@ public class Permission extends Bean {
 		this.valeur = new String();
 	}
 
-	public String getValeur() {
-		return valeur;
-	}
-
-	public void setValeur(String valeur) {
-		this.valeur = valeur;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((valeur == null) ? 0 : valeur.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -65,5 +48,26 @@ public class Permission extends Bean {
 			return false;
 		}
 		return true;
+	}
+
+	public String getValeur() {
+		return valeur;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((valeur == null) ? 0 : valeur.hashCode());
+		return result;
+	}
+
+	public void setValeur(String valeur) {
+		this.valeur = valeur;
 	}
 }

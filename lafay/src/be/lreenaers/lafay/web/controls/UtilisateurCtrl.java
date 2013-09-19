@@ -29,30 +29,34 @@ import be.lreenaers.lafay.web.utils.EntityPicklist;
 @ManagedBean(name = "utilisateurCtrl")
 @SessionScoped
 public class UtilisateurCtrl extends Controler<Utilisateur> {
-	
+
 	private EntityPicklist<Groupe> pickG;
-	
+
 	public UtilisateurCtrl() {
 		super(Utilisateur.class);
 		this.entityClassList.setWrappedData(this.dao.all());
 		this.pickG = new EntityPicklist<Groupe>(DAOFactory.getGroupeDAO());
 	}
 
-	@Override
-	public void selectDAO() {
-		this.dao = DAOFactory.getUtilisateurDAO();
-
+	public DualListModel<Groupe> getPickEdit() {
+		return this.pickG.getPicks(this.entityClassEdit.getGroups());
 	}
-	public String login(){
-		this.entityClass = this.dao.findOne("email",this.entityClass.getEmail());
+
+	public String login() {
+		this.entityClass = this.dao.findOne("email",
+				this.entityClass.getEmail());
 		Direction returned = new ForbidenDirection();
 		try {
-			if(this.entityClass != null && MessageDigest.getInstance("MD5").digest(this.entityClass.getPasse().getBytes()).equals(this.entityClass.getHash().getBytes())){
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("utilisateur", this.entityClass);
-				returned = new BoardDirection();		
-			}
-			else{
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("utilisateur", null);
+			if (this.entityClass != null
+					&& MessageDigest.getInstance("MD5")
+							.digest(this.entityClass.getPasse().getBytes())
+							.equals(this.entityClass.getHash().getBytes())) {
+				FacesContext.getCurrentInstance().getExternalContext()
+						.getSessionMap().put("utilisateur", this.entityClass);
+				returned = new BoardDirection();
+			} else {
+				FacesContext.getCurrentInstance().getExternalContext()
+						.getSessionMap().put("utilisateur", null);
 			}
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
@@ -60,19 +64,25 @@ public class UtilisateurCtrl extends Controler<Utilisateur> {
 		}
 		return getNavigationString(returned);
 	}
-	public void onTransferEdit(TransferEvent event) { 
-		List<Groupe> g = this.entityClassEdit.getGroups();
-		this.entityClassEdit.setGroups(this.pickG.getTransfered(event,g));
-	}
-	public void onTransferCreate(TransferEvent event) { 
+
+	public void onTransferCreate(TransferEvent event) {
 		List<Groupe> g = this.entityClass.getGroups();
-		this.entityClass.setGroups(this.pickG.getTransfered(event,g));
+		this.entityClass.setGroups(this.pickG.getTransfered(event, g));
 	}
+
+	public void onTransferEdit(TransferEvent event) {
+		List<Groupe> g = this.entityClassEdit.getGroups();
+		this.entityClassEdit.setGroups(this.pickG.getTransfered(event, g));
+	}
+
+	@Override
+	public void selectDAO() {
+		this.dao = DAOFactory.getUtilisateurDAO();
+
+	}
+
 	public void setPickEdit(DualListModel<Groupe> pickEditGroups) {
 		this.pickG.setPicks(pickEditGroups);
 	}
-	public DualListModel<Groupe> getPickEdit() {
-		return this.pickG.getPicks(this.entityClassEdit.getGroups());
-	}
-	
+
 }

@@ -16,12 +16,13 @@ public class ExerciceCtrl extends Controler<Exercice> {
 		this.entityClassList.setWrappedData(this.dao.all());
 	}
 
+	public List<Exercice> getExercices() {
+		return this.dao.all();
+	}
+
 	@Override
 	public void selectDAO() {
 		this.dao = DAOFactory.getExerciceDAO();
 
-	}
-	public List<Exercice> getExercices() {
-		return this.dao.all();
 	}
 }

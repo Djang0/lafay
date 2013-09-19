@@ -22,15 +22,16 @@ public class ExerciceDAO extends DAO<Exercice> {
 
 	@Override
 	public void deleteRelatedAncestors(Exercice entity) {
-		EnchainableDAO edao = DAOFactory.getEnchainableDAO(); 
-		List<Enchainable> enchs = ds.find(Enchainable.class).field("exercice").hasThisElement(entity).asList();
+		EnchainableDAO edao = DAOFactory.getEnchainableDAO();
+		List<Enchainable> enchs = ds.find(Enchainable.class).field("exercice")
+				.hasThisElement(entity).asList();
 		Iterator<Enchainable> it = enchs.iterator();
 		Enchainable ench;
-		while(it.hasNext()){
+		while (it.hasNext()) {
 			ench = it.next();
 			ench.setExercice(null);
 			edao.save(ench);
 		}
-		
+
 	}
 }

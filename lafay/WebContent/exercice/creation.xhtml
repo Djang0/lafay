@@ -18,42 +18,64 @@
 			</h1>
 			<p:panel header="#{i18n['common.add']}">
 				<h:panelGrid columns="4">
-					<h:outputLabel for="exdesc" value="#{i18n['exercice.description']}" style="font-weight:bold"/>  
-            		<p:inputText id="exdesc" value="#{exerciceCtrl.entityClass.description}" label="#{i18n['exercice.description.tip']}" min="0" max="500"/>  
-            		<p:message for="exdesc" display="icon" />
-					<p:tooltip for="exdesc" value="#{i18n['exercice.description.tip']}" showEffect="clip" hideEffect="fade" />
-						
-						
+					<h:outputLabel for="exdesc" value="#{i18n['exercice.description']}"
+						style="font-weight:bold" />
+					<p:inputText id="exdesc"
+						value="#{exerciceCtrl.entityClass.description}"
+						label="#{i18n['exercice.description.tip']}" min="0" max="500" />
+					<p:message for="exdesc" display="icon" />
+					<p:tooltip for="exdesc" value="#{i18n['exercice.description.tip']}"
+						showEffect="clip" hideEffect="fade" />
+
+
 					<h:outputLabel for="label" value="#{i18n['exercice.mouvement']}"
 						style="font-weight:bold" />
-					<p:selectOneMenu id="label" value="#{exerciceCtrl.entityClass.mouvement}" effect="fade" converter="mouvementConverter" panelStyle="width:150px" style="width:160px" filter="true"
-						filterMatchMode="contains">  
-            			<f:selectItem itemLabel="Select One" itemValue="#{null}" />  
-            			<f:selectItems value="#{mouvementCtrl.mouvements}" var="mouvement" itemLabel="#{mouvement.nom}" itemValue="#{mouvement}"/>  
-        			</p:selectOneMenu>  
-					
+					<p:selectOneMenu id="label"
+						value="#{exerciceCtrl.entityClass.mouvement}" effect="fade"
+						converter="mouvementConverter" panelStyle="width:150px"
+						style="width:160px" filter="true" filterMatchMode="contains">
+						<f:selectItem itemLabel="Select One" itemValue="#{null}" />
+						<f:selectItems value="#{mouvementCtrl.mouvements}" var="mouvement"
+							itemLabel="#{mouvement.nom}" itemValue="#{mouvement}" />
+					</p:selectOneMenu>
+
 					<p:message for="label" display="icon" />
 					<p:tooltip for="label" value="#{i18n['exercice.mouvement.tip']}"
 						showEffect="clip" hideEffect="fade" />
-						
-						
-					<h:outputLabel for="spinnerBasic" value="#{i18n['exercice.dureepause']}" style="font-weight:bold"/>  
-            		<p:spinner id="spinnerBasic" value="#{exerciceCtrl.entityClass.dureePause}" label="#{i18n['exercice.dureepause.tip']}" min="0" max="500"/>  
-            		<p:message for="spinnerBasic" display="icon" />
-					<p:tooltip for="spinnerBasic" value="#{i18n['exercice.dureepause.tip']}" showEffect="clip" hideEffect="fade" />
-					
-					<h:outputLabel for="spinnerBasicserie" value="#{i18n['exercice.nombreseries']}" style="font-weight:bold"/>  
-            		<p:spinner id="spinnerBasicserie" value="#{exerciceCtrl.entityClass.nombreDeSerie}" label="#{i18n['exercice.nombreseries.tip']}" min="0" max="500"/>  
-            		<p:message for="spinnerBasicserie" display="icon" />
-					<p:tooltip for="spinnerBasicserie" value="#{i18n['exercice.nombreseries.tip']}" showEffect="clip" hideEffect="fade" />
-					
-					<h:outputLabel for="spinnerBasicrep" value="#{i18n['exercice.repetition']}" style="font-weight:bold"/>  
-            		<p:spinner id="spinnerBasicrep" value="#{exerciceCtrl.entityClass.repetitionMinimum}" label="#{i18n['exercice.repetition.tip']}" min="0" max="500"/>  
-            		<p:message for="spinnerBasicrep" display="icon" />
-					<p:tooltip for="spinnerBasicrep" value="#{i18n['exercice.repetition.tip']}" showEffect="clip" hideEffect="fade" />
+
+
+					<h:outputLabel for="spinnerBasic"
+						value="#{i18n['exercice.dureepause']}" style="font-weight:bold" />
+					<p:spinner id="spinnerBasic"
+						value="#{exerciceCtrl.entityClass.dureePause}"
+						label="#{i18n['exercice.dureepause.tip']}" min="0" max="500" />
+					<p:message for="spinnerBasic" display="icon" />
+					<p:tooltip for="spinnerBasic"
+						value="#{i18n['exercice.dureepause.tip']}" showEffect="clip"
+						hideEffect="fade" />
+
+					<h:outputLabel for="spinnerBasicserie"
+						value="#{i18n['exercice.nombreseries']}" style="font-weight:bold" />
+					<p:spinner id="spinnerBasicserie"
+						value="#{exerciceCtrl.entityClass.nombreDeSerie}"
+						label="#{i18n['exercice.nombreseries.tip']}" min="0" max="500" />
+					<p:message for="spinnerBasicserie" display="icon" />
+					<p:tooltip for="spinnerBasicserie"
+						value="#{i18n['exercice.nombreseries.tip']}" showEffect="clip"
+						hideEffect="fade" />
+
+					<h:outputLabel for="spinnerBasicrep"
+						value="#{i18n['exercice.repetition']}" style="font-weight:bold" />
+					<p:spinner id="spinnerBasicrep"
+						value="#{exerciceCtrl.entityClass.repetitionMinimum}"
+						label="#{i18n['exercice.repetition.tip']}" min="0" max="500" />
+					<p:message for="spinnerBasicrep" display="icon" />
+					<p:tooltip for="spinnerBasicrep"
+						value="#{i18n['exercice.repetition.tip']}" showEffect="clip"
+						hideEffect="fade" />
 				</h:panelGrid>
 
-				
+
 
 				<p:commandButton id="saveButton" update="growl"
 					value="#{i18n['common.create']}" action="#{exerciceCtrl.create}" />

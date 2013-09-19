@@ -23,11 +23,12 @@ public class PermissionDAO extends DAO<Permission> {
 	@Override
 	public void deleteRelatedAncestors(Permission entity) {
 		GroupeDAO gdao = DAOFactory.getGroupeDAO();
-		List<Groupe> grps = ds.find(Groupe.class).field("permissions").hasThisElement(entity).asList(); 
+		List<Groupe> grps = ds.find(Groupe.class).field("permissions")
+				.hasThisElement(entity).asList();
 		Iterator<Groupe> it = grps.iterator();
 		Groupe grp;
 		List<Permission> perms;
-		while (it.hasNext()){
+		while (it.hasNext()) {
 			grp = it.next();
 			perms = grp.getPermissions();
 			perms.remove(entity);

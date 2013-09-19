@@ -17,12 +17,15 @@ public class Enchainable extends Bean {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String description;
+	private boolean enchainable;
 	@Reference
 	private Exercice exercice;
 	@Reference
 	private Repos repos;
-	private boolean enchainable;
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -64,9 +67,24 @@ public class Enchainable extends Bean {
 		return true;
 	}
 
-	
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-	/* (non-Javadoc)
+	public Exercice getExercice() {
+		return exercice;
+	}
+
+	public Repos getRepos() {
+		return repos;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -82,53 +100,33 @@ public class Enchainable extends Bean {
 		return result;
 	}
 
-	
-
-	public Exercice getExercice() {
-		return exercice;
-	}
-
-	public void setExercice(Exercice exercice) {
-		this.exercice = exercice;
-	}
-
-	public Repos getRepos() {
-		return repos;
-	}
-
-	public void setRepos(Repos repos) {
-		this.repos = repos;
-	}
-
 	public boolean isEnchainable() {
-		if (this.exercice != null && this.repos != null){
+		if (this.exercice != null && this.repos != null) {
 			this.enchainable = true;
-		}else{
+		} else {
 			this.enchainable = false;
 		}
 		return this.enchainable;
+	}
+
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public void setEnchainable(boolean enchainable) {
 		this.enchainable = enchainable;
 	}
 
-
-
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
+	public void setExercice(Exercice exercice) {
+		this.exercice = exercice;
 	}
 
-
-
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setRepos(Repos repos) {
+		this.repos = repos;
 	}
 
 }

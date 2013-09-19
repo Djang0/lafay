@@ -21,7 +21,8 @@
 
 					<h:outputLabel for="label" value="#{i18n['mouvement.name']}"
 						style="font-weight:bold" />
-					<p:inputText id="label" value="#{mouvementCtrl.entityClassEdit.nom}"
+					<p:inputText id="label"
+						value="#{mouvementCtrl.entityClassEdit.nom}"
 						label="#{i18n['mouvement.name']}" required="true"
 						requiredMessage="#{i18n['mouvement.name.required']}">
 						<f:validateLength minimum="2" />
@@ -29,18 +30,21 @@
 					<p:message for="label" display="icon" />
 					<p:tooltip for="label" value="#{i18n['mouvement.name']}"
 						showEffect="clip" hideEffect="fade" />
-						
-						<h:outputLabel for="desc" value="#{i18n['mouvement.desc']}"
+
+					<h:outputLabel for="desc" value="#{i18n['mouvement.desc']}"
 						style="font-weight:bold" />
-					<p:inputTextarea rows="6" cols="33" id="desc" value="#{mouvementCtrl.entityClassEdit.description}"
+					<p:inputTextarea rows="6" cols="33" id="desc"
+						value="#{mouvementCtrl.entityClassEdit.description}"
 						label="#{i18n['mouvement.desc.tip']}" required="true"
-						requiredMessage="#{i18n['mouvement.desc.required']}"><f:validateLength minimum="2" /></p:inputTextarea> 
-						<p:message for="desc" display="icon" />
+						requiredMessage="#{i18n['mouvement.desc.required']}">
+						<f:validateLength minimum="2" />
+					</p:inputTextarea>
+					<p:message for="desc" display="icon" />
 					<p:tooltip for="desc" value="#{i18n['mouvement.desc.tip']}"
-						showEffect="clip" hideEffect="fade" />	
+						showEffect="clip" hideEffect="fade" />
 				</h:panelGrid>
 
-				
+
 				<p:commandButton id="saveButton" update="growl"
 					value="#{i18n['common.save']}" action="#{mouvementCtrl.update}" />
 				<p:tooltip for="saveButton" value="#{i18n['common.save']}"

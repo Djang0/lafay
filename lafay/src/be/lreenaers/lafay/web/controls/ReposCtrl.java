@@ -17,14 +17,14 @@ public class ReposCtrl extends Controler<Repos> {
 		this.entityClassList.setWrappedData(this.dao.all());
 	}
 
+	public List<Repos> getRepos() {
+		return this.dao.all();
+	}
+
 	@Override
 	public void selectDAO() {
 		this.dao = DAOFactory.getReposDAO();
 
-	}
-
-	public List<Repos> getRepos() {
-		return this.dao.all();
 	}
 
 }

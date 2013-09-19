@@ -9,6 +9,7 @@ public class SerieDAO extends DAO<Serie> {
 	}
 
 	@Override
-	public void deleteRelatedAncestors(Serie entity) {}
+	public void deleteRelatedAncestors(Serie entity) {
+	}
 
 }
